@@ -1,0 +1,9 @@
+{
+  "name": "PLUS - AI Marketing Studio",
+  "description": "PLUS is an AI-powered marketing studio for MSMEs, offering content planning, visual generation, and viral strategy analysis.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
