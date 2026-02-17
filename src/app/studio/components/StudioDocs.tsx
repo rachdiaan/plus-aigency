@@ -6,7 +6,7 @@ import {
     ChevronUp, ChevronDown, User, Smartphone, ArrowDown, Globe, Server, Database,
     Lock, LayoutDashboard, Smartphone as MobileIcon, Star, Clock, Users, Zap
 } from "lucide-react";
-import { MOCK_TUTORIALS, MOCK_FAQ, MOCK_CLASSES } from "../lib/mockData";
+import { MOCK_TUTORIALS, MOCK_FAQ, MOCK_CLASSES } from "@/lib/mockData";
 
 // --- DOCUMENTATION MODAL COMPONENTS ---
 

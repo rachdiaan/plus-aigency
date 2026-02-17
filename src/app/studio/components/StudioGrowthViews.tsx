@@ -4,8 +4,8 @@ import {
     Megaphone, Filter, Search, Star, ShieldCheck, Check, Calculator, ShoppingCart,
     BarChart3, LogOut
 } from "lucide-react";
-import { MOCK_KOLS, PLANS, ALACARTE_FEATURES } from "../lib/mockData";
-import { AnalysisResult } from "../types";
+import { MOCK_KOLS, PLANS, ALACARTE_FEATURES } from "@/lib/mockData";
+import { AnalysisResult } from "@/types";
 
 // --- VIEW LIVE STREAM ---
 export const ViewLiveStream: React.FC<{ addNotification: (t: 'success' | 'error', m: string) => void }> = ({ addNotification }) => {

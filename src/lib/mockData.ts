@@ -1,4 +1,4 @@
-import { CalendarItem, KOL, Plan, ClassItem, VideoTutorial, FAQItem, TourStep } from "../types";
+import { CalendarItem, KOL, Plan, ClassItem, VideoTutorial, FAQItem, TourStep } from "@/types";
 
 export const TOUR_STEPS: Record<string, TourStep[]> = {
     planner: [

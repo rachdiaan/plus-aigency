@@ -4,10 +4,10 @@ import {
     Target, Flame, RefreshCw, Users
 } from "lucide-react";
 import { Schema, Type } from "@google/genai";
-import { AIVoiceAssistant } from "./StudioHelpers";
-import { callGeminiStructured, callGeminiImage, callGeminiText, downloadImage } from "../lib/ai";
-import { MOCK_CALENDAR } from "../lib/mockData";
-import { CalendarItem, AnalysisResult } from "../types";
+import { AIVoiceAssistant } from "./ui/AIVoiceAssistant";
+import { callGeminiStructured, callGeminiImage, callGeminiText, downloadImage } from "@/lib/ai";
+import { MOCK_CALENDAR } from "@/lib/mockData";
+import { CalendarItem, AnalysisResult } from "@/types";
 
 // --- VIEW PLANNER ---
 export const ViewPlanner: React.FC<{ onAutoFill: () => void, addNotification: (t: 'success' | 'error', m: string) => void }> = ({ onAutoFill, addNotification }) => {

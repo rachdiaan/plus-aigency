@@ -4,12 +4,14 @@ import {
     Sun, Moon, Calendar, Wand2, Target, BarChart3, Megaphone, CreditCard, LifeBuoy,
     GitBranch, Code, BookOpen, X, ChevronRight, ShoppingCart
 } from "lucide-react";
-import { ToastContainer, InteractiveTour, SidebarItem } from "./StudioHelpers";
+import { ToastContainer } from "./ui/ToastContainer";
+import { InteractiveTour } from "./ui/InteractiveTour";
+import { SidebarItem } from "./ui/SidebarItem";
 import { DocumentationModal } from "./StudioDocs";
 import { ViewPlanner, ViewGenerator, ViewStrategy } from "./StudioCoreViews";
 import { ViewLiveStream, ViewKOL, ViewSubscription, ViewAnalytics } from "./StudioGrowthViews";
-import { TOUR_STEPS, ALACARTE_FEATURES } from "../lib/mockData";
-import { Notification } from "../types";
+import { TOUR_STEPS, ALACARTE_FEATURES } from "@/lib/mockData";
+import { Notification } from "@/types";
 import { useTheme } from "@/components/ThemeProvider";
 import Logo from "@/components/Logo";
 
