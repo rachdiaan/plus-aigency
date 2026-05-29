@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 import { translations, type Language } from "@/lib/translations";
 
 /* ── Context ── */
@@ -18,13 +18,23 @@ const LanguageContext = createContext<LanguageContextType>({
 
 /* ── Provider ── */
 export default function LanguageProvider({ children }: { children: ReactNode }) {
-    const [language, setLanguageState] = useState<Language>(() => {
-        if (typeof window !== "undefined") {
-            const stored = localStorage.getItem("plus-language") as Language | null;
-            if (stored === "en" || stored === "id") return stored;
+    // Start with "en" default to avoid server/client hydration mismatch
+    const [language, setLanguageState] = useState<Language>("en");
+
+    // Load language preference from localStorage on mount
+    useEffect(() => {
+        const stored = localStorage.getItem("plus-language") as Language | null;
+        if (stored === "en" || stored === "id") {
+            setLanguageState(stored);
         }
-        return "en";
-    });
+    }, []);
+
+    // Sync HTML lang attribute whenever language changes
+    useEffect(() => {
+        if (typeof document !== "undefined") {
+            document.documentElement.lang = language;
+        }
+    }, [language]);
 
     const setLanguage = (lang: Language) => {
         setLanguageState(lang);
@@ -47,8 +57,9 @@ export function useLanguage() {
     return useContext(LanguageContext);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function useTranslation(): any {
+type TranslationKeys = typeof translations["en"];
+
+export function useTranslation(): TranslationKeys {
     const { language } = useLanguage();
-    return translations[language];
+    return translations[language] as unknown as TranslationKeys;
 }

@@ -5,7 +5,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useTranslation } from "@/components/LanguageProvider";
 
 const monthlyPrices = ["$25", "$50", "$500"];
-const annualPrices = ["$30", "$65", "$650"];
+const annualPrices = ["$20", "$40", "$400"];
 const highlightedIndex = 1; // Professional is highlighted
 
 function CheckIcon({ highlighted }: { highlighted?: boolean }) {

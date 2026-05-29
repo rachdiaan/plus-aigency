@@ -90,6 +90,8 @@ export default function Footer() {
                                     <a
                                         key={link.label}
                                         href={link.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="text-sm text-footer-muted transition-colors hover:text-footer-text"
                                     >
                                         {link.label}

@@ -21,7 +21,6 @@ export default function About() {
                                 width={260}
                                 height={360}
                                 className="h-80 w-full object-cover img-zoom"
-                                unoptimized
                             />
                         </div>
                         <div className="clip-parallelogram mt-4 overflow-hidden rounded-xl shadow-lg">
@@ -31,7 +30,6 @@ export default function About() {
                                 width={260}
                                 height={260}
                                 className="h-56 w-full object-cover img-zoom"
-                                unoptimized
                             />
                         </div>
                     </div>
@@ -78,7 +76,6 @@ export default function About() {
                                 width={260}
                                 height={360}
                                 className="h-80 w-full object-cover img-zoom"
-                                unoptimized
                             />
                         </div>
                     </div>
@@ -93,7 +90,6 @@ export default function About() {
                             width={200}
                             height={200}
                             className="h-32 w-full object-cover"
-                            unoptimized
                         />
                     </div>
                     <div className="overflow-hidden rounded-xl shadow-md">
@@ -103,7 +99,6 @@ export default function About() {
                             width={200}
                             height={200}
                             className="h-32 w-full object-cover"
-                            unoptimized
                         />
                     </div>
                     <div className="overflow-hidden rounded-xl shadow-md">
@@ -113,7 +108,6 @@ export default function About() {
                             width={200}
                             height={200}
                             className="h-32 w-full object-cover"
-                            unoptimized
                         />
                     </div>
                 </div>

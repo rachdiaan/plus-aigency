@@ -321,7 +321,6 @@ function ShowcaseSection() {
                                 alt={game.title}
                                 fill
                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                unoptimized
                             />
 
                             {/* Gradient overlay */}
