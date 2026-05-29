@@ -31,11 +31,39 @@ function ThemeToggle() {
 
     const isLight = theme === "light";
 
-    const toggleTheme = () => {
+    const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
         const nextTheme = isLight ? "dark" : "light";
-        if (typeof document !== "undefined" && (document as any).startViewTransition) {
-            (document as any).startViewTransition(() => {
+        if (
+            typeof document !== "undefined" &&
+            (document as any).startViewTransition &&
+            !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+            const x = event.clientX;
+            const y = event.clientY;
+            const endRadius = Math.hypot(
+                Math.max(x, window.innerWidth - x),
+                Math.max(y, window.innerHeight - y)
+            );
+
+            const transition = (document as any).startViewTransition(() => {
                 setTheme(nextTheme);
+            });
+
+            transition.ready.then(() => {
+                const clipPath = [
+                    `circle(0px at ${x}px ${y}px)`,
+                    `circle(${endRadius}px at ${x}px ${y}px)`
+                ];
+                document.documentElement.animate(
+                    {
+                        clipPath: clipPath,
+                    },
+                    {
+                        duration: 500,
+                        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+                        pseudoElement: "::view-transition-new(root)",
+                    }
+                );
             });
         } else {
             setTheme(nextTheme);
