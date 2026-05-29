@@ -4,65 +4,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useTranslation } from "@/components/LanguageProvider";
 
-/* ── Data ── */
-
-const services = [
-    {
-        icon: "💡",
-        title: "Creative Solutions",
-        desc: "We empower businesses through innovative branding solutions that capture attention and drive engagement.",
-        color: "primary" as const,
-    },
-    {
-        icon: "🖥️",
-        title: "IT Solutions",
-        desc: "Creating impactful platforms for user engagement with cutting-edge technology and modern architectures.",
-        color: "secondary" as const,
-    },
-    {
-        icon: "🎨",
-        title: "Digital Design",
-        desc: "We enhance reach with targeted visual strategies, from UI/UX to full brand identity systems.",
-        color: "tertiary" as const,
-    },
-    {
-        icon: "🚀",
-        title: "Innovative Solutions",
-        desc: "Delivering tailored IT services for your business needs — from cloud to cybersecurity to AI integration.",
-        color: "primary" as const,
-    },
-];
-
-const portfolio = [
-    {
-        title: "Solutions that Empower",
-        desc: "Our innovative IT solutions are crafted to enhance efficiency and drive measurable business results.",
-        img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format",
-    },
-    {
-        title: "Marketing that Captivates",
-        desc: "We provide tailored strategies to reach your audience effectively across every digital touchpoint.",
-        img: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80&auto=format",
-    },
-    {
-        title: "Digital Marketing Solutions",
-        desc: "Our digital marketing solutions elevate your online engagement and amplify brand visibility.",
-        img: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80&auto=format",
-    },
-    {
-        title: "Tailored Marketing",
-        desc: "We deliver cutting-edge IT solutions that empower brands to stand out in competitive markets.",
-        img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80&auto=format",
-    },
-];
-
-const stats = [
-    { value: "150+", label: "Innovative Solutions" },
-    { value: "500+", label: "Happy Customers" },
-    { value: "80+", label: "Tailored Services" },
-    { value: "200+", label: "Unique Designs" },
-];
+/* ── Data Mapping Helpers ── */
 
 const colorMap = {
     primary: {
@@ -88,6 +32,9 @@ const colorMap = {
 /* ── Sections ── */
 
 function HeroSection() {
+    const t = useTranslation();
+    const p = t.digitalAgencyPage;
+
     return (
         <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden">
             {/* Background */}
@@ -126,7 +73,7 @@ function HeroSection() {
                         className="text-xs font-medium tracking-wide"
                         style={{ color: "var(--hero-text-muted)" }}
                     >
-                        Digital Agency Services
+                        {p.heroBadge}
                     </span>
                 </div>
 
@@ -134,16 +81,16 @@ function HeroSection() {
                     className="hero-animate hero-animate-delay-1 mt-8 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-7xl drop-shadow-lg"
                     style={{ color: "var(--hero-text)", textShadow: "0 2px 24px rgba(0,0,0,0.4)" }}
                 >
-                    Digital Excellence,
+                    {p.heroHeading1}
                     <br />
-                    <span className="gradient-text opacity-90">Redefined.</span>
+                    <span className="gradient-text opacity-90">{p.heroHeading2}</span>
                 </h1>
 
                 <p
                     className="hero-animate hero-animate-delay-2 mx-auto mt-4 text-lg font-semibold sm:text-xl drop-shadow-md"
                     style={{ color: "var(--hero-text)", textShadow: "0 1px 16px rgba(0,0,0,0.3)" }}
                 >
-                    Innovative minds delivering branding, storytelling, and content daily.
+                    {p.heroDesc}
                 </p>
 
                 <div className="hero-animate hero-animate-delay-3 mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -155,7 +102,7 @@ function HeroSection() {
                             color: "var(--hero-btn-text)",
                         }}
                     >
-                        Explore Services
+                        {p.heroCta1}
                         <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
@@ -165,7 +112,7 @@ function HeroSection() {
                         className="inline-flex items-center gap-2 rounded-full bg-white/20 px-8 py-3.5 text-sm font-bold text-white backdrop-blur-md border-2 border-white/50 transition-all hover:bg-white/30 hover:border-white/70 hover:scale-105 drop-shadow-md"
                         style={{ textShadow: "0 1px 6px rgba(0,0,0,0.4)" }}
                     >
-                        View Portfolio
+                        {p.heroCta2}
                     </a>
                 </div>
             </div>
@@ -183,19 +130,28 @@ function HeroSection() {
 
 function ServicesSection() {
     const ref = useScrollReveal();
+    const t = useTranslation();
+    const p = t.digitalAgencyPage;
+
+    const services = [
+        { icon: "💡", title: p.services[0].title, desc: p.services[0].desc, color: "primary" as const },
+        { icon: "🖥️", title: p.services[1].title, desc: p.services[1].desc, color: "secondary" as const },
+        { icon: "🎨", title: p.services[2].title, desc: p.services[2].desc, color: "tertiary" as const },
+        { icon: "🚀", title: p.services[3].title, desc: p.services[3].desc, color: "primary" as const },
+    ];
 
     return (
         <section id="services" className="py-24 lg:py-32 bg-white dark:bg-slate-950">
             <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="text-center">
                     <span className="fade-up inline-block rounded-full bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400">
-                        What We Do
+                        {p.servicesBadge}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
-                        Tailored Service Offerings
+                        {p.servicesHeading}
                     </h2>
                     <p className="fade-up fade-up-delay-2 mx-auto mt-4 max-w-lg text-base text-slate-600 dark:text-slate-400">
-                        Innovative branding that clients trust — customized service packages designed to meet your unique business requirements.
+                        {p.servicesDesc}
                     </p>
                 </div>
 
@@ -213,7 +169,7 @@ function ServicesSection() {
                                 <h3 className="mt-5 text-lg font-bold text-slate-900 dark:text-white">{s.title}</h3>
                                 <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{s.desc}</p>
                                 <div className={`mt-4 text-xs font-semibold ${c.text} opacity-0 transition-opacity group-hover:opacity-100`}>
-                                    Learn more →
+                                    {t.navbar.new} →
                                 </div>
                             </div>
                         );
@@ -226,19 +182,28 @@ function ServicesSection() {
 
 function PortfolioSection() {
     const ref = useScrollReveal();
+    const t = useTranslation();
+    const p = t.digitalAgencyPage;
+
+    const portfolio = [
+        { title: p.portfolio[0].title, desc: p.portfolio[0].desc, img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format" },
+        { title: p.portfolio[1].title, desc: p.portfolio[1].desc, img: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80&auto=format" },
+        { title: p.portfolio[2].title, desc: p.portfolio[2].desc, img: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80&auto=format" },
+        { title: p.portfolio[3].title, desc: p.portfolio[3].desc, img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80&auto=format" },
+    ];
 
     return (
         <section id="portfolio" className="py-24 lg:py-32 bg-slate-50 dark:bg-slate-900/[0.2]">
             <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="text-center">
                     <span className="fade-up inline-block rounded-full bg-purple-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-purple-600 dark:text-purple-400">
-                        Our Work
+                        {p.portfolioBadge}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
-                        Creating Impactful Experiences
+                        {p.portfolioHeading}
                     </h2>
                     <p className="fade-up fade-up-delay-2 mx-auto mt-4 max-w-lg text-base text-slate-600 dark:text-slate-400">
-                        A pioneering IT solutions provider focused on empowering businesses through innovative technology.
+                        {p.portfolioDesc}
                     </p>
                 </div>
 
@@ -261,7 +226,7 @@ function PortfolioSection() {
                                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">{item.title}</h3>
                                 <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{item.desc}</p>
                                 <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400 transition-all group-hover:gap-2">
-                                    Learn More
+                                    {p.heroCta2}
                                     <svg className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                     </svg>
@@ -277,6 +242,15 @@ function PortfolioSection() {
 
 function StatsSection() {
     const ref = useScrollReveal();
+    const t = useTranslation();
+    const p = t.digitalAgencyPage;
+
+    const stats = [
+        { value: "150+", label: p.stats[0].label },
+        { value: "500+", label: p.stats[1].label },
+        { value: "80+", label: p.stats[2].label },
+        { value: "200+", label: p.stats[3].label },
+    ];
 
     return (
         <section className="py-20 lg:py-28 bg-white dark:bg-slate-950">
@@ -296,6 +270,8 @@ function StatsSection() {
 
 function TestimonialSection() {
     const ref = useScrollReveal();
+    const t = useTranslation();
+    const p = t.digitalAgencyPage;
 
     return (
         <section className="py-24 lg:py-32 bg-slate-50 dark:bg-slate-900/[0.2]">
@@ -305,11 +281,11 @@ function TestimonialSection() {
                         <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
                     <blockquote className="mt-6 text-xl font-medium leading-relaxed text-slate-900 dark:text-white sm:text-2xl lg:text-3xl">
-                        Partnering with plus. was an exceptional journey. They invested effort to grasp our goals and exceeded our expectations.
+                        {p.testimonialQuote}
                     </blockquote>
                     <div className="mt-8">
-                        <p className="text-base font-semibold text-slate-900 dark:text-white">Jenifer Wang</p>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">Silicon Valley, CA</p>
+                        <p className="text-base font-semibold text-slate-900 dark:text-white">{p.testimonialName}</p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">{p.testimonialLocation}</p>
                     </div>
                 </div>
             </div>
@@ -319,6 +295,14 @@ function TestimonialSection() {
 
 function CTASection() {
     const ref = useScrollReveal();
+    const t = useTranslation();
+    const p = t.digitalAgencyPage;
+
+    const ctaBottomItems = [
+        { title: p.ctaBottomItems[0].title, desc: p.ctaBottomItems[0].desc },
+        { title: p.ctaBottomItems[1].title, desc: p.ctaBottomItems[1].desc },
+        { title: p.ctaBottomItems[2].title, desc: p.ctaBottomItems[2].desc },
+    ];
 
     return (
         <section id="cta" className="py-24 lg:py-32 bg-white dark:bg-slate-950">
@@ -331,15 +315,15 @@ function CTASection() {
 
                     <div className="relative z-10">
                         <span className="inline-block rounded-full bg-purple-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-purple-600 dark:text-purple-400">
-                            Transforming into Reality
+                            {p.ctaBadge}
                         </span>
                         <h2 className="mt-5 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
-                            We craft &amp; enhance your
+                            {p.ctaHeading1}
                             <br />
-                            <span className="gradient-text">digital presence</span>
+                            <span className="gradient-text">{p.ctaHeading2}</span>
                         </h2>
                         <p className="mx-auto mt-4 max-w-lg text-base text-slate-600 dark:text-slate-400">
-                            We empower businesses to build exceptional websites with ease. Our solutions simplify the web design journey, making it accessible for all.
+                            {p.ctaDesc}
                         </p>
 
                         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -347,7 +331,7 @@ function CTASection() {
                                 href="/#pricing"
                                 className="btn-glow inline-flex items-center gap-2 rounded-full bg-slate-900 dark:bg-white px-8 py-3.5 text-sm font-semibold text-white dark:text-slate-900 transition-all hover:scale-105 hover:shadow-2xl"
                             >
-                                Ready to get started?
+                                {p.ctaCta}
                                 <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
@@ -356,18 +340,12 @@ function CTASection() {
 
                         {/* Bottom features */}
                         <div className="mt-12 grid gap-6 sm:grid-cols-3">
-                            <div className="rounded-xl bg-slate-50 dark:bg-slate-800 p-5 border border-slate-200 dark:border-slate-700">
-                                <p className="text-sm font-semibold text-slate-900 dark:text-white">Brand Identity</p>
-                                <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Brand Development</p>
-                            </div>
-                            <div className="rounded-xl bg-slate-50 dark:bg-slate-800 p-5 border border-slate-200 dark:border-slate-700">
-                                <p className="text-sm font-semibold text-slate-900 dark:text-white">Design Solutions</p>
-                                <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Visual Storytelling</p>
-                            </div>
-                            <div className="rounded-xl bg-slate-50 dark:bg-slate-800 p-5 border border-slate-200 dark:border-slate-700">
-                                <p className="text-sm font-semibold text-slate-900 dark:text-white">Innovative IT</p>
-                                <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Solutions & Strategy</p>
-                            </div>
+                            {ctaBottomItems.map((item, i) => (
+                                <div key={i} className="rounded-xl bg-slate-50 dark:bg-slate-800 p-5 border border-slate-200 dark:border-slate-700">
+                                    <p className="text-sm font-semibold text-slate-900 dark:text-white">{item.title}</p>
+                                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{item.desc}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

@@ -15,6 +15,14 @@ export const translations = {
       viewAllProducts: "View All Products",
       new: "New",
       // Product dropdown descriptions
+      productLabels: {
+        aiChatBot: "AI Chat Bot",
+        customerSupport: "Customer Support",
+        mobileApp: "Mobile App",
+        crmPlatform: "CRM Platform",
+        digitalAgency: "Digital Agency",
+        mobileGame: "Mobile Game",
+      },
       productItems: {
         aiChatBot: "Smart AI-powered chatbot",
         customerSupport: "Smarter support decisions",
@@ -562,50 +570,101 @@ export const translations = {
 
     /* ── Page: Digital Agency ── */
     digitalAgencyPage: {
-      heroBadge: "Digital Agency",
-      heroHeading1: "We Build",
-      heroHeading2: "Digital Futures",
-      heroDesc: "Full-service digital agency for brands that want to stand out. From creative strategy to technical execution — we do it all.",
-      heroCta1: "Start a Project",
-      heroCta2: "View Our Work",
-      servicesBadge: "Services",
-      servicesHeading: "What We Do",
-      servicesDesc: "Comprehensive digital services to accelerate your brand.",
-      portfolioBadge: "Portfolio",
-      portfolioHeading: "Projects We're Proud Of",
-      statsBadge: "Impact",
-      statsHeading: "Numbers That Speak",
-      testimonialsBadge: "Testimonials",
-      testimonialsHeading: "Trusted by Growing Brands",
-      ctaHeading1: "Let's Build Something",
-      ctaHeading2: "Extraordinary",
-      ctaDesc: "Have a project in mind? Let's talk about how we can help your brand grow.",
-      ctaCta1: "Start a Project",
-      ctaCta2: "Contact Us",
+      heroBadge: "Digital Agency Services",
+      heroHeading1: "Digital Excellence,",
+      heroHeading2: "Redefined.",
+      heroDesc: "Innovative minds delivering branding, storytelling, and content daily.",
+      heroCta1: "Explore Services",
+      heroCta2: "View Portfolio",
+      servicesBadge: "What We Do",
+      servicesHeading: "Tailored Service Offerings",
+      servicesDesc: "Innovative branding that clients trust — customized service packages designed to meet your unique business requirements.",
+      services: [
+        { title: "Creative Solutions", desc: "We empower businesses through innovative branding solutions that capture attention and drive engagement." },
+        { title: "IT Solutions", desc: "Creating impactful platforms for user engagement with cutting-edge technology and modern architectures." },
+        { title: "Digital Design", desc: "We enhance reach with targeted visual strategies, from UI/UX to full brand identity systems." },
+        { title: "Innovative Solutions", desc: "Delivering tailored IT services for your business needs — from cloud to cybersecurity to AI integration." }
+      ],
+      portfolioBadge: "Our Work",
+      portfolioHeading: "Creating Impactful Experiences",
+      portfolioDesc: "A pioneering IT solutions provider focused on empowering businesses through innovative technology.",
+      portfolio: [
+        { title: "Solutions that Empower", desc: "Our innovative IT solutions are crafted to enhance efficiency and drive measurable business results." },
+        { title: "Marketing that Captivates", desc: "We provide tailored strategies to reach your audience effectively across every digital touchpoint." },
+        { title: "Digital Marketing Solutions", desc: "Our digital marketing solutions elevate your online engagement and amplify brand visibility." },
+        { title: "Tailored Marketing", desc: "We deliver cutting-edge IT solutions that empower brands to stand out in competitive markets." }
+      ],
+      stats: [
+        { value: "150+", label: "Innovative Solutions" },
+        { value: "500+", label: "Happy Customers" },
+        { value: "80+", label: "Tailored Services" },
+        { value: "200+", label: "Unique Designs" }
+      ],
+      testimonialQuote: "Partnering with plus. was an exceptional journey. They invested effort to grasp our goals and exceeded our expectations.",
+      testimonialName: "Jenifer Wang",
+      testimonialLocation: "Silicon Valley, CA",
+      ctaBadge: "Transforming into Reality",
+      ctaHeading1: "We craft & enhance your",
+      ctaHeading2: "digital presence",
+      ctaDesc: "We empower businesses to build exceptional websites with ease. Our solutions simplify the web design journey, making it accessible for all.",
+      ctaCta: "Ready to get started?",
+      ctaBottomItems: [
+        { title: "Brand Identity", desc: "Brand Development" },
+        { title: "Design Solutions", desc: "Visual Storytelling" },
+        { title: "Innovative IT", desc: "Solutions & Strategy" }
+      ]
     },
 
     /* ── Page: Mobile Game ── */
     mobileGamePage: {
-      heroBadge: "Mobile Game Studio",
-      heroHeading1: "Play Beyond",
-      heroHeading2: "Limits",
-      heroDesc: "Immersive mobile gaming experiences crafted with cutting-edge technology. From casual puzzles to competitive multiplayer — we build games people love.",
+      heroBadge: "Mobile Game Development",
+      heroHeading1: "Level Up Your",
+      heroHeading2: "Gaming Vision",
+      heroDesc: "We combine innovation with expertise to create immersive gaming experiences that captivate millions of players worldwide.",
       heroCta1: "Explore Our Games",
-      heroCta2: "Partner With Us",
-      showcaseBadge: "Game Showcase",
-      showcaseHeading: "Worlds We've Built",
-      featuresBadge: "Technology",
-      featuresHeading: "Built With the Best",
-      featuresDesc: "Enterprise-grade gaming infrastructure for flawless player experiences.",
-      statsBadge: "Impact",
+      heroCta2: "Our Capabilities",
+      trustedBadge: "Trusted by 20k+ players worldwide",
+      scrollIndicator: "Scroll to explore",
+      featuresBadge: "Our Capabilities",
+      featuresHeading: "Everything You Need to\nShip Great Games",
+      featuresDesc: "A forward-thinking IT solutions provider dedicated to empowering game studios through innovative technology.",
+      features: [
+        { title: "Cross-Platform Play", desc: "Build once, play everywhere — iOS, Android, PC, and console with seamless cross-play support." },
+        { title: "Multiplayer Infrastructure", desc: "Scalable server architecture supporting millions of concurrent players with low-latency matchmaking." },
+        { title: "Stunning Visuals", desc: "Next-gen graphics powered by Unity and Unreal Engine with custom shaders and particle systems." },
+        { title: "Anti-Cheat & Security", desc: "Enterprise-grade security protecting player data and ensuring fair competitive gameplay." },
+        { title: "Live Analytics", desc: "Real-time player behavior analytics, retention tracking, and monetization optimization dashboards." },
+        { title: "Live Ops Ready", desc: "Dynamic content delivery for events, seasons, battle passes, and A/B testing without app updates." }
+      ],
+      showcaseBadge: "Our Projects",
+      showcaseHeading: "Games That Players\nLove",
+      showcaseDesc: "From concept to chart-topping launch — explore our portfolio of games across every genre.",
+      gameGenres: [
+        { genre: "Racing", title: "High-Speed Thrills", desc: "Heart-pounding racing experiences with realistic physics, stunning tracks, and multiplayer competition." },
+        { genre: "Sports", title: "Athletic Champions", desc: "Immersive sports simulations that capture the excitement of the arena with realistic gameplay mechanics." },
+        { genre: "Strategy", title: "Tactical Mastery", desc: "Deep strategic gameplay that challenges your mind — build empires, command armies, and outwit opponents." },
+        { genre: "Fighting", title: "Combat Arena", desc: "Intense fighting games with fluid combat systems, unique characters, and competitive ranked modes." }
+      ],
       statsHeading: "By the Numbers",
-      testimonialsBadge: "Community",
-      testimonialsHeading: "What Players Say",
-      ctaHeading1: "Ready to Create the Next",
-      ctaHeading2: "Hit Game?",
-      ctaDesc: "Whether you're a publisher, brand, or indie studio — let's build something players will love.",
-      ctaCta1: "Start Your Game",
-      ctaCta2: "Contact Us",
+      stats: [
+        { value: "50M+", label: "Downloads" },
+        { value: "200+", label: "Games Shipped" },
+        { value: "99.9%", label: "Uptime SLA" },
+        { value: "4.8★", label: "Avg Rating" }
+      ],
+      testimonialsBadge: "Client Testimonials",
+      testimonialsHeading: "What Our Partners Say",
+      testimonials: [
+        { quote: "plus. revolutionized our game launch with their tailored solutions. Their expertise and support were invaluable in achieving our goals.", name: "Emily Carter", location: "Rivertown, CA" },
+        { quote: "Their cutting-edge solutions and expert guidance truly elevated our game's performance. Player retention increased 340% in 3 months.", name: "Andrew Walker", location: "Omaha, NE" },
+        { quote: "plus. transformed our mobile game with their cloud solutions. The transition from beta to live was seamless and efficient.", name: "Nicole Brown", location: "Austin, TX" }
+      ],
+      ctaBadge: "Ready to Launch?",
+      ctaHeading1: "Transform Your Gaming",
+      ctaHeading2: "Vision Into Reality",
+      ctaDesc: "A forward-thinking studio dedicated to delivering innovative gaming experiences that drive success for every client.",
+      ctaCta1: "Get Started Now",
+      ctaCta2: "Back to Home"
     },
 
     /* ── Footer ── */
@@ -638,6 +697,14 @@ export const translations = {
       ourProducts: "Produk Kami",
       viewAllProducts: "Lihat Semua Produk",
       new: "Baru",
+      productLabels: {
+        aiChatBot: "Chat Bot AI",
+        customerSupport: "Customer Support",
+        mobileApp: "Aplikasi Mobile",
+        crmPlatform: "Platform CRM",
+        digitalAgency: "Agensi Digital",
+        mobileGame: "Game Mobile",
+      },
       productItems: {
         aiChatBot: "Chatbot pintar berbasis AI",
         customerSupport: "Keputusan dukungan lebih cerdas",
@@ -903,7 +970,7 @@ export const translations = {
       ],
       stats: [
         { value: "99.9%", label: "Jaminan Uptime" },
-        { value: "< 30d", label: "Rata-rata Waktu Respons" },
+        { value: "< 30s", label: "Rata-rata Waktu Respons" },
         { value: "50K+", label: "Tiket Terselesaikan" },
         { value: "4.9/5", label: "Rating Pelanggan" },
       ],
@@ -1021,7 +1088,7 @@ export const translations = {
       stats: [
         { value: "10M+", label: "Gambar Dibuat" },
         { value: "100+", label: "Model AI" },
-        { value: "< 5d", label: "Waktu Generasi" },
+        { value: "< 5s", label: "Waktu Generasi" },
         { value: "4K", label: "Resolusi Maks" },
       ],
       testimonialsBadge: "Testimonial",
@@ -1138,7 +1205,7 @@ export const translations = {
       stats: [
         { value: "1M+", label: "Trek Dihasilkan" },
         { value: "50+", label: "Genre" },
-        { value: "< 10d", label: "Waktu Generasi" },
+        { value: "< 10s", label: "Waktu Generasi" },
         { value: "HQ WAV", label: "Kualitas Output" },
       ],
       testimonialsBadge: "Testimonial",
@@ -1185,50 +1252,101 @@ export const translations = {
 
     /* ── Page: Digital Agency ── */
     digitalAgencyPage: {
-      heroBadge: "Agensi Digital",
-      heroHeading1: "Kami Membangun",
-      heroHeading2: "Masa Depan Digital",
-      heroDesc: "Agensi digital layanan lengkap untuk brand yang ingin menonjol. Dari strategi kreatif hingga eksekusi teknis — kami melakukan semuanya.",
-      heroCta1: "Mulai Proyek",
-      heroCta2: "Lihat Karya Kami",
-      servicesBadge: "Layanan",
-      servicesHeading: "Apa yang Kami Lakukan",
-      servicesDesc: "Layanan digital komprehensif untuk mempercepat brand Anda.",
-      portfolioBadge: "Portofolio",
-      portfolioHeading: "Proyek yang Kami Banggakan",
-      statsBadge: "Dampak",
-      statsHeading: "Angka yang Berbicara",
-      testimonialsBadge: "Testimonial",
-      testimonialsHeading: "Dipercaya Brand yang Berkembang",
-      ctaHeading1: "Mari Bangun Sesuatu",
-      ctaHeading2: "yang Luar Biasa",
-      ctaDesc: "Punya proyek di pikiran? Mari bicara tentang bagaimana kami bisa membantu brand Anda tumbuh.",
-      ctaCta1: "Mulai Proyek",
-      ctaCta2: "Hubungi Kami",
+      heroBadge: "Layanan Agensi Digital",
+      heroHeading1: "Keunggulan Digital,",
+      heroHeading2: "Didefinisikan Ulang.",
+      heroDesc: "Pemikiran inovatif yang menghadirkan branding, storytelling, dan konten setiap hari.",
+      heroCta1: "Jelajahi Layanan",
+      heroCta2: "Lihat Portofolio",
+      servicesBadge: "Apa yang Kami Lakukan",
+      servicesHeading: "Penawaran Layanan yang Disesuaikan",
+      servicesDesc: "Branding inovatif yang dipercaya klien — paket layanan khusus yang dirancang untuk memenuhi kebutuhan bisnis unik Anda.",
+      services: [
+        { title: "Solusi Kreatif", desc: "Kami memberdayakan bisnis melalui solusi branding inovatif yang menarik perhatian dan mendorong keterlibatan." },
+        { title: "Solusi IT", desc: "Menciptakan platform berdampak untuk ketergantungan pengguna dengan teknologi mutakhir dan arsitektur modern." },
+        { title: "Desain Digital", desc: "Kami memperluas jangkauan dengan strategi visual terarah, dari UI/UX hingga sistem identitas brand lengkap." },
+        { title: "Solusi Inovatif", desc: "Menghadirkan layanan IT yang disesuaikan untuk kebutuhan bisnis Anda — dari cloud, cybersecurity, hingga integrasi AI." }
+      ],
+      portfolioBadge: "Karya Kami",
+      portfolioHeading: "Menciptakan Pengalaman Berdampak",
+      portfolioDesc: "Penyedia solusi IT pelopor yang berfokus memberdayakan bisnis melalui teknologi inovatif.",
+      portfolio: [
+        { title: "Solusi yang Memberdayakan", desc: "Solusi IT inovatif kami dirancang untuk meningkatkan efisiensi dan mendorong hasil bisnis yang terukur." },
+        { title: "Pemasaran yang Memikat", desc: "Kami menyediakan strategi yang disesuaikan untuk menjangkau audiens Anda secara efektif di setiap titik sentuh digital." },
+        { title: "Solusi Pemasaran Digital", desc: "Solusi pemasaran digital kami meningkatkan keterlibatan online dan memperkuat visibilitas brand." },
+        { title: "Pemasaran yang Disesuaikan", desc: "Kami menghadirkan solusi IT mutakhir yang memberdayakan brand untuk menonjol di pasar yang kompetitif." }
+      ],
+      stats: [
+        { value: "150+", label: "Solusi Inovatif" },
+        { value: "500+", label: "Pelanggan Puas" },
+        { value: "80+", label: "Layanan Khusus" },
+        { value: "200+", label: "Desain Unik" }
+      ],
+      testimonialQuote: "Bermitra dengan plus. adalah perjalanan yang luar biasa. Mereka berusaha keras memahami tujuan kami dan melampaui harapan kami.",
+      testimonialName: "Jenifer Wang",
+      testimonialLocation: "Silicon Valley, CA",
+      ctaBadge: "Mengubah Menjadi Kenyataan",
+      ctaHeading1: "Kami merancang & memperkuat",
+      ctaHeading2: "kehadiran digital Anda",
+      ctaDesc: "Kami memberdayakan bisnis untuk membangun situs web luar biasa dengan mudah. Solusi kami menyederhanakan perjalanan desain web, membuatnya dapat diakses oleh semua orang.",
+      ctaCta: "Siap untuk memulai?",
+      ctaBottomItems: [
+        { title: "Identitas Brand", desc: "Pengembangan Brand" },
+        { title: "Solusi Desain", desc: "Storytelling Visual" },
+        { title: "IT Inovatif", desc: "Solusi & Strategi" }
+      ]
     },
 
     /* ── Page: Mobile Game ── */
     mobileGamePage: {
-      heroBadge: "Studio Game Mobile",
-      heroHeading1: "Bermain Melampaui",
-      heroHeading2: "Batas",
-      heroDesc: "Pengalaman gaming mobile imersif yang dibuat dengan teknologi mutakhir. Dari puzzle kasual hingga multiplayer kompetitif — kami membangun game yang disukai.",
+      heroBadge: "Pengembangan Game Mobile",
+      heroHeading1: "Tingkatkan Level",
+      heroHeading2: "Visi Game Anda",
+      heroDesc: "Kami memadukan inovasi dengan keahlian untuk menciptakan pengalaman gaming imersif yang memikat jutaan pemain di seluruh dunia.",
       heroCta1: "Jelajahi Game Kami",
-      heroCta2: "Bermitra dengan Kami",
-      showcaseBadge: "Showcase Game",
-      showcaseHeading: "Dunia yang Kami Bangun",
-      featuresBadge: "Teknologi",
-      featuresHeading: "Dibangun dengan yang Terbaik",
-      featuresDesc: "Infrastruktur gaming kelas enterprise untuk pengalaman pemain tanpa cela.",
-      statsBadge: "Dampak",
+      heroCta2: "Kemampuan Kami",
+      trustedBadge: "Dipercaya oleh 20rb+ pemain di seluruh dunia",
+      scrollIndicator: "Gulir untuk menjelajah",
+      featuresBadge: "Kemampuan Kami",
+      featuresHeading: "Semua yang Anda Butuhkan\nuntuk Merilis Game Hebat",
+      featuresDesc: "Penyedia solusi IT berpikiran maju yang berdedikasi memberdayakan studio game melalui teknologi inovatif.",
+      features: [
+        { title: "Main Lintas Platform", desc: "Bangun sekali, mainkan di mana saja — iOS, Android, PC, dan konsol dengan dukungan lintas bermain yang mulus." },
+        { title: "Infrastruktur Multiplayer", desc: "Arsitektur server yang skalabel mendukung jutaan pemain bersamaan dengan perjodohan (matchmaking) latensi rendah." },
+        { title: "Visual Menakjubkan", desc: "Grafik generasi berikutnya didukung oleh Unity dan Unreal Engine dengan shader kustom dan sistem partikel." },
+        { title: "Anti-Cheat & Keamanan", desc: "Keamanan kelas enterprise melindungi data pemain dan memastikan gameplay kompetitif yang adil." },
+        { title: "Analitik Langsung", desc: "Analitik perilaku pemain waktu nyata, pelacakan retensi, dan dasbor pengoptimalan monetisasi." },
+        { title: "Siap Live Ops", desc: "Pengiriman konten dinamis untuk acara, musim, battle pass, dan pengujian A/B tanpa pembaruan aplikasi." }
+      ],
+      showcaseBadge: "Proyek Kami",
+      showcaseHeading: "Game yang Dicintai\nPara Pemain",
+      showcaseDesc: "Dari konsep hingga peluncuran puncak tangga lagu — jelajahi portofolio game kami di setiap genre.",
+      gameGenres: [
+        { genre: "Balapan", title: "Sensasi Kecepatan Tinggi", desc: "Pengalaman balapan yang mendebarkan dengan fisika realistis, trek menakjubkan, dan kompetisi multiplayer." },
+        { genre: "Olahraga", title: "Juara Atletik", desc: "Simulasi olahraga imersif yang menangkap keseruan arena dengan mekanisme gameplay yang realistis." },
+        { genre: "Strategi", title: "Penguasaan Taktis", desc: "Gameplay strategis mendalam yang menantang pikiran Anda — bangun kerajaan, pimpin pasukan, dan akali lawan." },
+        { genre: "Pertarungan", title: "Arena Pertempuran", desc: "Game pertarungan intens dengan sistem pertarungan yang mulus, karakter unik, dan mode peringkat kompetitif." }
+      ],
       statsHeading: "Dalam Angka",
-      testimonialsBadge: "Komunitas",
-      testimonialsHeading: "Kata Para Pemain",
-      ctaHeading1: "Siap Membuat",
-      ctaHeading2: "Game Hit Berikutnya?",
-      ctaDesc: "Baik Anda publisher, brand, atau studio indie — mari buat sesuatu yang disukai pemain.",
-      ctaCta1: "Mulai Game Anda",
-      ctaCta2: "Hubungi Kami",
+      stats: [
+        { value: "50Jt+", label: "Unduhan" },
+        { value: "200+", label: "Game Dirilis" },
+        { value: "99.9%", label: "Uptime SLA" },
+        { value: "4.8★", label: "Rata-rata Rating" }
+      ],
+      testimonialsBadge: "Testimonial Klien",
+      testimonialsHeading: "Apa Kata Mitra Kami",
+      testimonials: [
+        { quote: "plus. merevolusi peluncuran game kami dengan solusi khusus mereka. Keahlian dan dukungan mereka sangat berharga dalam mencapai tujuan kami.", name: "Emily Carter", location: "Rivertown, CA" },
+        { quote: "Solusi mutakhir dan panduan ahli mereka benar-benar meningkatkan performa game kami. Retensi pemain meningkat 340% dalam 3 bulan.", name: "Andrew Walker", location: "Omaha, NE" },
+        { quote: "plus. mengubah game mobile kami dengan solusi cloud mereka. Transisi dari beta ke live sangat mulus dan efisien.", name: "Nicole Brown", location: "Austin, TX" }
+      ],
+      ctaBadge: "Siap untuk Merilis?",
+      ctaHeading1: "Ubah Visi Game Anda",
+      ctaHeading2: "Menjadi Kenyataan",
+      ctaDesc: "Studio berpikiran maju yang berdedikasi menghadirkan pengalaman gaming inovatif yang mendorong kesuksesan bagi setiap klien.",
+      ctaCta1: "Mulai Sekarang",
+      ctaCta2: "Kembali ke Beranda"
     },
 
     /* ── Footer ── */

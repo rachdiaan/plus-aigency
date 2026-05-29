@@ -37,8 +37,15 @@ export default function LanguageProvider({ children }: { children: ReactNode }) 
     }, [language]);
 
     const setLanguage = (lang: Language) => {
-        setLanguageState(lang);
-        localStorage.setItem("plus-language", lang);
+        if (typeof document !== "undefined" && (document as any).startViewTransition) {
+            (document as any).startViewTransition(() => {
+                setLanguageState(lang);
+                localStorage.setItem("plus-language", lang);
+            });
+        } else {
+            setLanguageState(lang);
+            localStorage.setItem("plus-language", lang);
+        }
     };
 
     const toggleLanguage = () => {

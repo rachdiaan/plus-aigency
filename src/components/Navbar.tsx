@@ -8,12 +8,12 @@ import { useLanguage, useTranslation } from "@/components/LanguageProvider";
 
 /* ── Product dropdown items ── */
 const productKeys = [
-    { icon: "🤖", labelKey: "AI Chat Bot", descKey: "aiChatBot", href: "/chat-bot", internal: true },
-    { icon: "🎧", labelKey: "Customer Support", descKey: "customerSupport", href: "/customer-support", internal: true },
-    { icon: "📱", labelKey: "Mobile App", descKey: "mobileApp", href: "/mobile-app", internal: true },
-    { icon: "📊", labelKey: "CRM Platform", descKey: "crmPlatform", href: "/crm", internal: true },
-    { icon: "🚀", labelKey: "Digital Agency", descKey: "digitalAgency", href: "/digital-agency", internal: true },
-    { icon: "🎮", labelKey: "Mobile Game", descKey: "mobileGame", href: "/mobile-game", internal: true },
+    { icon: "🤖", labelKey: "aiChatBot", descKey: "aiChatBot", href: "/chat-bot", internal: true },
+    { icon: "🎧", labelKey: "customerSupport", descKey: "customerSupport", href: "/customer-support", internal: true },
+    { icon: "📱", labelKey: "mobileApp", descKey: "mobileApp", href: "/mobile-app", internal: true },
+    { icon: "📊", labelKey: "crmPlatform", descKey: "crmPlatform", href: "/crm", internal: true },
+    { icon: "🚀", labelKey: "digitalAgency", descKey: "digitalAgency", href: "/digital-agency", internal: true },
+    { icon: "🎮", labelKey: "mobileGame", descKey: "mobileGame", href: "/mobile-game", internal: true },
 ];
 
 /* ── Theme Toggle ── */
@@ -31,9 +31,20 @@ function ThemeToggle() {
 
     const isLight = theme === "light";
 
+    const toggleTheme = () => {
+        const nextTheme = isLight ? "dark" : "light";
+        if (typeof document !== "undefined" && (document as any).startViewTransition) {
+            (document as any).startViewTransition(() => {
+                setTheme(nextTheme);
+            });
+        } else {
+            setTheme(nextTheme);
+        }
+    };
+
     return (
         <button
-            onClick={() => setTheme(isLight ? "dark" : "light")}
+            onClick={toggleTheme}
             className="theme-toggle"
             aria-label={`Switch to ${isLight ? "dark" : "light"} mode`}
             title={`Switch to ${isLight ? "dark" : "light"} mode`}
@@ -201,7 +212,7 @@ function ProductsDropdown({ scrolled }: { scrolled: boolean }) {
                             </span>
                             <div className="min-w-0">
                                 <p className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
-                                    {p.labelKey}
+                                    {t.navbar.productLabels[p.labelKey as keyof typeof t.navbar.productLabels]}
                                     {p.internal && (
                                         <span className="rounded bg-blue-100 dark:bg-blue-500/20 px-1.5 py-0.5 text-[9px] font-bold uppercase text-blue-600 dark:text-blue-400">
                                             {t.navbar.new}
@@ -382,7 +393,7 @@ export default function Navbar() {
                                                 className="flex items-center gap-2 rounded-lg bg-slate-50 dark:bg-slate-800 px-3 py-2.5 transition-colors hover:bg-blue-50 dark:hover:bg-slate-700"
                                             >
                                                 <span className="text-base">{p.icon}</span>
-                                                <span className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{p.labelKey}</span>
+                                                <span className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{t.navbar.productLabels[p.labelKey as keyof typeof t.navbar.productLabels]}</span>
                                             </a>
                                         ))}
                                     </div>
