@@ -298,6 +298,7 @@ export default function Navbar() {
         { label: t.navbar.products, href: "/#products", hasDropdown: true },
         { label: t.navbar.aiFeatures, href: "/#features" },
         { label: t.navbar.pricing, href: "/#pricing" },
+        { label: "Studio", href: "/studio" },
     ];
 
     const subpageLinks = [
@@ -305,6 +306,7 @@ export default function Navbar() {
         { label: t.navbar.products, href: "/#products", hasDropdown: true },
         { label: t.navbar.aiFeatures, href: "/#features" },
         { label: t.navbar.pricing, href: "/#pricing" },
+        { label: "Studio", href: "/studio" },
     ];
 
     const navLinks = isHome ? homeLinks : subpageLinks;

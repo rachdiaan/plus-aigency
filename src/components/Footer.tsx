@@ -25,12 +25,12 @@ export default function Footer() {
     const t = useTranslation();
 
     const companyLinks = [
-        { label: t.footer.aboutUs, href: "https://plusthe.site/about-us-1/" },
-        { label: t.footer.ourWork, href: "https://plusthe.site/our-work-1/" },
-        { label: t.footer.services, href: "https://plusthe.site/services-1/" },
-        { label: t.pricing.badge, href: "https://plusthe.site/pricing/" },
-        { label: t.navbar.aiFeatures, href: "https://plusthe.site/ai-features/" },
-        { label: t.footer.blog, href: "https://plusthe.site/blog-standard/" },
+        { label: t.footer.aboutUs, href: "/#about" },
+        { label: t.footer.ourWork, href: "/#products" },
+        { label: t.footer.services, href: "/#products" },
+        { label: t.pricing.badge, href: "/#pricing" },
+        { label: t.navbar.aiFeatures, href: "/#features" },
+        { label: t.footer.blog, href: "/blog" },
     ];
 
     return (
@@ -104,9 +104,7 @@ export default function Footer() {
                     {/* Contact */}
                     <div className="fade-up fade-up-delay-2 flex flex-col items-start gap-5">
                         <a
-                            href="https://plusthe.site/contact-us/"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="/contact-us"
                             className="rounded-full border border-footer-border px-7 py-3 text-sm font-semibold text-footer-text transition-all hover:border-footer-text hover:bg-footer-text hover:text-footer-bg hover:scale-105"
                         >
                             {t.footer.contactUs}

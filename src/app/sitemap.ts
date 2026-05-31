@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         "/ai-text-generator",
         "/ai-video-generator",
         "/ai-music-generator",
+        "/contact-us",
+        "/blog",
     ];
 
     return routes.map((route) => ({

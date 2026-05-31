@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ArrowRight, Loader2 } from "lucide-react";
 import Logo from "@/components/Logo";
 import { useTheme } from "@/components/ThemeProvider";
+import { supabase } from "@/lib/supabase";
 
 const StudioLoginLogo = () => {
     const { theme } = useTheme();
@@ -12,14 +13,76 @@ export const StudioLogin: React.FC<{ onLoginSuccess: () => void, onBack: () => v
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isSignUp, setIsSignUp] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            onLoginSuccess();
-        }, 1500);
+        setErrorMessage("");
+        setSuccessMessage("");
+
+        if (supabase) {
+            if (isSignUp) {
+                // Sign Up
+                const { error } = await supabase.auth.signUp({
+                    email,
+                    password,
+                });
+                setLoading(false);
+                if (error) {
+                    setErrorMessage(error.message);
+                } else {
+                    setSuccessMessage("Pendaftaran berhasil! Silakan periksa kotak masuk email Anda untuk melakukan verifikasi akun.");
+                    setEmail("");
+                    setPassword("");
+                }
+            } else {
+                // Sign In
+                const { error } = await supabase.auth.signInWithPassword({
+                    email,
+                    password,
+                });
+                setLoading(false);
+                if (error) {
+                    setErrorMessage(error.message);
+                } else {
+                    onLoginSuccess();
+                }
+            }
+        } else {
+            // Mock fallback
+            setTimeout(() => {
+                setLoading(false);
+                onLoginSuccess();
+            }, 1500);
+        }
+    };
+
+    const handleGoogleLogin = async () => {
+        setLoading(true);
+        setErrorMessage("");
+        setSuccessMessage("");
+
+        if (supabase) {
+            const { error } = await supabase.auth.signInWithOAuth({
+                provider: "google",
+                options: {
+                    redirectTo: `${window.location.origin}/studio`,
+                },
+            });
+            if (error) {
+                setLoading(false);
+                setErrorMessage(error.message);
+            }
+        } else {
+            // Mock fallback
+            setTimeout(() => {
+                setLoading(false);
+                onLoginSuccess();
+            }, 1000);
+        }
     };
 
     return (
@@ -43,11 +106,26 @@ export const StudioLogin: React.FC<{ onLoginSuccess: () => void, onBack: () => v
                             <StudioLoginLogo />
                         </div>
                     </div>
-                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Welcome Back</h2>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm mt-2">Masuk untuk melanjutkan kampanye Anda.</p>
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                        {isSignUp ? "Create Account" : "Welcome Back"}
+                    </h2>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm mt-2">
+                        {isSignUp ? "Daftar untuk membuat kampanye baru Anda." : "Masuk untuk melanjutkan kampanye Anda."}
+                    </p>
                 </div>
 
                 <form onSubmit={handleLogin} className="space-y-4">
+                    {errorMessage && (
+                        <div className="rounded-xl bg-rose-50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-800/30 p-4 text-xs text-rose-600 dark:text-rose-400">
+                            {errorMessage}
+                        </div>
+                    )}
+                    {successMessage && (
+                        <div className="rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/30 p-4 text-xs text-emerald-600 dark:text-emerald-400">
+                            {successMessage}
+                        </div>
+                    )}
+
                     <div>
                         <label className="block text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">Email Address</label>
                         <input type="email" value={email} onChange={e => setEmail(e.target.value)} required className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" />
@@ -57,15 +135,17 @@ export const StudioLogin: React.FC<{ onLoginSuccess: () => void, onBack: () => v
                         <input type="password" value={password} onChange={e => setPassword(e.target.value)} required className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" />
                     </div>
 
-                    <div className="flex justify-between items-center text-xs">
-                        <label className="flex items-center gap-2 cursor-pointer text-slate-500 dark:text-slate-400">
-                            <input type="checkbox" className="rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-blue-500 focus:ring-blue-500" /> Remember me
-                        </label>
-                        <a href="#" className="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 font-bold">Lupa Password?</a>
-                    </div>
+                    {!isSignUp && (
+                        <div className="flex justify-between items-center text-xs">
+                            <label className="flex items-center gap-2 cursor-pointer text-slate-500 dark:text-slate-400">
+                                <input type="checkbox" className="rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-blue-500 focus:ring-blue-500" /> Remember me
+                            </label>
+                            <a href="/contact-us" className="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 font-bold">Lupa Password?</a>
+                        </div>
+                    )}
 
                     <button type="submit" disabled={loading} className="w-full py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg shadow-blue-500/20 hover:scale-[1.02] transition-transform flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
-                        {loading ? <Loader2 className="animate-spin" size={20} /> : "Sign In"}
+                        {loading ? <Loader2 className="animate-spin" size={20} /> : (isSignUp ? "Sign Up" : "Sign In")}
                     </button>
                 </form>
 
@@ -76,14 +156,28 @@ export const StudioLogin: React.FC<{ onLoginSuccess: () => void, onBack: () => v
                 </div>
 
                 <div className="space-y-3">
-                    <button className="w-full py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-700 dark:text-white text-sm font-bold hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors flex items-center justify-center gap-3">
+                    <button onClick={handleGoogleLogin} disabled={loading} className="w-full py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-700 dark:text-white text-sm font-bold hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors flex items-center justify-center gap-3 disabled:opacity-70">
                         <img src="https://www.svgrepo.com/show/475656/google-color.svg" className="w-5 h-5" alt="Google" />
                         Masuk dengan Google
                     </button>
                 </div>
 
                 <p className="text-center text-xs text-slate-500 dark:text-slate-400 mt-8">
-                    Belum punya akun? <a href="#" className="text-blue-600 dark:text-blue-400 font-bold hover:underline">Daftar Sekarang</a>
+                    {isSignUp ? (
+                        <>
+                            Sudah punya akun?{" "}
+                            <button onClick={() => { setIsSignUp(false); setErrorMessage(""); setSuccessMessage(""); }} className="text-blue-600 dark:text-blue-400 font-bold hover:underline">
+                                Masuk Sekarang
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            Belum punya akun?{" "}
+                            <button onClick={() => { setIsSignUp(true); setErrorMessage(""); setSuccessMessage(""); }} className="text-blue-600 dark:text-blue-400 font-bold hover:underline">
+                                Daftar Sekarang
+                            </button>
+                        </>
+                    )}
                 </p>
             </div>
         </div>

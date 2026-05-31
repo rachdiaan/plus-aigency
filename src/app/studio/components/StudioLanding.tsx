@@ -59,9 +59,9 @@ export const StudioLanding: React.FC<{ onStart: () => void, onLoginClick: () => 
                     <button onClick={onStart} className="group relative px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-full font-bold text-lg overflow-hidden transition-all hover:scale-105 shadow-xl shadow-blue-500/10">
                         <span className="relative z-10 flex items-center gap-2">Coba Gratis Sekarang <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" /></span>
                     </button>
-                    <button className="px-8 py-4 bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-full font-bold text-lg hover:bg-slate-200 dark:hover:bg-slate-900 transition-all backdrop-blur-sm flex items-center gap-2 text-slate-700 dark:text-white">
+                    <a href="/contact-us" className="px-8 py-4 bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-full font-bold text-lg hover:bg-slate-200 dark:hover:bg-slate-900 transition-all backdrop-blur-sm flex items-center justify-center gap-2 text-slate-700 dark:text-white">
                         <Rocket size={20} className="text-slate-400" /> Book Demo
-                    </button>
+                    </a>
                 </div>
 
                 {/* Feature Pills */}
