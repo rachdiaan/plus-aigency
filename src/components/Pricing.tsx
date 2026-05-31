@@ -73,9 +73,9 @@ export default function Pricing() {
                         return (
                             <div
                                 key={`${isAnnual ? "annual" : "monthly"}-${i}`}
-                                className={`pricing-card relative flex flex-col rounded-2xl border p-8 transition-all duration-300 ${highlighted
-                                    ? "border-primary bg-white dark:bg-slate-900 ring-1 ring-primary/20 shadow-xl shadow-primary/5"
-                                    : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/80 shadow-sm hover:shadow-lg"
+                                className={`pricing-card relative flex flex-col rounded-2xl border p-8 transition-all duration-500 ease-out hover:-translate-y-2 ${highlighted
+                                    ? "border-primary bg-white dark:bg-slate-900 ring-1 ring-primary/20 shadow-[0_20px_40px_-15px_rgba(12,116,235,0.2)] hover:shadow-[0_25px_50px_-12px_rgba(12,116,235,0.35)]"
+                                    : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/80 shadow-sm hover:shadow-2xl dark:hover:shadow-white/5"
                                     }`}
                             >
                                 {highlighted && (

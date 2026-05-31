@@ -77,7 +77,7 @@ export default function Hero() {
                 <div className="hero-animate hero-animate-delay-3 mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                     <a
                         href="#products"
-                        className="btn-glow inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold transition-all hover:scale-105 hover:shadow-2xl"
+                        className="btn-glow inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_20px_40px_-10px_rgba(12,116,235,0.4)]"
                         style={{
                             background: "var(--hero-btn-bg)",
                             color: "var(--hero-btn-text)",
@@ -90,7 +90,7 @@ export default function Hero() {
                     </a>
                     <a
                         href="#pricing"
-                        className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-bold backdrop-blur-md border-2 transition-all hover:scale-105 drop-shadow-md"
+                        className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-bold backdrop-blur-md border-2 transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-slate-100/10 dark:hover:bg-slate-800/50 drop-shadow-md hover:shadow-xl"
                         style={{
                             borderColor: "var(--hero-btn-outline-border)",
                             color: "var(--hero-btn-outline-text)",

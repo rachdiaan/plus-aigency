@@ -392,7 +392,7 @@ export default function Navbar() {
 
             {/* Mobile menu */}
             <div
-                className={`overflow-hidden transition-all duration-300 md:hidden ${mobileOpen ? "max-h-[600px]" : "max-h-0"
+                className={`overflow-hidden transition-all duration-500 ease-in-out md:hidden ${mobileOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
                     }`}
             >
                 <div className="flex flex-col gap-1 px-6 py-6 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-xl">
