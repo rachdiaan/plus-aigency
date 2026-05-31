@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Digital Agency — plus.",
+    title: "AI Video Generator — plus.",
     description:
-        "Innovative minds delivering branding, storytelling, and content daily. We craft & enhance your digital presence.",
+        "Text-to-Video generation for seamless integration and engaging multimedia content. Create professional videos in minutes, not days.",
     openGraph: {
-        title: "Digital Agency — plus.",
+        title: "AI Video Generator — plus.",
         description:
-            "Innovative minds delivering branding, storytelling, and content daily.",
+            "Text-to-Video generation for seamless integration and engaging multimedia content. Create professional videos in minutes, not days.",
         type: "website",
-        url: "https://www.plusthe.site/digital-agency",
+        url: "https://www.plusthe.site/ai-video-generator",
     },
     alternates: {
-        canonical: "https://www.plusthe.site/digital-agency",
+        canonical: "https://www.plusthe.site/ai-video-generator",
     },
 };
 
-export default function DigitalAgencyLayout({
+export default function AiVideoGeneratorLayout({
     children,
 }: {
     children: React.ReactNode;
@@ -29,8 +29,8 @@ export default function DigitalAgencyLayout({
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Product",
-                        "name": "Digital Agency",
-                        "description": "Innovative minds delivering branding, storytelling, and content daily. We craft & enhance your digital presence.",
+                        "name": "AI Video Generator",
+                        "description": "Text-to-Video generation for seamless integration and engaging multimedia content. Create professional videos in minutes, not days.",
                         "brand": {
                             "@type": "Brand",
                             "name": "plus."

@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Digital Agency — plus.",
+    title: "CRM Platform — plus.",
     description:
-        "Innovative minds delivering branding, storytelling, and content daily. We craft & enhance your digital presence.",
+        "AI-powered CRM that turns leads into loyal customers. Automate workflows, track every deal, and grow revenue predictably.",
     openGraph: {
-        title: "Digital Agency — plus.",
+        title: "CRM Platform — plus.",
         description:
-            "Innovative minds delivering branding, storytelling, and content daily.",
+            "AI-powered CRM that turns leads into loyal customers. Automate workflows, track every deal, and grow revenue predictably.",
         type: "website",
-        url: "https://www.plusthe.site/digital-agency",
+        url: "https://www.plusthe.site/crm",
     },
     alternates: {
-        canonical: "https://www.plusthe.site/digital-agency",
+        canonical: "https://www.plusthe.site/crm",
     },
 };
 
-export default function DigitalAgencyLayout({
+export default function CrmLayout({
     children,
 }: {
     children: React.ReactNode;
@@ -29,8 +29,8 @@ export default function DigitalAgencyLayout({
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Product",
-                        "name": "Digital Agency",
-                        "description": "Innovative minds delivering branding, storytelling, and content daily. We craft & enhance your digital presence.",
+                        "name": "CRM Platform",
+                        "description": "AI-powered CRM that turns leads into loyal customers. Automate workflows, track every deal, and grow revenue predictably.",
                         "brand": {
                             "@type": "Brand",
                             "name": "plus."

@@ -100,13 +100,11 @@ export default function Pricing() {
                                     <span className="text-4xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC]">
                                         {prices[i]}
                                     </span>
-                                    <span className="text-sm text-[#64748B] dark:text-[#94A3B8]">/month</span>
+                                    <span className="text-sm text-[#64748B] dark:text-[#94A3B8]">{t.pricing.perMonth}</span>
                                 </div>
 
                                 <a
-                                    href="https://plusthe.site/service-plus/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    href="#contact"
                                     className={`mt-8 flex items-center justify-center rounded-full px-5 py-3.5 text-sm font-semibold transition-all hover:scale-105 ${highlighted
                                         ? "bg-primary text-white shadow-lg shadow-primary/25 hover:bg-primary-dark hover:shadow-xl"
                                         : "border border-slate-200 dark:border-[#1E293B] bg-slate-50 dark:bg-[#0F172A] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-slate-100 dark:hover:bg-[#1E293B] dark:hover:text-white"

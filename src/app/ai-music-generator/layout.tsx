@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Digital Agency — plus.",
+    title: "AI Music Generator — plus.",
     description:
-        "Innovative minds delivering branding, storytelling, and content daily. We craft & enhance your digital presence.",
+        "Create music generated using text. Text-to-Music generation API for seamless integration and engaging audio content creation.",
     openGraph: {
-        title: "Digital Agency — plus.",
+        title: "AI Music Generator — plus.",
         description:
-            "Innovative minds delivering branding, storytelling, and content daily.",
+            "Create music generated using text. Text-to-Music generation API for seamless integration and engaging audio content creation.",
         type: "website",
-        url: "https://www.plusthe.site/digital-agency",
+        url: "https://www.plusthe.site/ai-music-generator",
     },
     alternates: {
-        canonical: "https://www.plusthe.site/digital-agency",
+        canonical: "https://www.plusthe.site/ai-music-generator",
     },
 };
 
-export default function DigitalAgencyLayout({
+export default function AiMusicGeneratorLayout({
     children,
 }: {
     children: React.ReactNode;
@@ -29,8 +29,8 @@ export default function DigitalAgencyLayout({
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Product",
-                        "name": "Digital Agency",
-                        "description": "Innovative minds delivering branding, storytelling, and content daily. We craft & enhance your digital presence.",
+                        "name": "AI Music Generator",
+                        "description": "Create music generated using text. Text-to-Music generation API for seamless integration and engaging audio content creation.",
                         "brand": {
                             "@type": "Brand",
                             "name": "plus."

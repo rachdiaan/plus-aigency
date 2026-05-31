@@ -26,7 +26,7 @@ export const StudioLanding: React.FC<{ onStart: () => void, onLoginClick: () => 
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <div className="parallax absolute top-[10%] left-[10%] w-[40vw] h-[40vw] bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-[120px]" data-speed="2"></div>
                 <div className="parallax absolute bottom-[10%] right-[10%] w-[35vw] h-[35vw] bg-purple-500/10 dark:bg-purple-500/5 rounded-full blur-[100px]" data-speed="-1"></div>
-                <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.02] dark:opacity-[0.04]"></div>
+                <div className="absolute top-0 left-0 w-full h-full bg-[url('/textures/noise.svg')] opacity-[0.02] dark:opacity-[0.04]"></div>
             </div>
 
             {/* Header */}

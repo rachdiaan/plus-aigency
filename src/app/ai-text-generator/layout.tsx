@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Digital Agency — plus.",
+    title: "AI Text Generator — plus.",
     description:
-        "Innovative minds delivering branding, storytelling, and content daily. We craft & enhance your digital presence.",
+        "Write smarter and save time with AI-powered tools. Generate copy, content, and creative writing that connects with your audience.",
     openGraph: {
-        title: "Digital Agency — plus.",
+        title: "AI Text Generator — plus.",
         description:
-            "Innovative minds delivering branding, storytelling, and content daily.",
+            "Write smarter and save time with AI-powered tools. Generate copy, content, and creative writing that connects with your audience.",
         type: "website",
-        url: "https://www.plusthe.site/digital-agency",
+        url: "https://www.plusthe.site/ai-text-generator",
     },
     alternates: {
-        canonical: "https://www.plusthe.site/digital-agency",
+        canonical: "https://www.plusthe.site/ai-text-generator",
     },
 };
 
-export default function DigitalAgencyLayout({
+export default function AiTextGeneratorLayout({
     children,
 }: {
     children: React.ReactNode;
@@ -29,8 +29,8 @@ export default function DigitalAgencyLayout({
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Product",
-                        "name": "Digital Agency",
-                        "description": "Innovative minds delivering branding, storytelling, and content daily. We craft & enhance your digital presence.",
+                        "name": "AI Text Generator",
+                        "description": "Write smarter and save time with AI-powered tools. Generate copy, content, and creative writing that connects with your audience.",
                         "brand": {
                             "@type": "Brand",
                             "name": "plus."

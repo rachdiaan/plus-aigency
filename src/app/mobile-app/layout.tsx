@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Digital Agency — plus.",
+    title: "Mobile App Development — plus.",
     description:
-        "Innovative minds delivering branding, storytelling, and content daily. We craft & enhance your digital presence.",
+        "Beautiful, performant mobile apps that users love. From concept to App Store — we handle the entire journey.",
     openGraph: {
-        title: "Digital Agency — plus.",
+        title: "Mobile App Development — plus.",
         description:
-            "Innovative minds delivering branding, storytelling, and content daily.",
+            "Beautiful, performant mobile apps that users love. From concept to App Store — we handle the entire journey.",
         type: "website",
-        url: "https://www.plusthe.site/digital-agency",
+        url: "https://www.plusthe.site/mobile-app",
     },
     alternates: {
-        canonical: "https://www.plusthe.site/digital-agency",
+        canonical: "https://www.plusthe.site/mobile-app",
     },
 };
 
-export default function DigitalAgencyLayout({
+export default function MobileAppLayout({
     children,
 }: {
     children: React.ReactNode;
@@ -29,8 +29,8 @@ export default function DigitalAgencyLayout({
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Product",
-                        "name": "Digital Agency",
-                        "description": "Innovative minds delivering branding, storytelling, and content daily. We craft & enhance your digital presence.",
+                        "name": "Mobile App Development",
+                        "description": "Beautiful, performant mobile apps that users love. From concept to App Store — we handle the entire journey.",
                         "brand": {
                             "@type": "Brand",
                             "name": "plus."

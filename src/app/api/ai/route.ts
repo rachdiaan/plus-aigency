@@ -1,6 +1,38 @@
 import { NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 
+// --- Rate Limiting ---
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX_REQUESTS = 10; // max 10 requests per window per IP
+
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+
+function isRateLimited(ip: string): boolean {
+    const now = Date.now();
+    const entry = rateLimitMap.get(ip);
+
+    if (!entry || now > entry.resetTime) {
+        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+        return false;
+    }
+
+    entry.count++;
+    if (entry.count > RATE_LIMIT_MAX_REQUESTS) {
+        return true;
+    }
+    return false;
+}
+
+// Clean up stale entries every 5 minutes to prevent memory leak
+setInterval(() => {
+    const now = Date.now();
+    for (const [ip, entry] of rateLimitMap.entries()) {
+        if (now > entry.resetTime) {
+            rateLimitMap.delete(ip);
+        }
+    }
+}, 5 * 60 * 1000);
+
 // Ensure the API key is read from server environment variables
 const getGenAI = () => {
     const apiKey = process.env.GEMINI_API_KEY;
@@ -12,6 +44,18 @@ const getGenAI = () => {
 
 export async function POST(request: Request) {
     try {
+        // Rate limiting
+        const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
+            || request.headers.get("x-real-ip")
+            || "unknown";
+
+        if (isRateLimited(ip)) {
+            return NextResponse.json(
+                { error: "Too many requests. Please try again later." },
+                { status: 429 }
+            );
+        }
+
         const { action, prompt, schema } = await request.json();
 
         if (!prompt) {

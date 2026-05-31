@@ -64,7 +64,7 @@ export const ViewGenerator: React.FC<{ addNotification: (t: 'success' | 'error',
 
             {/* Preview Panel */}
             <div id="gen-result-area" className="lg:col-span-8 bg-surface border border-border rounded-2xl flex items-center justify-center relative overflow-hidden group min-h-[400px] shadow-inner transition-colors">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-[url('/textures/noise.svg')] opacity-20 pointer-events-none"></div>
 
                 {/* Background Decor */}
                 {!generatedImage && !loading && (

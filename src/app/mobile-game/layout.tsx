@@ -9,7 +9,10 @@ export const metadata: Metadata = {
         description:
             "Engaging mobile game development that captivates players.",
         type: "website",
-        url: "https://plusthe.site/mobile-game",
+        url: "https://www.plusthe.site/mobile-game",
+    },
+    alternates: {
+        canonical: "https://www.plusthe.site/mobile-game",
     },
 };
 
@@ -18,5 +21,31 @@ export default function MobileGameLayout({
 }: {
     children: React.ReactNode;
 }) {
-    return <>{children}</>;
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Product",
+                        "name": "Mobile Game",
+                        "description": "Engaging mobile game development that captivates players. From concept to launch, we build immersive gaming experiences.",
+                        "brand": {
+                            "@type": "Brand",
+                            "name": "plus."
+                        },
+                        "offers": {
+                            "@type": "AggregateOffer",
+                            "priceCurrency": "USD",
+                            "lowPrice": "20",
+                            "highPrice": "500",
+                            "offerCount": "3"
+                        }
+                    })
+                }}
+            />
+            {children}
+        </>
+    );
 }

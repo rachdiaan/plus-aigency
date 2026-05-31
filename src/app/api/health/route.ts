@@ -33,7 +33,6 @@ export async function GET() {
     return NextResponse.json({
       status: 'ok',
       message: 'Supabase connected successfully!',
-      test_data: data,
     });
   } catch (err) {
     return NextResponse.json({

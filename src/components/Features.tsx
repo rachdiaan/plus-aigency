@@ -63,7 +63,7 @@ export default function Products() {
                             >
                                 {p.badge && (
                                     <span className="absolute top-4 right-4 rounded-full bg-secondary/10 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-secondary">
-                                        {p.badge}
+                                        {p.badge === "Popular" ? t.features.popularBadge : t.features.newBadge}
                                     </span>
                                 )}
                                 <div className="flex items-center justify-between">

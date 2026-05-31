@@ -63,6 +63,8 @@ export const translations = {
     /* ── Features / Products ── */
     features: {
       badge: "Our Products",
+      popularBadge: "Popular",
+      newBadge: "New",
       heading: "AI Products That Empower",
       description:
         "Accelerating progress in artificial intelligence \u2014 innovative solutions designed to empower your business and enhance efficiency.",
@@ -165,6 +167,7 @@ export const translations = {
       recommended: "Recommended",
       whatsIncluded: "What\u2019s included",
       choosePlan: "Choose Plan",
+      perMonth: "/month",
       monthlyPlans: [
         {
           name: "Starter",
@@ -745,6 +748,8 @@ export const translations = {
     /* ── Features / Products ── */
     features: {
       badge: "Produk Kami",
+      popularBadge: "Populer",
+      newBadge: "Baru",
       heading: "Produk AI yang Memberdayakan",
       description:
         "Mempercepat kemajuan dalam kecerdasan buatan \u2014 solusi inovatif yang dirancang untuk memberdayakan bisnis Anda dan meningkatkan efisiensi.",
@@ -847,6 +852,7 @@ export const translations = {
       recommended: "Direkomendasikan",
       whatsIncluded: "Yang termasuk",
       choosePlan: "Pilih Paket",
+      perMonth: "/bulan",
       monthlyPlans: [
         {
           name: "Starter",
