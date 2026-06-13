@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 /* ─────────────────────── DATA ─────────────────────── */
@@ -479,7 +480,7 @@ function CTASection() {
                         </p>
 
                         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-                            <a
+                            <Link
                                 href="/#pricing"
                                 className="group inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold text-white transition-all hover:scale-105 hover:shadow-2xl"
                                 style={{
@@ -492,13 +493,13 @@ function CTASection() {
                                 <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="/"
                                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/25 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all hover:border-white/50 hover:bg-white/10 hover:scale-105"
                             >
                                 Back to Home
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

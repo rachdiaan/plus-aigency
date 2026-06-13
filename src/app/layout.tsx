@@ -15,17 +15,20 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://plusthe.site"),
-  title: "plus. — Indonesia's No.1 Digital AI-gency",
+  title: "plus. — Digital AI-gency Indonesia | AI, Branding & Aplikasi",
   description:
-    "One integrated platform for brands that want to move fast, stay consistent, and still look premium — powered by AI and real creative minds.",
+    "plus. adalah digital AI-agency No.1 di Indonesia — satu platform terintegrasi untuk chatbot AI, branding, aplikasi mobile, CRM, dan digital marketing. Bangun brand lebih cepat dengan AI + kreativitas manusia.",
   keywords: [
-    "digital agency",
-    "AI",
-    "branding",
-    "chatbot",
-    "CRM",
-    "mobile app",
-    "Indonesia",
+    "digital agency Indonesia",
+    "AI agency",
+    "jasa chatbot AI",
+    "jasa branding",
+    "jasa pembuatan aplikasi mobile",
+    "CRM Indonesia",
+    "digital marketing",
+    "AI image generator",
+    "jasa pembuatan website",
+    "agensi kreatif Indonesia",
   ],
   alternates: {
     canonical: "https://plusthe.site",

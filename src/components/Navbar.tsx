@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 import Logo from "@/components/Logo";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 /* ── Product dropdown items ── */
@@ -186,7 +187,7 @@ function ProductsDropdown({ scrolled }: { scrolled: boolean }) {
 
                     {/* Footer link */}
                     <div className="mt-1 border-t border-slate-200 dark:border-slate-700 px-3 py-3">
-                        <a
+                        <Link
                             href="/#products"
                             onClick={() => setOpen(false)}
                             className="flex items-center justify-center gap-2 text-xs font-semibold text-blue-600 dark:text-blue-400 transition-colors hover:text-blue-800 dark:hover:text-blue-300"
@@ -195,7 +196,7 @@ function ProductsDropdown({ scrolled }: { scrolled: boolean }) {
                             <svg className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                             </svg>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

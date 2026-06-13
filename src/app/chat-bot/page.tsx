@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -281,14 +282,12 @@ function HeroSection() {
                         <p className="hero-animate hero-animate-delay-2 mt-5 max-w-lg text-base leading-relaxed text-[#475569] dark:text-[#CBD5E1]">
                             Your Smartest AI Chatbot — Always Ready to Assist! Experience seamless conversations,
                             instant answers, and 24/7 support. Powered by cutting-edge AI from the{" "}
-                            <a
-                                href="https://github.com/rachdiaan/plus-aigency"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            <Link
+                                href="/studio"
                                 className="font-semibold text-primary hover:underline"
                             >
                                 plus. AI Marketing Studio
-                            </a>.
+                            </Link>.
                         </p>
 
                         {/* Feature pills */}
@@ -301,7 +300,7 @@ function HeroSection() {
                         </div>
 
                         <div className="hero-animate hero-animate-delay-3 mt-8 flex flex-col gap-3 sm:flex-row">
-                            <a
+                            <Link
                                 href="/studio"
                                 className="btn-glow inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 dark:bg-white px-8 py-3.5 text-sm font-semibold text-white dark:text-slate-900 transition-all hover:scale-105 hover:shadow-2xl"
                             >
@@ -310,7 +309,7 @@ function HeroSection() {
                                 <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
-                            </a>
+                            </Link>
                             <a
                                 href="#capabilities"
                                 className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-8 py-3.5 text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:bg-slate-100 dark:hover:bg-slate-800 hover:scale-105"
@@ -445,7 +444,7 @@ function PricingSection() {
                                 ))}
                             </ul>
 
-                            <a
+                            <Link
                                 href="/#pricing"
                                 className={`mt-8 block rounded-full py-3 text-center text-sm font-semibold transition-all hover:scale-105 ${plan.highlight
                                     ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90"
@@ -453,7 +452,7 @@ function PricingSection() {
                                     }`}
                             >
                                 Choose Plan
-                            </a>
+                            </Link>
                         </div>
                     ))}
                 </div>
@@ -584,7 +583,7 @@ function CTASection() {
                         </p>
 
                         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                            <a
+                            <Link
                                 href="/studio"
                                 className="btn-glow inline-flex items-center gap-2 rounded-full bg-slate-900 dark:bg-white px-8 py-3.5 text-sm font-semibold text-white dark:text-slate-900 transition-all hover:scale-105 hover:shadow-2xl"
                             >
@@ -592,13 +591,13 @@ function CTASection() {
                                 <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 href="/"
                                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-8 py-3.5 text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:bg-slate-100 dark:hover:bg-slate-800 hover:scale-105"
                             >
                                 Back to Home
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
