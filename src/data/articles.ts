@@ -2448,4 +2448,286 @@ export const articles: Article[] = [
 <p>Email marketing builds a direct relationship with your audience — an asset you fully own, unlike followers on third-party platforms.</p>
 `,
   },
+  {
+    id: 85,
+    slug: "strategi-customer-retention",
+    title: "Strategi Customer Retention: Membuat Pelanggan Kembali",
+    description:
+      "Strategi praktis meningkatkan customer retention — dari layanan yang konsisten hingga program loyalitas yang membuat pelanggan setia.",
+    category: "CRM & Customer Support",
+    tags: ["Customer Retention", "Loyalitas", "CRM"],
+    date: "2026-04-04",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Mendapatkan pelanggan baru bisa 5x lebih mahal daripada mempertahankan yang sudah ada. Retention adalah kunci pertumbuhan yang berkelanjutan dan menguntungkan.</p>
+<h2>Berikan Pengalaman yang Konsisten</h2>
+<p>Pelanggan kembali ketika setiap interaksi memenuhi ekspektasi mereka. Konsistensi kualitas produk dan layanan membangun kepercayaan jangka panjang.</p>
+<h2>Bangun Program Loyalitas</h2>
+<ul>
+<li>Poin reward untuk setiap pembelian</li>
+<li>Penawaran eksklusif untuk pelanggan setia</li>
+<li>Akses awal ke produk atau fitur baru</li>
+</ul>
+<h2>Dengarkan dan Tindak Lanjuti Feedback</h2>
+<p>Pelanggan yang merasa didengar lebih cenderung bertahan. Gunakan survei dan komunikasi proaktif untuk menunjukkan bahwa Anda peduli.</p>
+<h2>Kesimpulan</h2>
+<p>Customer retention bukan tentang trik, melainkan konsistensi memberi nilai dan membangun hubungan yang tulus dengan pelanggan.</p>
+`,
+  },
+  {
+    id: 86,
+    slug: "membuat-sales-funnel-efektif",
+    title: "Cara Membuat Sales Funnel yang Efektif untuk Bisnis",
+    description:
+      "Pelajari cara membangun sales funnel yang efektif — dari awareness hingga konversi — untuk mengubah pengunjung menjadi pelanggan.",
+    category: "Digital Marketing & SEO",
+    tags: ["Sales Funnel", "Konversi", "Marketing"],
+    date: "2026-04-05",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Sales funnel adalah peta perjalanan calon pelanggan dari pertama mengenal brand Anda hingga melakukan pembelian. Memahaminya membantu Anda mengoptimalkan setiap tahap.</p>
+<h2>Tahap-Tahap Sales Funnel</h2>
+<ul>
+<li><strong>Awareness</strong> — calon pelanggan pertama kali mengenal brand Anda</li>
+<li><strong>Interest</strong> — mereka mulai tertarik dan mencari informasi</li>
+<li><strong>Decision</strong> — mereka mempertimbangkan untuk membeli</li>
+<li><strong>Action</strong> — mereka melakukan pembelian</li>
+</ul>
+<h2>Optimalkan Setiap Tahap</h2>
+<p>Setiap tahap membutuhkan konten dan pendekatan berbeda. Konten edukasi untuk awareness, perbandingan untuk decision, dan penawaran jelas untuk action.</p>
+<h2>Kurangi Kebocoran Funnel</h2>
+<p>Identifikasi di tahap mana calon pelanggan paling banyak berhenti, lalu perbaiki hambatan di titik tersebut — entah harga, kepercayaan, atau kemudahan proses.</p>
+<h2>Kesimpulan</h2>
+<p>Sales funnel yang dioptimalkan mengubah lebih banyak pengunjung menjadi pelanggan tanpa harus menambah biaya akuisisi.</p>
+`,
+  },
+  {
+    id: 87,
+    slug: "optimasi-landing-page-konversi",
+    title: "Optimasi Landing Page untuk Konversi yang Lebih Tinggi",
+    description:
+      "Tips optimasi landing page agar lebih banyak pengunjung mengambil tindakan — dari headline yang kuat hingga CTA yang jelas.",
+    category: "Digital Marketing & SEO",
+    tags: ["Landing Page", "CRO", "Konversi"],
+    date: "2026-04-06",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Landing page adalah halaman yang dirancang khusus untuk satu tujuan: mengubah pengunjung menjadi leads atau pelanggan. Setiap elemennya harus mendukung tujuan tersebut.</p>
+<h2>Headline yang Langsung Menjawab</h2>
+<p>Dalam beberapa detik, pengunjung harus tahu apa yang Anda tawarkan dan mengapa itu relevan bagi mereka. Headline yang jelas adalah penentu utama.</p>
+<h2>Fokus pada Satu Call-to-Action</h2>
+<ul>
+<li>Hilangkan navigasi dan distraksi yang tidak perlu</li>
+<li>Gunakan tombol CTA yang menonjol dan spesifik</li>
+<li>Ulangi CTA di beberapa titik untuk halaman yang panjang</li>
+</ul>
+<h2>Bangun Kepercayaan</h2>
+<p>Testimoni, logo klien, dan jaminan mengurangi keraguan pengunjung untuk mengambil tindakan.</p>
+<h2>Kesimpulan</h2>
+<p>Landing page yang efektif sederhana, fokus, dan dirancang untuk memandu pengunjung menuju satu tindakan yang jelas.</p>
+`,
+  },
+  {
+    id: 88,
+    slug: "voice-search-seo-panduan",
+    title: "Voice Search SEO: Optimasi untuk Pencarian Suara",
+    description:
+      "Cara mengoptimalkan website untuk voice search — tren yang terus tumbuh seiring meningkatnya penggunaan asisten suara.",
+    category: "Digital Marketing & SEO",
+    tags: ["Voice Search", "SEO", "Tren Digital"],
+    date: "2026-04-07",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Semakin banyak orang mencari dengan suara melalui asisten seperti Google Assistant dan Siri. Optimasi voice search menjadi peluang SEO yang sering terlewat.</p>
+<h2>Bagaimana Voice Search Berbeda?</h2>
+<p>Pencarian suara cenderung lebih panjang dan berbentuk pertanyaan natural, seperti "di mana kedai kopi terdekat yang buka sekarang?" dibanding ketikan singkat.</p>
+<h2>Strategi Optimasi</h2>
+<ul>
+<li>Targetkan kata kunci long-tail berbentuk pertanyaan</li>
+<li>Buat halaman FAQ yang menjawab pertanyaan spesifik</li>
+<li>Optimalkan untuk local SEO dan pencarian "terdekat"</li>
+<li>Pastikan website cepat dan mobile-friendly</li>
+</ul>
+<h2>Kesimpulan</h2>
+<p>Mengoptimalkan voice search hari ini memberi keunggulan saat tren ini semakin menjadi cara utama orang mencari informasi.</p>
+`,
+  },
+  {
+    id: 89,
+    slug: "ai-untuk-ukm",
+    title: "AI untuk UKM: Cara Bisnis Kecil Memanfaatkan Kecerdasan Buatan",
+    description:
+      "Panduan praktis bagaimana UKM dapat memanfaatkan AI untuk efisiensi, pemasaran, dan layanan pelanggan tanpa anggaran besar.",
+    category: "AI & Teknologi",
+    tags: ["AI untuk UKM", "Bisnis Kecil", "Efisiensi"],
+    date: "2026-04-08",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>AI bukan hanya untuk perusahaan besar. Justru UKM bisa mendapat manfaat besar dari AI untuk bersaing dengan pemain yang lebih besar.</p>
+<h2>Area di Mana AI Membantu UKM</h2>
+<ul>
+<li>Chatbot untuk melayani pelanggan 24/7 tanpa menambah staf</li>
+<li>AI untuk membuat konten marketing dengan cepat</li>
+<li>Analitik untuk memahami perilaku pelanggan</li>
+<li>Otomatisasi tugas administratif yang berulang</li>
+</ul>
+<h2>Mulai dari yang Kecil</h2>
+<p>UKM tidak perlu mengadopsi semua sekaligus. Mulai dari satu area dengan dampak terbesar, ukur hasilnya, lalu perluas secara bertahap.</p>
+<h2>Tools yang Terjangkau</h2>
+<p>Banyak tools AI kini tersedia dengan model berlangganan terjangkau, membuat teknologi ini dapat diakses bahkan oleh bisnis dengan anggaran terbatas.</p>
+<h2>Kesimpulan</h2>
+<p>AI memberi UKM kekuatan untuk beroperasi lebih efisien dan bersaing di level yang sebelumnya hanya terjangkau perusahaan besar.</p>
+`,
+  },
+  {
+    id: 90,
+    slug: "customer-retention-strategies",
+    title: "Customer Retention Strategies: Keep Customers Coming Back",
+    description:
+      "Practical strategies to improve customer retention — from consistent service to loyalty programs that build lasting customer relationships.",
+    category: "CRM & Customer Support",
+    tags: ["Customer Retention", "Loyalty", "CRM"],
+    date: "2026-04-09",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Acquiring a new customer can cost up to 5x more than retaining an existing one. Retention is the key to sustainable, profitable growth.</p>
+<h2>Deliver a Consistent Experience</h2>
+<p>Customers return when every interaction meets their expectations. Consistent product and service quality builds long-term trust.</p>
+<h2>Build a Loyalty Program</h2>
+<ul>
+<li>Reward points for every purchase</li>
+<li>Exclusive offers for loyal customers</li>
+<li>Early access to new products or features</li>
+</ul>
+<h2>Listen and Act on Feedback</h2>
+<p>Customers who feel heard are more likely to stay. Use surveys and proactive communication to show that you care.</p>
+<h2>Conclusion</h2>
+<p>Customer retention isn't about tricks — it's the consistency of delivering value and building genuine relationships.</p>
+`,
+  },
+  {
+    id: 91,
+    slug: "building-effective-sales-funnel",
+    title: "How to Build an Effective Sales Funnel for Your Business",
+    description:
+      "Learn how to build an effective sales funnel — from awareness to conversion — to turn visitors into paying customers.",
+    category: "Digital Marketing & SEO",
+    tags: ["Sales Funnel", "Conversion", "Marketing"],
+    date: "2026-04-10",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>A sales funnel maps the prospect's journey from first discovering your brand to making a purchase. Understanding it helps you optimize every stage.</p>
+<h2>The Stages of a Sales Funnel</h2>
+<ul>
+<li><strong>Awareness</strong> — prospects first discover your brand</li>
+<li><strong>Interest</strong> — they become curious and seek information</li>
+<li><strong>Decision</strong> — they consider making a purchase</li>
+<li><strong>Action</strong> — they buy</li>
+</ul>
+<h2>Optimize Each Stage</h2>
+<p>Each stage needs different content and approaches. Educational content for awareness, comparisons for decision, and clear offers for action.</p>
+<h2>Reduce Funnel Leaks</h2>
+<p>Identify where prospects drop off most, then fix the friction at that point — whether it's price, trust, or process complexity.</p>
+<h2>Conclusion</h2>
+<p>An optimized sales funnel converts more visitors into customers without raising your acquisition costs.</p>
+`,
+  },
+  {
+    id: 92,
+    slug: "landing-page-optimization-conversions",
+    title: "Landing Page Optimization for Higher Conversions",
+    description:
+      "Tips to optimize landing pages so more visitors take action — from strong headlines to clear calls-to-action.",
+    category: "Digital Marketing & SEO",
+    tags: ["Landing Page", "CRO", "Conversion"],
+    date: "2026-04-11",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>A landing page is built for one purpose: converting visitors into leads or customers. Every element should support that goal.</p>
+<h2>A Headline That Answers Immediately</h2>
+<p>Within seconds, visitors should know what you offer and why it's relevant to them. A clear headline is the deciding factor.</p>
+<h2>Focus on a Single Call-to-Action</h2>
+<ul>
+<li>Remove unnecessary navigation and distractions</li>
+<li>Use a prominent, specific CTA button</li>
+<li>Repeat the CTA at several points on long pages</li>
+</ul>
+<h2>Build Trust</h2>
+<p>Testimonials, client logos, and guarantees reduce a visitor's hesitation to take action.</p>
+<h2>Conclusion</h2>
+<p>An effective landing page is simple, focused, and designed to guide visitors toward one clear action.</p>
+`,
+  },
+  {
+    id: 93,
+    slug: "voice-search-seo-guide",
+    title: "Voice Search SEO: Optimizing for Spoken Queries",
+    description:
+      "How to optimize your website for voice search — a growing trend as the use of voice assistants continues to rise.",
+    category: "Digital Marketing & SEO",
+    tags: ["Voice Search", "SEO", "Digital Trends"],
+    date: "2026-04-12",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>More people are searching by voice through assistants like Google Assistant and Siri. Optimizing for voice search is an often-overlooked SEO opportunity.</p>
+<h2>How Voice Search Differs</h2>
+<p>Voice queries tend to be longer and phrased as natural questions, like "where's the nearest coffee shop open now?" rather than short typed terms.</p>
+<h2>Optimization Strategies</h2>
+<ul>
+<li>Target long-tail, question-based keywords</li>
+<li>Create FAQ pages that answer specific questions</li>
+<li>Optimize for local SEO and "near me" searches</li>
+<li>Ensure your site is fast and mobile-friendly</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Optimizing for voice search today gives you an edge as this trend increasingly becomes the primary way people find information.</p>
+`,
+  },
+  {
+    id: 94,
+    slug: "ai-for-small-business",
+    title: "AI for Small Business: How to Leverage Artificial Intelligence",
+    description:
+      "A practical guide to how small businesses can use AI for efficiency, marketing, and customer service without a big budget.",
+    category: "AI & Technology",
+    tags: ["AI for Small Business", "Small Business", "Efficiency"],
+    date: "2026-04-13",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>AI isn't just for large enterprises. In fact, small businesses can gain huge benefits from AI to compete with bigger players.</p>
+<h2>Where AI Helps Small Businesses</h2>
+<ul>
+<li>Chatbots to serve customers 24/7 without adding staff</li>
+<li>AI to create marketing content quickly</li>
+<li>Analytics to understand customer behavior</li>
+<li>Automation of repetitive administrative tasks</li>
+</ul>
+<h2>Start Small</h2>
+<p>Small businesses don't need to adopt everything at once. Start with the highest-impact area, measure results, then expand gradually.</p>
+<h2>Affordable Tools</h2>
+<p>Many AI tools are now available on affordable subscription models, making the technology accessible even to budget-conscious businesses.</p>
+<h2>Conclusion</h2>
+<p>AI gives small businesses the power to operate more efficiently and compete at a level once reserved for large enterprises.</p>
+`,
+  },
 ];

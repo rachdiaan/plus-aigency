@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ReadingProgress from "@/components/ReadingProgress";
 import { articles } from "@/data/articles";
 import { getDictionary } from "@/i18n/getDictionary";
 import { isLocale, defaultLocale } from "@/i18n/config";
@@ -119,6 +120,7 @@ export default async function ArticlePage({
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
+            <ReadingProgress />
             <Navbar />
             <main className="bg-background pt-32 pb-24">
                 <article className="mx-auto max-w-3xl px-6 lg:px-8">
