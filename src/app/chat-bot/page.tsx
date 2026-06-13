@@ -150,7 +150,7 @@ const colorMap = {
 
 function ChatDemo() {
     const [visibleMessages, setVisibleMessages] = useState<number>(0);
-    const chatEndRef = useRef<HTMLDivElement>(null);
+    const messagesRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const timers: ReturnType<typeof setTimeout>[] = [];
@@ -163,7 +163,11 @@ function ChatDemo() {
     }, []);
 
     useEffect(() => {
-        chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        // Scroll only the chat container — never the whole page
+        const el = messagesRef.current;
+        if (el) {
+            el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+        }
     }, [visibleMessages]);
 
     return (
@@ -186,7 +190,7 @@ function ChatDemo() {
             </div>
 
             {/* Messages */}
-            <div className="h-80 overflow-y-auto p-4 space-y-3 bg-slate-50 dark:bg-slate-950/50">
+            <div ref={messagesRef} className="h-80 overflow-y-auto p-4 space-y-3 bg-slate-50 dark:bg-slate-950/50">
                 {chatMessages.slice(0, visibleMessages).map((msg, i) => (
                     <div
                         key={i}
@@ -216,7 +220,6 @@ function ChatDemo() {
                         </div>
                     </div>
                 )}
-                <div ref={chatEndRef} />
             </div>
 
             {/* Input bar */}
