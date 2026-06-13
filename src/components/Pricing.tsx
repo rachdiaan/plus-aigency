@@ -2,96 +2,7 @@
 
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-const monthlyPlans = [
-    {
-        name: "Starter",
-        description: "Best for getting started",
-        price: "$25",
-        period: "/month",
-        cta: "Choose Plan",
-        highlighted: false,
-        features: [
-            "Explore our diverse offerings",
-            "Innovative tech solutions",
-            "Tailored service packages",
-            "Flexible payment plans",
-        ],
-    },
-    {
-        name: "Professional",
-        description: "Most popular choice",
-        price: "$50",
-        period: "/month",
-        cta: "Choose Plan",
-        highlighted: true,
-        features: [
-            "Comprehensive features included",
-            "Innovative tech solutions",
-            "Tailored digital strategies",
-            "Comprehensive support services",
-        ],
-    },
-    {
-        name: "Premium",
-        description: "For large-scale operations",
-        price: "$500",
-        period: "/month",
-        cta: "Choose Plan",
-        highlighted: false,
-        features: [
-            "Innovative tech solutions",
-            "Tailored for you",
-            "Tailored solutions for every need",
-            "Transparent pricing with no surprises",
-        ],
-    },
-];
-
-const annualPlans = [
-    {
-        name: "Basic",
-        description: "Best for getting started",
-        price: "$30",
-        period: "/month",
-        cta: "Choose Plan",
-        highlighted: false,
-        features: [
-            "Comprehensive IT support",
-            "Tailored solutions available",
-            "Innovative IT solutions",
-            "Tailored service packages",
-        ],
-    },
-    {
-        name: "Professional",
-        description: "Most popular choice",
-        price: "$65",
-        period: "/month",
-        cta: "Choose Plan",
-        highlighted: true,
-        features: [
-            "Innovative IT solutions",
-            "Tailored service plans",
-            "Innovative IT solutions",
-            "Tailored service packages",
-        ],
-    },
-    {
-        name: "Premium",
-        description: "For large-scale operations",
-        price: "$650",
-        period: "/month",
-        cta: "Choose Plan",
-        highlighted: false,
-        features: [
-            "Empowering your business",
-            "Innovative solutions offered",
-            "Tailored for your needs",
-            "Transparent pricing",
-        ],
-    },
-];
+import { useT } from "@/i18n/I18nProvider";
 
 function CheckIcon({ highlighted }: { highlighted?: boolean }) {
     return (
@@ -110,6 +21,92 @@ function CheckIcon({ highlighted }: { highlighted?: boolean }) {
 export default function Pricing() {
     const [isAnnual, setIsAnnual] = useState(false);
     const ref = useScrollReveal();
+    const t = useT();
+
+    const monthlyPlans = [
+        {
+            name: "Starter",
+            description: t.pricing.descGettingStarted,
+            price: "$25",
+            period: "/month",
+            highlighted: false,
+            features: [
+                "Explore our diverse offerings",
+                "Innovative tech solutions",
+                "Tailored service packages",
+                "Flexible payment plans",
+            ],
+        },
+        {
+            name: "Professional",
+            description: t.pricing.descPopular,
+            price: "$50",
+            period: "/month",
+            highlighted: true,
+            features: [
+                "Comprehensive features included",
+                "Innovative tech solutions",
+                "Tailored digital strategies",
+                "Comprehensive support services",
+            ],
+        },
+        {
+            name: "Premium",
+            description: t.pricing.descLargeScale,
+            price: "$500",
+            period: "/month",
+            highlighted: false,
+            features: [
+                "Innovative tech solutions",
+                "Tailored for you",
+                "Tailored solutions for every need",
+                "Transparent pricing with no surprises",
+            ],
+        },
+    ];
+
+    const annualPlans = [
+        {
+            name: "Basic",
+            description: t.pricing.descGettingStarted,
+            price: "$30",
+            period: "/month",
+            highlighted: false,
+            features: [
+                "Comprehensive IT support",
+                "Tailored solutions available",
+                "Innovative IT solutions",
+                "Tailored service packages",
+            ],
+        },
+        {
+            name: "Professional",
+            description: t.pricing.descPopular,
+            price: "$65",
+            period: "/month",
+            highlighted: true,
+            features: [
+                "Innovative IT solutions",
+                "Tailored service plans",
+                "Innovative IT solutions",
+                "Tailored service packages",
+            ],
+        },
+        {
+            name: "Premium",
+            description: t.pricing.descLargeScale,
+            price: "$650",
+            period: "/month",
+            highlighted: false,
+            features: [
+                "Empowering your business",
+                "Innovative solutions offered",
+                "Tailored for your needs",
+                "Transparent pricing",
+            ],
+        },
+    ];
+
     const plans = isAnnual ? annualPlans : monthlyPlans;
 
     return (
@@ -117,13 +114,13 @@ export default function Pricing() {
             <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl text-center">
                     <span className="fade-up inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-                        Pricing
+                        {t.pricing.tag}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-4xl lg:text-5xl">
-                        Choose the Right Plan for You
+                        {t.pricing.title}
                     </h2>
                     <p className="fade-up fade-up-delay-2 mt-4 text-base leading-relaxed text-[#475569] dark:text-[#CBD5E1]">
-                        Simple, transparent pricing that grows with your business.
+                        {t.pricing.description}
                     </p>
 
                     {/* Toggle */}
@@ -135,7 +132,7 @@ export default function Pricing() {
                                 : "text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
                                 }`}
                         >
-                            Monthly
+                            {t.pricing.monthly}
                         </button>
                         <button
                             onClick={() => setIsAnnual(true)}
@@ -144,7 +141,7 @@ export default function Pricing() {
                                 : "text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
                                 }`}
                         >
-                            Annual
+                            {t.pricing.annual}
                         </button>
                     </div>
                 </div>
@@ -161,7 +158,7 @@ export default function Pricing() {
                             {plan.highlighted && (
                                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                                     <span className="rounded-full bg-gradient-to-r from-primary to-secondary px-4 py-1 text-xs font-bold text-white shadow-md shadow-primary/30">
-                                        Recommended
+                                        {t.pricing.recommended}
                                     </span>
                                 </div>
                             )}
@@ -192,12 +189,12 @@ export default function Pricing() {
                                     : "border border-slate-200 dark:border-[#1E293B] bg-slate-50 dark:bg-[#0F172A] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-slate-100 dark:hover:bg-[#1E293B] dark:hover:text-white"
                                     }`}
                             >
-                                {plan.cta}
+                                {t.pricing.choosePlan}
                             </a>
 
                             <div className="mt-8 border-t border-slate-100 dark:border-[#1E293B] pt-6">
                                 <p className="text-xs font-semibold uppercase tracking-wider text-[#64748B] dark:text-[#94A3B8]">
-                                    What&apos;s included
+                                    {t.pricing.whatsIncluded}
                                 </p>
                                 <ul className="mt-4 flex flex-col gap-3.5">
                                     {plan.features.map((feat, j) => (

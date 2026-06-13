@@ -1,4 +1,12 @@
+"use client";
+
+import Link from "next/link";
+import { useT, useLocale } from "@/i18n/I18nProvider";
+
 export default function Hero() {
+    const t = useT();
+    const locale = useLocale();
+
     return (
         <section
             id="hero"
@@ -41,7 +49,7 @@ export default function Hero() {
                         className="text-xs font-medium tracking-wide"
                         style={{ color: "var(--hero-text-muted)" }}
                     >
-                        Indonesia&apos;s No.1 Digital AI-gency
+                        {t.hero.badge}
                     </span>
                 </div>
 
@@ -49,42 +57,41 @@ export default function Hero() {
                     className="hero-animate hero-animate-delay-1 mt-8 text-5xl font-bold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl drop-shadow-lg"
                     style={{ color: "var(--hero-text)", textShadow: "0 2px 24px rgba(0,0,0,0.4)" }}
                 >
-                    Build Smarter Brands.
+                    {t.hero.titleLine1}
                     <br />
-                    <span className="opacity-90">Faster.</span>
+                    <span className="opacity-90">{t.hero.titleLine2}</span>
                 </h1>
 
                 <p
                     className="hero-animate hero-animate-delay-2 mx-auto mt-4 text-xl font-semibold sm:text-2xl drop-shadow-md"
                     style={{ color: "var(--hero-text)", textShadow: "0 1px 16px rgba(0,0,0,0.3)" }}
                 >
-                    With AI + Human Creativity
+                    {t.hero.subtitle}
                 </p>
 
                 <p
                     className="hero-animate hero-animate-delay-2 mx-auto mt-4 max-w-lg text-base leading-relaxed sm:text-lg drop-shadow-sm"
                     style={{ color: "var(--hero-text-muted)", textShadow: "0 1px 10px rgba(0,0,0,0.2)" }}
                 >
-                    One integrated platform for brands that want to move fast, stay consistent,
-                    and still look premium — powered by AI and real creative minds.
+                    {t.hero.description}
                 </p>
 
                 <div className="hero-animate hero-animate-delay-3 mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                    <a
-                        href="#products"
+                    <Link
+                        href={`/${locale}#products`}
                         className="btn-glow inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold transition-all hover:scale-105 hover:shadow-2xl"
                         style={{
                             background: "var(--hero-btn-bg)",
                             color: "var(--hero-btn-text)",
                         }}
                     >
-                        See How It Works
+                        {t.hero.ctaPrimary}
                         <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
-                    </a>
-                    <a
-                        href="#pricing"
+                    </Link>
+                    <Link
+                        href={`/${locale}#pricing`}
                         className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-bold backdrop-blur-md border-2 transition-all hover:scale-105 drop-shadow-md"
                         style={{
                             borderColor: "var(--hero-btn-outline-border)",
@@ -92,8 +99,8 @@ export default function Hero() {
                             textShadow: "var(--hero-text-shadow, none)"
                         }}
                     >
-                        View Pricing
-                    </a>
+                        {t.hero.ctaSecondary}
+                    </Link>
                 </div>
             </div>
 

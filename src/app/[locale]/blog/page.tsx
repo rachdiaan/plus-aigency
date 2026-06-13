@@ -6,9 +6,9 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { articles } from "@/data/articles";
+import { useT, useLocale } from "@/i18n/I18nProvider";
 
-const categories = [
-    "Semua",
+const categoryValues = [
     "AI & Teknologi",
     "Digital Agency & Branding",
     "Mobile App Development",
@@ -16,17 +16,24 @@ const categories = [
     "Digital Marketing & SEO",
 ];
 
+const ALL = "__all__";
+
 export default function BlogPage() {
-    const [activeCategory, setActiveCategory] = useState("Semua");
+    const [activeCategory, setActiveCategory] = useState(ALL);
+    const t = useT();
+    const locale = useLocale();
+    const dateLocale = locale === "id" ? "id-ID" : "en-US";
 
     const filtered =
-        activeCategory === "Semua"
+        activeCategory === ALL
             ? articles
             : articles.filter((a) => a.category === activeCategory);
 
     const sorted = [...filtered].sort(
         (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
+
+    const categories = [{ value: ALL, label: t.blog.all }, ...categoryValues.map((c) => ({ value: c, label: c }))];
 
     return (
         <>
@@ -36,14 +43,13 @@ export default function BlogPage() {
                     {/* Header */}
                     <div className="mx-auto max-w-2xl text-center">
                         <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-                            Blog plus.
+                            {t.blog.tag}
                         </span>
                         <h1 className="mt-5 text-4xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-5xl">
-                            Insight AI &amp; Digital Growth
+                            {t.blog.title}
                         </h1>
                         <p className="mt-4 text-base leading-relaxed text-[#475569] dark:text-[#94A3B8]">
-                            Artikel seputar AI, digital agency, mobile app, CRM, dan strategi marketing
-                            untuk membantu bisnis Indonesia berkembang lebih cepat.
+                            {t.blog.description}
                         </p>
                     </div>
 
@@ -51,14 +57,14 @@ export default function BlogPage() {
                     <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
                         {categories.map((cat) => (
                             <button
-                                key={cat}
-                                onClick={() => setActiveCategory(cat)}
-                                className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-all ${activeCategory === cat
+                                key={cat.value}
+                                onClick={() => setActiveCategory(cat.value)}
+                                className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-all ${activeCategory === cat.value
                                     ? "bg-primary text-white shadow-md shadow-primary/25"
                                     : "border border-slate-200 dark:border-[#1E293B] bg-white dark:bg-[#0B1120] text-[#475569] dark:text-[#94A3B8] hover:border-primary/30 hover:text-primary"
                                     }`}
                             >
-                                {cat}
+                                {cat.label}
                             </button>
                         ))}
                     </div>
@@ -68,7 +74,7 @@ export default function BlogPage() {
                         {sorted.map((article) => (
                             <Link
                                 key={article.id}
-                                href={`/blog/${article.slug}`}
+                                href={`/${locale}/blog/${article.slug}`}
                                 className="feature-card group flex flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-[#1E293B] bg-white dark:bg-[#0B1120] transition-colors"
                             >
                                 <div className="relative h-48 w-full overflow-hidden">
@@ -92,13 +98,13 @@ export default function BlogPage() {
                                     </p>
                                     <div className="mt-4 flex items-center justify-between text-xs font-medium text-[#64748B] dark:text-[#94A3B8]">
                                         <span>
-                                            {new Date(article.date).toLocaleDateString("id-ID", {
+                                            {new Date(article.date).toLocaleDateString(dateLocale, {
                                                 day: "numeric",
                                                 month: "long",
                                                 year: "numeric",
                                             })}
                                         </span>
-                                        <span>{article.readTime} baca</span>
+                                        <span>{article.readTime} {t.blog.readSuffix}</span>
                                     </div>
                                 </div>
                             </Link>
@@ -107,7 +113,7 @@ export default function BlogPage() {
 
                     {sorted.length === 0 && (
                         <p className="mt-14 text-center text-sm text-[#64748B] dark:text-[#94A3B8]">
-                            Belum ada artikel di kategori ini.
+                            {t.blog.empty}
                         </p>
                     )}
                 </div>

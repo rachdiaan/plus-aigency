@@ -1,48 +1,55 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/data/articles";
+import { locales } from "@/i18n/config";
 
 const BASE_URL = "https://plusthe.site";
 
+function withAlternates(path: string) {
+    const languages: Record<string, string> = {};
+    for (const locale of locales) {
+        languages[locale] = `${BASE_URL}/${locale}${path}`;
+    }
+    languages["x-default"] = `${BASE_URL}/en${path}`;
+    return languages;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-    const staticRoutes: MetadataRoute.Sitemap = [
-        {
-            url: BASE_URL,
-            lastModified: new Date(),
-            changeFrequency: "weekly",
-            priority: 1,
-        },
-        {
-            url: `${BASE_URL}/blog`,
-            lastModified: new Date(),
-            changeFrequency: "daily",
-            priority: 0.9,
-        },
-        {
-            url: `${BASE_URL}/chat-bot`,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.8,
-        },
-        {
-            url: `${BASE_URL}/digital-agency`,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.8,
-        },
-        {
-            url: `${BASE_URL}/mobile-game`,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.7,
-        },
+    const staticPaths: { path: string; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]; priority: number }[] = [
+        { path: "", changeFrequency: "weekly", priority: 1 },
+        { path: "/blog", changeFrequency: "daily", priority: 0.9 },
+        { path: "/chat-bot", changeFrequency: "monthly", priority: 0.8 },
+        { path: "/digital-agency", changeFrequency: "monthly", priority: 0.8 },
+        { path: "/mobile-game", changeFrequency: "monthly", priority: 0.7 },
     ];
 
-    const articleRoutes: MetadataRoute.Sitemap = articles.map((article) => ({
-        url: `${BASE_URL}/blog/${article.slug}`,
-        lastModified: new Date(article.date),
-        changeFrequency: "monthly",
-        priority: 0.7,
-    }));
+    const entries: MetadataRoute.Sitemap = [];
 
-    return [...staticRoutes, ...articleRoutes];
+    // Static routes per locale (each with hreflang alternates)
+    for (const { path, changeFrequency, priority } of staticPaths) {
+        for (const locale of locales) {
+            entries.push({
+                url: `${BASE_URL}/${locale}${path}`,
+                lastModified: new Date(),
+                changeFrequency,
+                priority,
+                alternates: { languages: withAlternates(path) },
+            });
+        }
+    }
+
+    // Blog articles per locale
+    for (const article of articles) {
+        const path = `/blog/${article.slug}`;
+        for (const locale of locales) {
+            entries.push({
+                url: `${BASE_URL}/${locale}${path}`,
+                lastModified: new Date(article.date),
+                changeFrequency: "monthly",
+                priority: 0.7,
+                alternates: { languages: withAlternates(path) },
+            });
+        }
+    }
+
+    return entries;
 }

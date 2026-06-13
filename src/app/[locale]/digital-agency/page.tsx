@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLocale } from "@/i18n/I18nProvider";
 
 /* ── Data ── */
 
@@ -321,6 +322,7 @@ function TestimonialSection() {
 
 function CTASection() {
     const ref = useScrollReveal();
+    const locale = useLocale();
 
     return (
         <section id="cta" className="py-24 lg:py-32 bg-white dark:bg-slate-950">
@@ -346,7 +348,7 @@ function CTASection() {
 
                         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                             <Link
-                                href="/#pricing"
+                                href={`/${locale}#pricing`}
                                 className="btn-glow inline-flex items-center gap-2 rounded-full bg-slate-900 dark:bg-white px-8 py-3.5 text-sm font-semibold text-white dark:text-slate-900 transition-all hover:scale-105 hover:shadow-2xl"
                             >
                                 Ready to get started?

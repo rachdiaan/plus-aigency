@@ -4,33 +4,23 @@ import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 import Logo from "@/components/Logo";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useT, useLocale } from "@/i18n/I18nProvider";
+import { locales, localeShort, type Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries/en";
 
-/* ── Product dropdown items ── */
-const products = [
-    { icon: "🤖", label: "AI Chat Bot", desc: "Smart AI-powered chatbot", href: "/chat-bot", internal: true },
-    { icon: "🎧", label: "Customer Support", desc: "Smarter support decisions", href: "https://plusthe.site/customer-support/" },
-    { icon: "📱", label: "Mobile App", desc: "Mobile-first experiences", href: "https://plusthe.site/mobile-app/" },
-    { icon: "📊", label: "CRM Platform", desc: "Client management tools", href: "https://plusthe.site/crm/" },
-    { icon: "🚀", label: "Digital Agency", desc: "Full-service digital solutions", href: "/digital-agency", internal: true },
-    { icon: "🎮", label: "Mobile Game", desc: "Immersive gaming experiences", href: "/mobile-game", internal: true },
-];
-
-const homeLinks = [
-    { label: "About", href: "/#about" },
-    { label: "Products", href: "/#products", hasDropdown: true },
-    { label: "AI Features", href: "/#features" },
-    { label: "Blog", href: "/blog" },
-    { label: "Pricing", href: "/#pricing" },
-];
-
-const subpageLinks = [
-    { label: "Home", href: "/" },
-    { label: "Products", href: "/#products", hasDropdown: true },
-    { label: "AI Features", href: "/#features" },
-    { label: "Blog", href: "/blog" },
-    { label: "Pricing", href: "/#pricing" },
-];
+/* ── Product dropdown items (locale-aware) ── */
+function getProducts(t: Dictionary, locale: Locale) {
+    const p = t.products.items;
+    return [
+        { icon: "🤖", label: p.chatbot.title, desc: t.nav.aiFeatures, href: `/${locale}/chat-bot`, internal: true },
+        { icon: "🎧", label: p.support.title, desc: t.products.tag, href: "https://plusthe.site/customer-support/", internal: false },
+        { icon: "📱", label: p.mobileApp.title, desc: t.products.tag, href: "https://plusthe.site/mobile-app/", internal: false },
+        { icon: "📊", label: p.crm.title, desc: t.products.tag, href: "https://plusthe.site/crm/", internal: false },
+        { icon: "🚀", label: p.agency.title, desc: t.products.tag, href: `/${locale}/digital-agency`, internal: true },
+        { icon: "🎮", label: p.game.title, desc: t.products.tag, href: `/${locale}/mobile-game`, internal: true },
+    ];
+}
 
 /* ── Theme Toggle ── */
 function ThemeToggle() {
@@ -75,6 +65,53 @@ function ThemeToggle() {
     );
 }
 
+/* ── Locale helpers (module scope to keep them out of render analysis) ── */
+function persistLocale(target: string) {
+    document.cookie = `NEXT_LOCALE=${target};path=/;max-age=31536000;samesite=lax`;
+}
+
+function swapLocaleInPath(pathname: string, target: string) {
+    const segments = pathname.split("/");
+    const next = segments.length > 1 ? [segments[0], target, ...segments.slice(2)] : ["", target];
+    return next.join("/") || `/${target}`;
+}
+
+/* ── Language Toggle (EN / ID) ── */
+function LanguageToggle() {
+    const locale = useLocale();
+    const pathname = usePathname();
+    const router = useRouter();
+    const t = useT();
+
+    const switchTo = (target: Locale) => {
+        if (target === locale) return;
+        persistLocale(target);
+        router.push(swapLocaleInPath(pathname, target));
+    };
+
+    return (
+        <div
+            className="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60 p-0.5 backdrop-blur-sm"
+            role="group"
+            aria-label={t.nav.switchLanguage}
+        >
+            {locales.map((l) => (
+                <button
+                    key={l}
+                    onClick={() => switchTo(l)}
+                    aria-pressed={l === locale}
+                    className={`rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider transition-all ${l === locale
+                        ? "bg-foreground text-background shadow-sm"
+                        : "text-[#64748B] dark:text-[#94A3B8] hover:text-foreground"
+                        }`}
+                >
+                    {localeShort[l]}
+                </button>
+            ))}
+        </div>
+    );
+}
+
 /* ── Chevron icon ── */
 function ChevronDown({ open, className }: { open: boolean; className?: string }) {
     return (
@@ -95,6 +132,9 @@ function ProductsDropdown({ scrolled }: { scrolled: boolean }) {
     const [open, setOpen] = useState(false);
     const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const t = useT();
+    const locale = useLocale();
+    const products = getProducts(t, locale);
 
     const handleEnter = () => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -131,7 +171,7 @@ function ProductsDropdown({ scrolled }: { scrolled: boolean }) {
                     : "text-[#0F172A] hover:text-primary dark:text-white/90 dark:hover:text-white"
                     }`}
             >
-                Products
+                {t.nav.products}
                 <ChevronDown open={open} />
             </button>
 
@@ -146,53 +186,43 @@ function ProductsDropdown({ scrolled }: { scrolled: boolean }) {
                     {/* Header */}
                     <div className="px-3 py-2 mb-1">
                         <p className="text-[10px] font-bold uppercase tracking-widest text-[#64748B] dark:text-[#94A3B8]">
-                            Our Products
+                            {t.nav.ourProducts}
                         </p>
                     </div>
 
                     {/* Items */}
-                    {products.map((p) => (
-                        <a
-                            key={p.label}
-                            href={p.href}
-                            {...(p.internal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-                            onClick={() => setOpen(false)}
-                            className="group flex items-center gap-3.5 rounded-xl px-3 py-3 transition-all hover:bg-blue-50 dark:hover:bg-slate-800"
-                        >
-                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-lg transition-transform group-hover:scale-110">
-                                {p.icon}
-                            </span>
-                            <div className="min-w-0">
-                                <p className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
-                                    {p.label}
-                                    {p.internal && (
-                                        <span className="rounded bg-blue-100 dark:bg-blue-500/20 px-1.5 py-0.5 text-[9px] font-bold uppercase text-blue-600 dark:text-blue-400">
-                                            New
-                                        </span>
-                                    )}
-                                </p>
-                                <p className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate">{p.desc}</p>
-                            </div>
-                            <svg
-                                className="ml-auto h-3.5 w-3.5 shrink-0 text-[#94A3B8] dark:text-[#64748B] opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-0.5"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2.5}
-                                viewBox="0 0 24 24"
+                    {products.map((p) =>
+                        p.internal ? (
+                            <Link
+                                key={p.label}
+                                href={p.href}
+                                onClick={() => setOpen(false)}
+                                className="group flex items-center gap-3.5 rounded-xl px-3 py-3 transition-all hover:bg-blue-50 dark:hover:bg-slate-800"
                             >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                    ))}
+                                <ProductItemInner icon={p.icon} label={p.label} desc={p.desc} internal />
+                            </Link>
+                        ) : (
+                            <a
+                                key={p.label}
+                                href={p.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setOpen(false)}
+                                className="group flex items-center gap-3.5 rounded-xl px-3 py-3 transition-all hover:bg-blue-50 dark:hover:bg-slate-800"
+                            >
+                                <ProductItemInner icon={p.icon} label={p.label} desc={p.desc} />
+                            </a>
+                        )
+                    )}
 
                     {/* Footer link */}
                     <div className="mt-1 border-t border-slate-200 dark:border-slate-700 px-3 py-3">
                         <Link
-                            href="/#products"
+                            href={`/${locale}#products`}
                             onClick={() => setOpen(false)}
                             className="flex items-center justify-center gap-2 text-xs font-semibold text-blue-600 dark:text-blue-400 transition-colors hover:text-blue-800 dark:hover:text-blue-300"
                         >
-                            View All Products
+                            {t.nav.viewAllProducts}
                             <svg className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                             </svg>
@@ -204,6 +234,36 @@ function ProductsDropdown({ scrolled }: { scrolled: boolean }) {
     );
 }
 
+function ProductItemInner({ icon, label, desc, internal }: { icon: string; label: string; desc: string; internal?: boolean }) {
+    return (
+        <>
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-lg transition-transform group-hover:scale-110">
+                {icon}
+            </span>
+            <div className="min-w-0">
+                <p className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC] flex items-center gap-2">
+                    {label}
+                    {internal && (
+                        <span className="rounded bg-blue-100 dark:bg-blue-500/20 px-1.5 py-0.5 text-[9px] font-bold uppercase text-blue-600 dark:text-blue-400">
+                            ★
+                        </span>
+                    )}
+                </p>
+                <p className="text-xs text-[#64748B] dark:text-[#94A3B8] truncate">{desc}</p>
+            </div>
+            <svg
+                className="ml-auto h-3.5 w-3.5 shrink-0 text-[#94A3B8] dark:text-[#64748B] opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-0.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                viewBox="0 0 24 24"
+            >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+        </>
+    );
+}
+
 /* ── Navbar ── */
 export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -212,8 +272,31 @@ export default function Navbar() {
     const { theme } = useTheme();
     const [mounted, setMounted] = useState(false);
     const pathname = usePathname();
-    const isHome = pathname === "/";
+    const t = useT();
+    const locale = useLocale();
+    const products = getProducts(t, locale);
+
+    const isHome = pathname === `/${locale}`;
+
+    const homeLinks = [
+        { label: t.nav.about, href: `/${locale}#about` },
+        { label: t.nav.products, href: `/${locale}#products`, hasDropdown: true },
+        { label: t.nav.aiFeatures, href: `/${locale}#features` },
+        { label: t.nav.blog, href: `/${locale}/blog` },
+        { label: t.nav.pricing, href: `/${locale}#pricing` },
+    ];
+
+    const subpageLinks = [
+        { label: t.nav.home, href: `/${locale}` },
+        { label: t.nav.products, href: `/${locale}#products`, hasDropdown: true },
+        { label: t.nav.aiFeatures, href: `/${locale}#features` },
+        { label: t.nav.blog, href: `/${locale}/blog` },
+        { label: t.nav.pricing, href: `/${locale}#pricing` },
+    ];
+
     const navLinks = isHome ? homeLinks : subpageLinks;
+    const ctaHref = isHome ? `/${locale}#contact` : `/${locale}#pricing`;
+    const ctaLabel = isHome ? t.nav.contactUs : t.nav.viewPricing;
 
     useEffect(() => {
         setMounted(true);
@@ -235,7 +318,7 @@ export default function Navbar() {
             <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
                 {/* Logo */}
                 {/* Logic: Dark mode = white logo, Light mode = dark logo */}
-                <Logo variant={currentTheme === 'dark' ? "light" : "dark"} />
+                <Logo variant={currentTheme === 'dark' ? "light" : "dark"} href={`/${locale}`} />
 
                 {/* Desktop nav */}
                 <div className="hidden items-center gap-10 md:flex">
@@ -243,7 +326,7 @@ export default function Navbar() {
                         link.hasDropdown ? (
                             <ProductsDropdown key={link.label} scrolled={scrolled} />
                         ) : (
-                            <a
+                            <Link
                                 key={link.label}
                                 href={link.href}
                                 className={`nav-link text-[13px] font-semibold uppercase tracking-widest transition-colors ${scrolled
@@ -252,24 +335,26 @@ export default function Navbar() {
                                     }`}
                             >
                                 {link.label}
-                            </a>
+                            </Link>
                         )
                     )}
                 </div>
 
-                {/* Right side: theme toggle + CTA */}
+                {/* Right side: language + theme toggle + CTA */}
                 <div className="hidden items-center gap-3 md:flex">
+                    <LanguageToggle />
                     <ThemeToggle />
-                    <a
-                        href={isHome ? "#contact" : "/#pricing"}
+                    <Link
+                        href={ctaHref}
                         className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all hover:scale-105 bg-foreground text-background hover:opacity-90 shadow-md`}
                     >
-                        {isHome ? "Contact Us" : "View Pricing"}
-                    </a>
+                        {ctaLabel}
+                    </Link>
                 </div>
 
-                {/* Mobile: theme toggle + hamburger */}
-                <div className="flex items-center gap-3 md:hidden">
+                {/* Mobile: language + theme toggle + hamburger */}
+                <div className="flex items-center gap-2 md:hidden">
+                    <LanguageToggle />
                     <ThemeToggle />
                     <button
                         onClick={() => setMobileOpen(!mobileOpen)}
@@ -306,7 +391,7 @@ export default function Navbar() {
                                     onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
                                     className="flex w-full items-center justify-between py-2 text-sm font-semibold uppercase tracking-widest text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-white"
                                 >
-                                    Products
+                                    {t.nav.products}
                                     <ChevronDown open={mobileProductsOpen} />
                                 </button>
 
@@ -316,39 +401,52 @@ export default function Navbar() {
                                         }`}
                                 >
                                     <div className="grid grid-cols-2 gap-2 pb-3 pt-1">
-                                        {products.map((p) => (
-                                            <a
-                                                key={p.label}
-                                                href={p.href}
-                                                {...(p.internal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-                                                onClick={() => { setMobileOpen(false); setMobileProductsOpen(false); }}
-                                                className="flex items-center gap-2 rounded-lg bg-slate-50 dark:bg-slate-800 px-3 py-2.5 transition-colors hover:bg-blue-50 dark:hover:bg-slate-700"
-                                            >
-                                                <span className="text-base">{p.icon}</span>
-                                                <span className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{p.label}</span>
-                                            </a>
-                                        ))}
+                                        {products.map((p) =>
+                                            p.internal ? (
+                                                <Link
+                                                    key={p.label}
+                                                    href={p.href}
+                                                    onClick={() => { setMobileOpen(false); setMobileProductsOpen(false); }}
+                                                    className="flex items-center gap-2 rounded-lg bg-slate-50 dark:bg-slate-800 px-3 py-2.5 transition-colors hover:bg-blue-50 dark:hover:bg-slate-700"
+                                                >
+                                                    <span className="text-base">{p.icon}</span>
+                                                    <span className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{p.label}</span>
+                                                </Link>
+                                            ) : (
+                                                <a
+                                                    key={p.label}
+                                                    href={p.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={() => { setMobileOpen(false); setMobileProductsOpen(false); }}
+                                                    className="flex items-center gap-2 rounded-lg bg-slate-50 dark:bg-slate-800 px-3 py-2.5 transition-colors hover:bg-blue-50 dark:hover:bg-slate-700"
+                                                >
+                                                    <span className="text-base">{p.icon}</span>
+                                                    <span className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{p.label}</span>
+                                                </a>
+                                            )
+                                        )}
                                     </div>
                                 </div>
                             </div>
                         ) : (
-                            <a
+                            <Link
                                 key={link.label}
                                 href={link.href}
                                 onClick={() => setMobileOpen(false)}
                                 className="py-2 text-sm font-semibold uppercase tracking-widest text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-white"
                             >
                                 {link.label}
-                            </a>
+                            </Link>
                         )
                     )}
-                    <a
-                        href={isHome ? "#contact" : "/#pricing"}
+                    <Link
+                        href={ctaHref}
                         onClick={() => setMobileOpen(false)}
                         className="mt-2 inline-block rounded-full bg-slate-900 dark:bg-white px-6 py-2.5 text-center text-sm font-semibold text-white dark:text-slate-900"
                     >
-                        {isHome ? "Contact Us" : "View Pricing"}
-                    </a>
+                        {ctaLabel}
+                    </Link>
                 </div>
             </div>
         </nav>

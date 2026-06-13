@@ -1,39 +1,7 @@
 "use client";
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-const aiFeatures = [
-    {
-        title: "AI Image Generator",
-        description: "Create beautiful art with artificial intelligence. Three APIs integrated: OpenAI, Stable Diffusion and Stability AI — 100+ models combined.",
-        icon: "🎨",
-        accent: "primary" as const,
-    },
-    {
-        title: "AI Text Generator",
-        description: "Write smarter and save time with AI-powered tools. Generate copy, content, and creative writing that connects with your audience.",
-        icon: "✍️",
-        accent: "secondary" as const,
-    },
-    {
-        title: "AI Chat Bot",
-        description: "Personal AI Chat Bot — cost-effective, 24/7 availability, and flexible. Seamless conversations and instant answers for any need.",
-        icon: "💬",
-        accent: "primary" as const,
-    },
-    {
-        title: "AI Video Generator",
-        description: "AI video that works while you sleep. Text-to-Video generation for seamless integration and engaging multimedia content.",
-        icon: "🎬",
-        accent: "tertiary" as const,
-    },
-    {
-        title: "AI Music Generator",
-        description: "Create music generated using text. Text-to-Music generation API for seamless integration and engaging audio content creation.",
-        icon: "🎵",
-        accent: "secondary" as const,
-    },
-];
+import { useT } from "@/i18n/I18nProvider";
 
 const accentMap = {
     primary: "bg-primary/10",
@@ -41,28 +9,25 @@ const accentMap = {
     tertiary: "bg-tertiary/10",
 };
 
-const services = [
-    {
-        title: "Cloud Solutions",
-        description: "Tailored cloud services to enhance your business operations and scalability.",
-        icon: "☁️",
-    },
-    {
-        title: "Marketing Solutions",
-        description: "Customized marketing strategies that yield impactful results and drive engagement.",
-        icon: "📈",
-    },
-    {
-        title: "Innovative Solutions",
-        description: "Cutting-edge services that enable businesses to excel in the digital realm.",
-        icon: "💡",
-    },
-];
-
-
-
 export default function AIFeatures() {
     const ref = useScrollReveal();
+    const t = useT();
+    const f = t.aiFeatures.items;
+    const s = t.aiFeatures.services;
+
+    const aiFeatures = [
+        { title: f.image.title, description: f.image.description, icon: "🎨", accent: "primary" as const },
+        { title: f.text.title, description: f.text.description, icon: "✍️", accent: "secondary" as const },
+        { title: f.chat.title, description: f.chat.description, icon: "💬", accent: "primary" as const },
+        { title: f.video.title, description: f.video.description, icon: "🎬", accent: "tertiary" as const },
+        { title: f.music.title, description: f.music.description, icon: "🎵", accent: "secondary" as const },
+    ];
+
+    const services = [
+        { title: s.cloud.title, description: s.cloud.description, icon: "☁️" },
+        { title: s.marketing.title, description: s.marketing.description, icon: "📈" },
+        { title: s.innovative.title, description: s.innovative.description, icon: "💡" },
+    ];
 
     return (
         <section id="features" className="py-24 lg:py-32 bg-background">
@@ -71,13 +36,13 @@ export default function AIFeatures() {
                 {/* AI Features */}
                 <div className="mx-auto max-w-2xl text-center">
                     <span className="fade-up inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-secondary">
-                        AI Features
+                        {t.aiFeatures.tag}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-4xl lg:text-5xl">
-                        Powered by Artificial Intelligence
+                        {t.aiFeatures.title}
                     </h2>
                     <p className="fade-up fade-up-delay-2 mt-4 text-base leading-relaxed text-[#475569] dark:text-[#94A3B8]">
-                        From image generation to music creation — our AI tools help you build smarter and faster.
+                        {t.aiFeatures.description}
                     </p>
                 </div>
 
@@ -100,10 +65,10 @@ export default function AIFeatures() {
                 <div className="mt-24">
                     <div className="mx-auto max-w-2xl text-center">
                         <span className="fade-up inline-block rounded-full bg-tertiary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-tertiary">
-                            IT Solutions
+                            {t.aiFeatures.servicesTag}
                         </span>
                         <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-4xl">
-                            Digital Strategies That Drive Growth
+                            {t.aiFeatures.servicesTitle}
                         </h2>
                     </div>
 

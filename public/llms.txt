@@ -1,0 +1,31 @@
+# plus. — Global Digital AI-gency
+
+> plus. is a global digital AI-agency offering one integrated platform for AI chatbots, branding, mobile app development, CRM, mobile games, and digital marketing. The platform combines AI tooling with real creative talent to help brands build smarter and faster. The website is available in English (/en) and Indonesian (/id).
+
+## About
+- plus. helps businesses move fast, stay consistent, and look premium using AI plus human creativity.
+- Core value: an integrated platform covering strategy, creative, and technology — powered by AI.
+- Contact: support@plusthe.site
+
+## Products
+- AI Chat Bot — 24/7 AI customer service and conversational automation: https://plusthe.site/en/chat-bot
+- Digital Agency — branding, content, UI/UX, and AI-powered marketing strategy: https://plusthe.site/en/digital-agency
+- Mobile Game Development — Android & iOS games with Unity & Unreal Engine: https://plusthe.site/en/mobile-game
+- Customer Support tools, Mobile App development, and CRM Platform.
+
+## AI Features
+- AI Image Generator (OpenAI, Stable Diffusion, Stability AI — 100+ models)
+- AI Text Generator, AI Video Generator, AI Music Generator
+- Personal AI Chat Bot
+
+## Languages
+- English: https://plusthe.site/en
+- Bahasa Indonesia: https://plusthe.site/id
+
+## Blog
+- Insights on AI, digital marketing, mobile apps, CRM, and business growth.
+- English: https://plusthe.site/en/blog
+- Bahasa Indonesia: https://plusthe.site/id/blog
+
+## Pricing
+- Flexible monthly and annual plans (Starter, Professional, Premium). See https://plusthe.site/en#pricing

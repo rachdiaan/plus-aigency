@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useT } from "@/i18n/I18nProvider";
 
 export default function About() {
     const ref = useScrollReveal();
+    const t = useT();
 
     return (
         <section id="about" className="py-24 lg:py-32 bg-background">
@@ -37,35 +39,32 @@ export default function About() {
                     {/* Center text */}
                     <div className="flex-1 text-center">
                         <span className="fade-up inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-                            About Plus
+                            {t.about.tag}
                         </span>
                         <h2 className="fade-up fade-up-delay-1 mt-5 text-4xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-5xl lg:text-6xl">
-                            Driven by
+                            {t.about.titleLine1}
                             <br />
-                            <span className="gradient-text">Innovation</span>
+                            <span className="gradient-text">{t.about.titleLine2}</span>
                         </h2>
                         <p className="fade-up fade-up-delay-2 mx-auto mt-6 max-w-md text-base leading-relaxed text-[#475569] dark:text-[#CBD5E1]">
-                            plus. is a forward-thinking IT solutions provider dedicated to empowering
-                            businesses through innovative technology and tailored services. We bridge
-                            the gap between technology and business needs, providing solutions that
-                            enhance efficiency and drive growth.
+                            {t.about.description}
                         </p>
 
                         {/* Stats row */}
                         <div className="fade-up fade-up-delay-3 mt-10 flex justify-center gap-10">
                             <div>
                                 <p className="text-3xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">AI+</p>
-                                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-[#64748B] dark:text-[#94A3B8]">Powered</p>
+                                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-[#64748B] dark:text-[#94A3B8]">{t.about.statPoweredLabel}</p>
                             </div>
                             <div className="h-12 w-px bg-slate-200 dark:bg-[#1E293B]" />
                             <div>
                                 <p className="text-3xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">6+</p>
-                                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-[#64748B] dark:text-[#94A3B8]">Products</p>
+                                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-[#64748B] dark:text-[#94A3B8]">{t.about.statProductsLabel}</p>
                             </div>
                             <div className="h-12 w-px bg-slate-200 dark:bg-[#1E293B]" />
                             <div>
                                 <p className="text-3xl font-bold text-[#0F172A] dark:text-[#F8FAFC]">5+</p>
-                                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-[#64748B] dark:text-[#94A3B8]">AI Tools</p>
+                                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-[#64748B] dark:text-[#94A3B8]">{t.about.statToolsLabel}</p>
                             </div>
                         </div>
                     </div>
