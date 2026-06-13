@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# plus. — Global Digital AI-gency
+
+Bilingual (EN/ID) marketing site for **plus.**, built with **Next.js 16 (App Router)**, React 19, TypeScript, and Tailwind CSS v4.
+
+Live target domain: **plusthe.site**
+
+## Features
+
+- **Internationalization (EN/ID)** with locale-prefixed routing (`/en`, `/id`), automatic locale detection (cookie + `Accept-Language`), and an in-navbar language toggle.
+- **Per-language SEO**: `hreflang` (en/id/x-default), canonical URLs, localized `sitemap.xml`, `robots.txt`, and `llms.txt` for AI/LLM discovery.
+- **94 SEO articles** (66 ID + 28 EN) under `/blog`, each generated as a static page in its own language.
+- **Structured data (JSON-LD)**: Organization, WebSite + SearchAction, Blog, BlogPosting, BreadcrumbList, FAQPage.
+- **Dynamic Open Graph images** (per article + per locale) via `next/og`.
+- **PWA manifest**, reading-progress bar, scroll-to-top, and CDN `preconnect` for faster LCP.
+- Product pages: AI Chat Bot, Digital Agency, Mobile Game — all fully bilingual.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000  (redirects to /en or /id)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Other scripts:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build    # production build (static-generates all pages)
+npm run start    # serve the production build
+npm run lint     # eslint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+src/
+  app/
+    [locale]/            # all localized routes (home, blog, product pages, studio)
+      layout.tsx         # <html lang>, fonts, providers, per-locale metadata + hreflang
+      page.tsx           # homepage
+      blog/              # blog listing + [slug] detail + per-article OG image
+      chat-bot/ ...      # product pages
+      opengraph-image.tsx
+    layout.tsx           # pass-through root layout
+    sitemap.ts           # localized sitemap with hreflang
+    robots.ts
+    manifest.ts          # PWA manifest
+  proxy.ts               # locale detection + root redirect (Next 16 "proxy" convention)
+  i18n/                  # config, dictionaries (en/id), provider, getDictionary
+  data/articles.ts       # blog content (each tagged with locale)
+  components/            # Navbar, Footer, Hero, ReadingProgress, ScrollToTop, ...
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Copy `.env.example` to `.env.local` and fill in as needed:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here   # used by the Studio AI features
+GEMINI_API_KEY=your_gemini_api_key_here
+```
 
-## Deploy on Vercel
+The marketing site + blog render without any keys; the keys are only needed for the AI Studio (`/[locale]/studio`).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy to Vercel (recommended)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js auto-deploys on Vercel with **no extra config**.
+
+1. Go to **https://vercel.com/new** and sign in with GitHub.
+2. Import the repo **`rachdiaan/plus-aigency`**.
+3. (Optional) add the env vars above under *Settings → Environment Variables*.
+4. Click **Deploy** → you get a live URL (e.g. `plus-aigency.vercel.app`).
+5. To use **plusthe.site**: *Settings → Domains → Add* `plusthe.site`, then point your DNS as Vercel instructs. If plusthe.site already hosts another site, use a subdomain such as `app.plusthe.site` instead.
+
+After connecting, every push to `main` redeploys automatically.
+
+## Notes
+
+- The site base URL is hard-coded as `https://plusthe.site` in metadata, sitemap, robots, and OG images. If you deploy to a different domain, update `SITE` / `BASE_URL` in `src/app/[locale]/layout.tsx`, `src/app/sitemap.ts`, `src/app/robots.ts`, and the blog metadata files.
+- Studio (`/[locale]/studio`) is disallowed in `robots.txt`.
