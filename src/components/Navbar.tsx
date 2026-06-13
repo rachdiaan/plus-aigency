@@ -19,6 +19,7 @@ const homeLinks = [
     { label: "About", href: "/#about" },
     { label: "Products", href: "/#products", hasDropdown: true },
     { label: "AI Features", href: "/#features" },
+    { label: "Blog", href: "/blog" },
     { label: "Pricing", href: "/#pricing" },
 ];
 
@@ -26,6 +27,7 @@ const subpageLinks = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/#products", hasDropdown: true },
     { label: "AI Features", href: "/#features" },
+    { label: "Blog", href: "/blog" },
     { label: "Pricing", href: "/#pricing" },
 ];
 

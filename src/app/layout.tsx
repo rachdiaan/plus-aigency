@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://plusthe.site"),
   title: "plus. — Indonesia's No.1 Digital AI-gency",
   description:
     "One integrated platform for brands that want to move fast, stay consistent, and still look premium — powered by AI and real creative minds.",
@@ -26,6 +27,9 @@ export const metadata: Metadata = {
     "mobile app",
     "Indonesia",
   ],
+  alternates: {
+    canonical: "https://plusthe.site",
+  },
   openGraph: {
     title: "plus. — Build Smarter Brands. Faster.",
     description:
@@ -38,6 +42,20 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "plus.",
+  url: "https://plusthe.site",
+  logo: "https://plusthe.site/favicon.png",
+  description:
+    "Indonesia's No.1 Digital AI-gency — platform terintegrasi untuk branding, AI, dan solusi digital.",
+  sameAs: [
+    "https://www.instagram.com/",
+    "https://www.linkedin.com/",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -47,7 +65,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Prevent flash of wrong theme */}
-
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
