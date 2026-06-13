@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import Logo from "@/components/Logo";
+import Newsletter from "@/components/Newsletter";
 import { useT, useLocale } from "@/i18n/I18nProvider";
 
 export default function Footer() {
@@ -36,6 +37,11 @@ export default function Footer() {
     return (
         <footer id="contact" className="bg-footer-bg text-footer-text">
             <div ref={ref} className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+                {/* Newsletter */}
+                <div className="fade-up mx-auto mb-16 max-w-2xl">
+                    <Newsletter />
+                </div>
+
                 <div className="flex flex-col gap-14 lg:flex-row lg:items-start lg:justify-between">
                     {/* Logo + tagline */}
                     <div className="fade-up max-w-xs">

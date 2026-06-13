@@ -197,6 +197,17 @@ const id: Dictionary = {
         rights: "Hak cipta dilindungi.",
         backToTop: "Kembali ke atas",
     },
+    newsletter: {
+        title: "Dapatkan insight pertumbuhan di inbox Anda",
+        subtitle: "Gabung newsletter kami untuk tips AI, marketing, dan bisnis. Tanpa spam — berhenti kapan saja.",
+        placeholder: "Alamat email Anda",
+        button: "Langganan",
+        sending: "Mendaftar...",
+        success: "Berhasil! Cek inbox Anda segera.",
+        error: "Terjadi kesalahan. Silakan coba lagi.",
+        invalid: "Masukkan email yang valid.",
+    },
+    views: "dibaca",
     blog: {
         tag: "Blog plus.",
         title: "Insight AI & Pertumbuhan Digital",

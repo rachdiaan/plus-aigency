@@ -59,7 +59,27 @@ NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here   # used by the Studio AI fe
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-The marketing site + blog render without any keys; the keys are only needed for the AI Studio (`/[locale]/studio`).
+The marketing site + blog render without any keys. Gemini keys are only needed for the AI Studio (`/[locale]/studio`); Supabase keys power the database features (below).
+
+## Database (Supabase)
+
+Powers newsletter subscribers, contact leads, and per-article view counts. The site builds and runs without it — these features degrade gracefully until configured.
+
+**Setup:**
+
+1. Create a project at **https://supabase.com** (free tier is fine).
+2. Open *SQL Editor → New query*, paste the contents of [`supabase/schema.sql`](supabase/schema.sql), and run it. This creates the `subscribers`, `leads`, and `article_views` tables plus the `increment_article_view` function.
+3. In *Project Settings → API*, copy the **Project URL**, **anon public** key, and **service_role** key into your env (`.env.local` locally, or Vercel → Settings → Environment Variables):
+
+   ```bash
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_public_key
+   SUPABASE_SERVICE_ROLE_KEY=your_service_role_secret_key   # server-only, keep secret
+   ```
+
+4. Redeploy. The newsletter form (footer) and article view counter become live.
+
+**API endpoints** (used by the UI): `POST /api/subscribe`, `POST /api/lead`, `POST /api/view`. Writes go through the server using the service-role key, so the secret key is never exposed to the browser.
 
 ## Deploy to Vercel (recommended)
 

@@ -195,6 +195,17 @@ const en = {
         rights: "All rights reserved.",
         backToTop: "Back to top",
     },
+    newsletter: {
+        title: "Get growth insights in your inbox",
+        subtitle: "Join our newsletter for AI, marketing, and business tips. No spam — unsubscribe anytime.",
+        placeholder: "Your email address",
+        button: "Subscribe",
+        sending: "Subscribing...",
+        success: "You're in! Check your inbox soon.",
+        error: "Something went wrong. Please try again.",
+        invalid: "Please enter a valid email.",
+    },
+    views: "reads",
     blog: {
         tag: "plus. Blog",
         title: "AI & Digital Growth Insights",

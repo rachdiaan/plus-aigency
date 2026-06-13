@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ReadingProgress from "@/components/ReadingProgress";
+import ArticleViews from "@/components/ArticleViews";
 import { articles } from "@/data/articles";
 import { getDictionary } from "@/i18n/getDictionary";
 import { isLocale, defaultLocale } from "@/i18n/config";
@@ -150,6 +151,7 @@ export default async function ArticlePage({
                         </span>
                         <span>•</span>
                         <span>{article.readTime} {t.blog.readSuffix}</span>
+                        <ArticleViews slug={article.slug} />
                     </div>
 
                     {/* Cover image */}
