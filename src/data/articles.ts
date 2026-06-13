@@ -2168,4 +2168,284 @@ export const articles: Article[] = [
 <p>Personal branding isn't about image-crafting — it's about consistently and authentically showcasing your expertise and value.</p>
 `,
   },
+  {
+    id: 75,
+    slug: "cara-membuat-website-bisnis",
+    title: "Cara Membuat Website Bisnis yang Profesional dan Efektif",
+    description:
+      "Panduan langkah demi langkah membuat website bisnis yang profesional — dari perencanaan, struktur, hingga optimasi untuk konversi dan SEO.",
+    category: "Digital Agency & Branding",
+    tags: ["Website Bisnis", "Web Development", "Online Presence"],
+    date: "2026-03-25",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Website adalah etalase digital bisnis Anda yang bekerja 24 jam. Website yang dirancang dengan baik membangun kredibilitas dan menjadi mesin penjualan yang konsisten.</p>
+<h2>Tentukan Tujuan Website</h2>
+<p>Apakah website untuk menghasilkan leads, menjual produk, atau membangun kredibilitas? Tujuan ini menentukan struktur dan elemen yang perlu diprioritaskan.</p>
+<h2>Struktur Halaman yang Penting</h2>
+<ul>
+<li>Beranda yang langsung menjelaskan nilai bisnis Anda</li>
+<li>Halaman produk atau layanan yang jelas</li>
+<li>Halaman tentang yang membangun kepercayaan</li>
+<li>Halaman kontak yang mudah ditemukan</li>
+</ul>
+<h2>Optimasi untuk Konversi dan SEO</h2>
+<p>Kecepatan loading, tampilan mobile-friendly, dan call-to-action yang jelas menentukan apakah pengunjung berubah menjadi pelanggan. Jangan lupa optimasi SEO agar website ditemukan di Google.</p>
+<h2>Kesimpulan</h2>
+<p>Website bisnis yang efektif menggabungkan desain menarik, pengalaman pengguna yang mulus, dan strategi SEO yang solid.</p>
+`,
+  },
+  {
+    id: 76,
+    slug: "apa-itu-saas-model-bisnis",
+    title: "Apa Itu SaaS? Memahami Model Bisnis Software Modern",
+    description:
+      "Pelajari apa itu SaaS (Software as a Service), cara kerjanya, serta kelebihan model bisnis ini bagi penyedia maupun pengguna.",
+    category: "AI & Teknologi",
+    tags: ["SaaS", "Model Bisnis", "Software"],
+    date: "2026-03-26",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>SaaS atau Software as a Service adalah model di mana software diakses melalui internet dengan sistem berlangganan, bukan dibeli dan diinstal sekali.</p>
+<h2>Bagaimana SaaS Bekerja?</h2>
+<p>Pengguna mengakses aplikasi melalui browser atau app, sementara penyedia mengelola server, keamanan, dan pembaruan. Contoh yang familiar: email, CRM, dan tools desain berbasis cloud.</p>
+<h2>Kelebihan untuk Pengguna</h2>
+<ul>
+<li>Tidak perlu investasi besar di awal</li>
+<li>Selalu mendapat versi terbaru tanpa update manual</li>
+<li>Dapat diakses dari mana saja</li>
+</ul>
+<h2>Kelebihan untuk Bisnis Penyedia</h2>
+<p>Pendapatan berulang (recurring revenue) yang lebih stabil dan kemampuan menskalakan layanan tanpa biaya distribusi fisik.</p>
+<h2>Kesimpulan</h2>
+<p>SaaS telah mengubah cara bisnis mengakses teknologi — lebih fleksibel, hemat, dan mudah diskalakan.</p>
+`,
+  },
+  {
+    id: 77,
+    slug: "google-analytics-untuk-pemula",
+    title: "Google Analytics untuk Pemula: Panduan Memahami Data Website",
+    description:
+      "Panduan dasar Google Analytics untuk pemula — metrik penting yang perlu dipantau dan cara menggunakannya untuk keputusan bisnis.",
+    category: "Digital Marketing & SEO",
+    tags: ["Google Analytics", "Analitik", "Data Website"],
+    date: "2026-03-27",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Tanpa data, keputusan marketing hanya tebakan. Google Analytics memberi gambaran jelas tentang siapa pengunjung Anda dan bagaimana mereka berinteraksi dengan website.</p>
+<h2>Metrik Penting untuk Dipantau</h2>
+<ul>
+<li>Jumlah pengunjung dan sumber traffic</li>
+<li>Halaman yang paling banyak dikunjungi</li>
+<li>Tingkat konversi dan jalur menuju konversi</li>
+<li>Waktu yang dihabiskan dan tingkat pentalan (bounce rate)</li>
+</ul>
+<h2>Dari Data ke Tindakan</h2>
+<p>Data hanya berguna jika ditindaklanjuti. Jika sebuah halaman memiliki bounce rate tinggi, evaluasi kontennya. Jika satu sumber traffic berkonversi baik, alokasikan lebih banyak upaya ke sana.</p>
+<h2>Kesimpulan</h2>
+<p>Google Analytics mengubah marketing dari tebakan menjadi keputusan berbasis bukti — gratis dan dapat diakses oleh bisnis apa pun.</p>
+`,
+  },
+  {
+    id: 78,
+    slug: "strategi-tiktok-marketing-bisnis",
+    title: "Strategi TikTok Marketing untuk Bisnis di 2026",
+    description:
+      "Cara memanfaatkan TikTok untuk pemasaran bisnis — memahami algoritma, jenis konten yang efektif, dan strategi membangun audiens.",
+    category: "Digital Marketing & SEO",
+    tags: ["TikTok Marketing", "Social Media", "Konten"],
+    date: "2026-03-28",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>TikTok telah menjadi salah satu platform dengan pertumbuhan tercepat dan jangkauan organik yang masih sangat besar — peluang emas bagi bisnis.</p>
+<h2>Pahami Cara Kerja Algoritma</h2>
+<p>TikTok memprioritaskan konten yang menarik dalam detik-detik pertama dan memicu interaksi. Bahkan akun baru bisa viral jika kontennya relevan dan engaging.</p>
+<h2>Jenis Konten yang Efektif</h2>
+<ul>
+<li>Behind-the-scenes proses bisnis Anda</li>
+<li>Tips singkat dan edukasi yang menghibur</li>
+<li>Tren audio dan tantangan yang relevan dengan brand</li>
+</ul>
+<h2>Konsistensi adalah Kunci</h2>
+<p>Posting secara rutin membantu algoritma memahami audiens Anda. Eksperimen dengan berbagai format dan pelajari mana yang paling berkinerja.</p>
+<h2>Kesimpulan</h2>
+<p>TikTok bukan hanya untuk hiburan — dengan strategi yang tepat, ia menjadi kanal akuisisi pelanggan yang kuat dan hemat biaya.</p>
+`,
+  },
+  {
+    id: 79,
+    slug: "email-marketing-untuk-pemula",
+    title: "Email Marketing untuk Pemula: Panduan Memulai dari Nol",
+    description:
+      "Panduan email marketing untuk pemula — membangun daftar email, menulis email yang dibuka, dan mengukur keberhasilan kampanye.",
+    category: "Digital Marketing & SEO",
+    tags: ["Email Marketing", "Pemula", "Lead Generation"],
+    date: "2026-03-29",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Meski dianggap "kuno", email marketing tetap menjadi salah satu kanal dengan ROI tertinggi. Berikut cara memulainya dari nol.</p>
+<h2>Bangun Daftar Email Anda</h2>
+<p>Tawarkan sesuatu yang bernilai — ebook, diskon, atau konten eksklusif — sebagai imbalan alamat email. Jangan pernah membeli daftar email.</p>
+<h2>Tulis Email yang Dibuka dan Dibaca</h2>
+<ul>
+<li>Subject line yang spesifik dan memancing rasa ingin tahu</li>
+<li>Konten yang relevan dan bermanfaat, bukan hanya promosi</li>
+<li>Satu call-to-action yang jelas per email</li>
+</ul>
+<h2>Ukur dan Perbaiki</h2>
+<p>Pantau open rate, click-through rate, dan konversi. Gunakan data ini untuk terus menyempurnakan pendekatan Anda.</p>
+<h2>Kesimpulan</h2>
+<p>Email marketing membangun hubungan langsung dengan audiens — aset yang Anda miliki sepenuhnya, tidak seperti followers di platform pihak ketiga.</p>
+`,
+  },
+  {
+    id: 80,
+    slug: "how-to-build-business-website",
+    title: "How to Build a Professional and Effective Business Website",
+    description:
+      "A step-by-step guide to building a professional business website — from planning and structure to conversion and SEO optimization.",
+    category: "Digital Agency & Branding",
+    tags: ["Business Website", "Web Development", "Online Presence"],
+    date: "2026-03-30",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Your website is a digital storefront that works 24 hours a day. A well-designed site builds credibility and becomes a consistent sales engine.</p>
+<h2>Define Your Website's Goal</h2>
+<p>Is it for generating leads, selling products, or building credibility? This goal determines the structure and elements to prioritize.</p>
+<h2>Essential Page Structure</h2>
+<ul>
+<li>A homepage that immediately explains your value</li>
+<li>Clear product or service pages</li>
+<li>An about page that builds trust</li>
+<li>An easy-to-find contact page</li>
+</ul>
+<h2>Optimize for Conversion and SEO</h2>
+<p>Loading speed, mobile-friendly design, and clear calls-to-action decide whether visitors become customers. Don't forget SEO so your site gets found on Google.</p>
+<h2>Conclusion</h2>
+<p>An effective business website combines attractive design, a seamless user experience, and a solid SEO strategy.</p>
+`,
+  },
+  {
+    id: 81,
+    slug: "what-is-saas-business-model",
+    title: "What Is SaaS? Understanding the Modern Software Business Model",
+    description:
+      "Learn what SaaS (Software as a Service) is, how it works, and the advantages of this business model for both providers and users.",
+    category: "AI & Technology",
+    tags: ["SaaS", "Business Model", "Software"],
+    date: "2026-03-31",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>SaaS, or Software as a Service, is a model where software is accessed over the internet on a subscription basis, rather than bought and installed once.</p>
+<h2>How Does SaaS Work?</h2>
+<p>Users access the application via a browser or app, while the provider manages servers, security, and updates. Familiar examples: email, CRM, and cloud-based design tools.</p>
+<h2>Advantages for Users</h2>
+<ul>
+<li>No large upfront investment</li>
+<li>Always on the latest version without manual updates</li>
+<li>Accessible from anywhere</li>
+</ul>
+<h2>Advantages for Providers</h2>
+<p>More stable recurring revenue and the ability to scale services without physical distribution costs.</p>
+<h2>Conclusion</h2>
+<p>SaaS has transformed how businesses access technology — more flexible, affordable, and easy to scale.</p>
+`,
+  },
+  {
+    id: 82,
+    slug: "google-analytics-for-beginners",
+    title: "Google Analytics for Beginners: Understanding Your Website Data",
+    description:
+      "A beginner's guide to Google Analytics — the key metrics to track and how to use them to make better business decisions.",
+    category: "Digital Marketing & SEO",
+    tags: ["Google Analytics", "Analytics", "Website Data"],
+    date: "2026-04-01",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Without data, marketing decisions are just guesses. Google Analytics gives a clear picture of who your visitors are and how they interact with your site.</p>
+<h2>Key Metrics to Track</h2>
+<ul>
+<li>Number of visitors and traffic sources</li>
+<li>Most-visited pages</li>
+<li>Conversion rate and paths to conversion</li>
+<li>Time on site and bounce rate</li>
+</ul>
+<h2>From Data to Action</h2>
+<p>Data is only useful when acted upon. If a page has a high bounce rate, review its content. If one traffic source converts well, invest more effort there.</p>
+<h2>Conclusion</h2>
+<p>Google Analytics turns marketing from guesswork into evidence-based decisions — free and accessible to any business.</p>
+`,
+  },
+  {
+    id: 83,
+    slug: "tiktok-marketing-strategy-business",
+    title: "TikTok Marketing Strategy for Business in 2026",
+    description:
+      "How to leverage TikTok for business marketing — understanding the algorithm, effective content types, and audience-building strategy.",
+    category: "Digital Marketing & SEO",
+    tags: ["TikTok Marketing", "Social Media", "Content"],
+    date: "2026-04-02",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>TikTok has become one of the fastest-growing platforms with still-massive organic reach — a golden opportunity for businesses.</p>
+<h2>Understand How the Algorithm Works</h2>
+<p>TikTok prioritizes content that hooks in the first few seconds and drives interaction. Even new accounts can go viral if the content is relevant and engaging.</p>
+<h2>Effective Content Types</h2>
+<ul>
+<li>Behind-the-scenes of your business process</li>
+<li>Short, entertaining tips and education</li>
+<li>Trending audio and challenges relevant to your brand</li>
+</ul>
+<h2>Consistency Is Key</h2>
+<p>Posting regularly helps the algorithm understand your audience. Experiment with formats and learn which perform best.</p>
+<h2>Conclusion</h2>
+<p>TikTok isn't just for entertainment — with the right strategy, it becomes a powerful, cost-effective customer acquisition channel.</p>
+`,
+  },
+  {
+    id: 84,
+    slug: "email-marketing-for-beginners",
+    title: "Email Marketing for Beginners: A Guide to Starting From Scratch",
+    description:
+      "A beginner's guide to email marketing — building your email list, writing emails that get opened, and measuring campaign success.",
+    category: "Digital Marketing & SEO",
+    tags: ["Email Marketing", "Beginners", "Lead Generation"],
+    date: "2026-04-03",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Though often considered "old school," email marketing remains one of the highest-ROI channels. Here's how to start from scratch.</p>
+<h2>Build Your Email List</h2>
+<p>Offer something valuable — an ebook, discount, or exclusive content — in exchange for an email address. Never buy email lists.</p>
+<h2>Write Emails That Get Opened and Read</h2>
+<ul>
+<li>Specific subject lines that spark curiosity</li>
+<li>Relevant, helpful content — not just promotion</li>
+<li>One clear call-to-action per email</li>
+</ul>
+<h2>Measure and Improve</h2>
+<p>Track open rate, click-through rate, and conversions. Use this data to continuously refine your approach.</p>
+<h2>Conclusion</h2>
+<p>Email marketing builds a direct relationship with your audience — an asset you fully own, unlike followers on third-party platforms.</p>
+`,
+  },
 ];
