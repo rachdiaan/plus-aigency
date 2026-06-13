@@ -10,8 +10,10 @@ import { isLocale, defaultLocale } from "@/i18n/config";
 
 const SITE = "https://plusthe.site";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-    return articles.map((article) => ({ slug: article.slug }));
+    return articles.map((article) => ({ locale: article.locale ?? "id", slug: article.slug }));
 }
 
 export async function generateMetadata({

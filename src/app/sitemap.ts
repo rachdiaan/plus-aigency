@@ -37,18 +37,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         }
     }
 
-    // Blog articles per locale
+    // Blog articles — each emitted only under its own language
     for (const article of articles) {
-        const path = `/blog/${article.slug}`;
-        for (const locale of locales) {
-            entries.push({
-                url: `${BASE_URL}/${locale}${path}`,
-                lastModified: new Date(article.date),
-                changeFrequency: "monthly",
-                priority: 0.7,
-                alternates: { languages: withAlternates(path) },
-            });
-        }
+        const locale = article.locale ?? "id";
+        const url = `${BASE_URL}/${locale}/blog/${article.slug}`;
+        entries.push({
+            url,
+            lastModified: new Date(article.date),
+            changeFrequency: "monthly",
+            priority: 0.7,
+            alternates: { languages: { [locale]: url, "x-default": url } },
+        });
     }
 
     return entries;

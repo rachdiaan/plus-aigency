@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import { notFound } from "next/navigation";
 import ThemeProvider from "@/components/ThemeProvider";
 import { I18nProvider } from "@/i18n/I18nProvider";
@@ -14,6 +14,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// Distinctive display typeface for headings — characterful, contemporary grotesque
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const SITE = "https://plusthe.site";
@@ -117,7 +124,7 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} antialiased`}>
         <ThemeProvider>
           {/* Ambient glow effects for dark mode */}
           <div className="glow-ambient glow-ambient-1" aria-hidden="true" />

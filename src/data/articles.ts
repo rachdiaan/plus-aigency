@@ -9,6 +9,8 @@ export interface Article {
   readTime: string;
   image: string;
   content: string;
+  /** Language of the article. Existing articles default to "id". */
+  locale?: "en" | "id";
 }
 
 export const articles: Article[] = [
@@ -1460,6 +1462,354 @@ export const articles: Article[] = [
 <p>Mulai dengan area kecil yang berdampak besar — chatbot untuk customer service, AI untuk produksi konten, atau CRM yang terintegrasi dengan AI untuk manajemen pelanggan.</p>
 <h2>Kesimpulan</h2>
 <p>Bisnis yang mulai bereksperimen dengan AI hari ini akan memiliki keunggulan signifikan dibanding yang menunggu sampai teknologi ini menjadi "wajib".</p>
+`,
+  },
+  {
+    id: 51,
+    slug: "what-is-an-ai-chatbot-business-guide",
+    title: "What Is an AI Chatbot? A Complete Guide for Businesses",
+    description:
+      "Learn what an AI chatbot is, how it works, and how it helps businesses deliver instant, 24/7 customer support while cutting operational costs.",
+    category: "AI & Technology",
+    tags: ["AI Chatbot", "Customer Service", "Business Automation"],
+    date: "2026-03-01",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>An AI chatbot is a software application powered by artificial intelligence that understands and responds to human conversations automatically. For modern businesses, a chatbot is no longer a nice-to-have — it is a baseline expectation for customers who want instant answers around the clock.</p>
+<h2>How Does an AI Chatbot Work?</h2>
+<p>Modern chatbots use Natural Language Processing (NLP) and machine learning to understand user intent rather than simply matching keywords. This means they can handle questions phrased in many different ways, including casual language and abbreviations.</p>
+<h2>Key Benefits for Business</h2>
+<ul>
+<li>Instant 24/7 responses without expanding your support team</li>
+<li>Lower operational costs compared to a fully manual team</li>
+<li>The ability to handle thousands of conversations simultaneously</li>
+<li>Rich customer data to sharpen your marketing strategy</li>
+</ul>
+<h2>When Does Your Business Need One?</h2>
+<p>If your team is overwhelmed by repetitive questions like order status, opening hours, or pricing, an AI chatbot is the right solution. E-commerce, services, and customer support operations feel the impact fastest.</p>
+<h2>Conclusion</h2>
+<p>An AI chatbot keeps your business responsive without overburdening your team. With the right platform, you can start automating customer conversations in days, not months.</p>
+`,
+  },
+  {
+    id: 52,
+    slug: "ai-chatbot-benefits-boost-sales",
+    title: "7 Ways an AI Chatbot Can Boost Your Sales",
+    description:
+      "Discover seven proven ways an AI chatbot can increase revenue, from automated follow-ups to personalized product recommendations.",
+    category: "AI & Technology",
+    tags: ["AI Chatbot", "Sales", "Conversion"],
+    date: "2026-03-02",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Many businesses treat chatbots purely as a support tool. But with the right strategy, a chatbot becomes a sales engine that works around the clock.</p>
+<h2>1. Answer Buyer Questions Instantly</h2>
+<p>Response speed strongly influences purchase decisions. A chatbot answers product questions in seconds, before a prospect drifts to a competitor.</p>
+<h2>2. Personalized Product Recommendations</h2>
+<p>Using conversation history, a chatbot can suggest relevant products — naturally increasing upsell and cross-sell opportunities.</p>
+<h2>3. Automated Abandoned-Cart Follow-ups</h2>
+<p>A chatbot can remind customers about products they left behind, paired with a tailored offer to drive conversion.</p>
+<h2>4–7: More Benefits</h2>
+<ul>
+<li>Automatic lead qualification before handing off to sales</li>
+<li>Collecting reviews and testimonials from happy customers</li>
+<li>Guiding customers through a faster checkout</li>
+<li>Building a remarketing database for future campaigns</li>
+</ul>
+<h2>Conclusion</h2>
+<p>A sales-focused AI chatbot acts as a virtual sales assistant that never sleeps — no overtime, no days off.</p>
+`,
+  },
+  {
+    id: 53,
+    slug: "ai-image-generator-brand-visuals",
+    title: "AI Image Generator: How to Create Stunning Brand Visuals",
+    description:
+      "How to use an AI image generator to produce consistent, on-brand visual content faster and at a fraction of traditional production costs.",
+    category: "AI & Technology",
+    tags: ["AI Image Generator", "Branding", "Visual Content"],
+    date: "2026-03-03",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>High-quality visuals are one of the most important assets in brand building. Yet professional photography and illustration usually demand significant time and budget. AI image generators change that equation.</p>
+<h2>What Is an AI Image Generator?</h2>
+<p>This technology uses AI models like Stable Diffusion and Stability AI to generate images from text descriptions (prompts). With hundreds of available models, results can be tailored to your brand's visual style.</p>
+<h2>Business Use Cases</h2>
+<ul>
+<li>Product visuals for catalogs without a studio shoot</li>
+<li>Consistent social media illustrations</li>
+<li>Fast packaging mockups and promotional materials</li>
+<li>Backgrounds and graphic elements for digital ads</li>
+</ul>
+<h2>Tips for Effective Prompts</h2>
+<p>Include style details (e.g., "minimalist, flat design, pastel colors"), usage context, and mood references so the output aligns with your brand identity.</p>
+<h2>Conclusion</h2>
+<p>An AI image generator lets a small team produce output on par with a large agency — at a fraction of the speed and cost.</p>
+`,
+  },
+  {
+    id: 54,
+    slug: "digital-transformation-why-businesses-adapt",
+    title: "Digital Transformation: Why Every Business Must Adapt",
+    description:
+      "Digital transformation is no longer optional. Understand why businesses must adapt now and how to start the journey strategically.",
+    category: "AI & Technology",
+    tags: ["Digital Transformation", "Business Strategy", "Innovation"],
+    date: "2026-03-04",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>The pandemic accelerated digital adoption, yet many businesses still treat it as a "someday" project. In reality, competitors who have already transformed are now moving far faster.</p>
+<h2>What Digital Transformation Really Means</h2>
+<p>It is not simply moving manual processes onto computers. It is about changing how a business operates, serves customers, and makes decisions — with data and technology as the foundation.</p>
+<h2>Signs Your Business Needs to Transform</h2>
+<ul>
+<li>Decisions still rely on intuition rather than data</li>
+<li>Teams spend too much time on repetitive admin work</li>
+<li>Customers struggle to reach or transact with you</li>
+<li>Competitors offer noticeably better digital experiences</li>
+</ul>
+<h2>A Realistic First Step</h2>
+<p>Start with the area of highest impact — for example, automating customer service with a chatbot, or migrating customer data into a centralized CRM.</p>
+<h2>Conclusion</h2>
+<p>Digital transformation is a gradual journey, not a one-off project. What matters is starting now, with clear priorities.</p>
+`,
+  },
+  {
+    id: 55,
+    slug: "how-to-choose-digital-agency",
+    title: "How to Choose the Best Digital Agency for Your Business",
+    description:
+      "Ten practical criteria for choosing the right digital agency — from portfolio relevance to transparent reporting and measurable results.",
+    category: "Digital Agency & Branding",
+    tags: ["Digital Agency", "Business Tips", "Partnership"],
+    date: "2026-03-05",
+    readTime: "7 min",
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Choosing a digital agency is a long-term investment decision. Here are the criteria to evaluate before signing a contract.</p>
+<h2>Core Criteria</h2>
+<ul>
+<li><strong>Relevant portfolio</strong> — have they handled similar industries?</li>
+<li><strong>Transparent reporting</strong> — do you get direct access to campaign data?</li>
+<li><strong>AI + human creativity</strong> — do they leverage modern tools without sacrificing quality?</li>
+<li><strong>Responsive communication</strong> — how quickly do they address issues?</li>
+</ul>
+<h2>Red Flags to Watch</h2>
+<ul>
+<li>Promises of instant results without supporting data</li>
+<li>No clear contract or scope of work</li>
+<li>Reports that are hard to access or just screenshots</li>
+</ul>
+<h2>Questions You Must Ask</h2>
+<p>"How do you measure campaign success?" and "What will you do if targets aren't met?" — the answers reveal an agency's true quality.</p>
+<h2>Conclusion</h2>
+<p>The best agency isn't the cheapest or biggest — it's the one most aligned with your goals and transparent in its process.</p>
+`,
+  },
+  {
+    id: 56,
+    slug: "branding-strategy-small-business",
+    title: "Effective Digital Branding Strategy for Small Businesses",
+    description:
+      "Small businesses can compete with big brands through the right digital branding strategy. Here are the practical steps to get started.",
+    category: "Digital Agency & Branding",
+    tags: ["Branding", "Small Business", "Digital Strategy"],
+    date: "2026-03-06",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Branding is not just about logos and colors. For small businesses, consistent digital branding can be the key differentiator in an increasingly crowded market.</p>
+<h2>Start With a Clear Identity</h2>
+<p>Define your core values, target audience, and brand voice before creating any visuals. This consistency shows up across every touchpoint — from your website to your packaging.</p>
+<h2>Consistency Across Platforms</h2>
+<ul>
+<li>Use the same color palette and typography everywhere</li>
+<li>Keep your tone of voice consistent across captions and support replies</li>
+<li>Use visual templates so content stays clean even with a small team</li>
+</ul>
+<h2>Use AI to Scale Production</h2>
+<p>Small businesses can use AI image and text generators to maintain visual and tonal consistency without hiring a large team.</p>
+<h2>Conclusion</h2>
+<p>Strong digital branding doesn't require a huge budget — it requires consistency, a clear identity, and the courage to be authentic.</p>
+`,
+  },
+  {
+    id: 57,
+    slug: "mobile-app-development-guide",
+    title: "The Complete Guide to Mobile App Development for Business",
+    description:
+      "Everything you need to know before building a mobile app — from planning and platform choice to a successful launch strategy.",
+    category: "Mobile App Development",
+    tags: ["Mobile App", "App Development", "Business Strategy"],
+    date: "2026-03-07",
+    readTime: "7 min",
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Owning a mobile app has become a standard for businesses that want to build lasting customer relationships. But a successful app requires careful planning.</p>
+<h2>Step 1: Define the App's Purpose</h2>
+<p>Is it for transactions, loyalty, or communication? This goal determines the core features to prioritize.</p>
+<h2>Step 2: Choose a Development Approach</h2>
+<ul>
+<li><strong>Native</strong> — best performance, but separate teams for Android and iOS</li>
+<li><strong>Cross-platform</strong> — cost-efficient, one codebase for both platforms</li>
+<li><strong>Progressive Web App</strong> — no app store installation required</li>
+</ul>
+<h2>Step 3: Design the User Experience</h2>
+<p>Focus on simple flows for the main tasks. Fewer steps to reach a goal means higher retention.</p>
+<h2>Step 4: Test and Iterate</h2>
+<p>Launch a beta to a small group to gather feedback before the full release.</p>
+<h2>Conclusion</h2>
+<p>A successful mobile app starts from a deep understanding of user needs — not from copying competitor features.</p>
+`,
+  },
+  {
+    id: 58,
+    slug: "crm-guide-for-business",
+    title: "CRM Guide for Business: From Basics to Mastery",
+    description:
+      "A complete guide to CRM (Customer Relationship Management) for businesses — what it is, its benefits, and how to start implementing it.",
+    category: "CRM & Customer Support",
+    tags: ["CRM", "Customer Management", "Business Guide"],
+    date: "2026-03-08",
+    readTime: "7 min",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Many businesses still manage customer data in spreadsheets or manual notes. A CRM turns this into a centralized, reliable system.</p>
+<h2>What Is a CRM?</h2>
+<p>CRM (Customer Relationship Management) is a system for managing interactions with customers and prospects — covering contact data, communication history, and deal status in one place.</p>
+<h2>Why Spreadsheets Aren't Enough</h2>
+<ul>
+<li>Data is easily lost or unsynced across teams</li>
+<li>No automation for follow-ups or reminders</li>
+<li>Hard to see the big picture of sales performance in real time</li>
+</ul>
+<h2>Core CRM Components</h2>
+<p>Contact management, sales pipeline, task automation, and reporting are the essential components of an effective CRM system.</p>
+<h2>Conclusion</h2>
+<p>A CRM is more than a database — it's the foundation for building consistent, measurable customer relationships.</p>
+`,
+  },
+  {
+    id: 59,
+    slug: "seo-guide-rank-on-google",
+    title: "SEO Guide for Business: Strategies to Rank on Google",
+    description:
+      "A foundational SEO guide for businesses — from keyword research and on-page optimization to effective link-building strategies.",
+    category: "Digital Marketing & SEO",
+    tags: ["SEO", "Google Ranking", "Digital Marketing"],
+    date: "2026-03-09",
+    readTime: "8 min",
+    image: "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>SEO is a long-term investment that delivers sustained traffic without paying per click. Here are the SEO foundations relevant to any business.</p>
+<h2>Keyword Research With Real Intent</h2>
+<p>Pay attention to how your audience actually searches — the exact phrases, questions, and terms they use to find your product or service.</p>
+<h2>On-Page Optimization</h2>
+<ul>
+<li>Titles and meta descriptions containing your primary keyword</li>
+<li>A logical heading structure (H1, H2, H3)</li>
+<li>Internal linking between relevant content</li>
+<li>Fast page loading speed</li>
+</ul>
+<h2>Quality Content as the Foundation</h2>
+<p>Google increasingly prioritizes content that genuinely answers user questions comprehensively, not content that merely stuffs keywords.</p>
+<h2>Conclusion</h2>
+<p>SEO is not an instant trick — it's a consistent process of building relevance and credibility for both search engines and users.</p>
+`,
+  },
+  {
+    id: 60,
+    slug: "content-marketing-trends",
+    title: "Content Marketing Trends Every Business Should Apply",
+    description:
+      "The content marketing trends businesses should adopt — from interactive formats to AI-powered personalization at scale.",
+    category: "Digital Marketing & SEO",
+    tags: ["Content Marketing", "Trends", "Content Strategy"],
+    date: "2026-03-10",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Content marketing keeps shifting from "posting regularly" to a more measurable, data-driven discipline.</p>
+<h2>1. Content Based on Real Questions</h2>
+<p>Instead of guessing topics, use the actual questions customers ask via support and social media as your content source.</p>
+<h2>2. Interactive Formats</h2>
+<p>Quizzes, calculators, and participatory content tend to earn more engagement than passive content.</p>
+<h2>3. Repurposing Across Formats</h2>
+<p>One idea can become an article, a short video, an infographic, and a social thread — maximizing the value of every piece of research.</p>
+<h2>4. AI-Powered Personalization</h2>
+<p>AI enables content variations tailored to different audience segments without rewriting everything from scratch.</p>
+<h2>Conclusion</h2>
+<p>Effective content marketing is rooted in real audience needs and executed consistently across formats.</p>
+`,
+  },
+  {
+    id: 61,
+    slug: "ai-customer-service-247",
+    title: "AI for Customer Service: A Cost-Effective 24/7 Solution",
+    description:
+      "How AI turns customer service into a consistent, fast, 24/7 operation that is far more cost-effective than a fully manual team.",
+    category: "CRM & Customer Support",
+    tags: ["Customer Service", "AI", "Operational Efficiency"],
+    date: "2026-03-11",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1553775282-20af80779df7?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Today's customers expect fast responses whenever they need them — including late at night or on holidays. A manual team struggles to meet this expectation without large costs.</p>
+<h2>The Challenge of Traditional Support</h2>
+<ul>
+<li>Limited hours keep customers waiting</li>
+<li>Rising recruitment and training costs for a large team</li>
+<li>Inconsistent response quality between agents</li>
+</ul>
+<h2>How AI Fills the Gap</h2>
+<p>AI customer service handles common questions instantly, then routes complex cases to human agents with full conversation context — so customers never have to repeat themselves.</p>
+<h2>Impact on Cost and Satisfaction</h2>
+<p>Combining AI with a human team can significantly lower support costs while improving satisfaction thanks to far shorter wait times.</p>
+<h2>Conclusion</h2>
+<p>AI customer service doesn't replace your human team — it strengthens it, handling high volume while freeing agents for cases that truly need a personal touch.</p>
+`,
+  },
+  {
+    id: 62,
+    slug: "future-of-ai-in-business",
+    title: "The Future of AI in Business: Opportunities and Challenges",
+    description:
+      "How AI is shaping the future of business — the opportunities, the challenges, and the steps companies can take starting today.",
+    category: "AI & Technology",
+    tags: ["Future of AI", "Business", "Innovation"],
+    date: "2026-03-12",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>AI is no longer a technology of the future — it's part of business operations today. The question isn't "whether," but "how fast" your business adapts.</p>
+<h2>Opportunities for Business</h2>
+<ul>
+<li>Access to AI tools previously reserved for large enterprises</li>
+<li>The ability to compete with global brands through operational efficiency</li>
+<li>Personalizing service at scale without growing headcount linearly</li>
+</ul>
+<h2>Challenges to Anticipate</h2>
+<p>The digital skills gap, data privacy concerns, and the need to keep a human touch in the customer experience.</p>
+<h2>Steps You Can Take Now</h2>
+<p>Start with a small, high-impact area — a chatbot for support, AI for content production, or a CRM integrated with AI for customer management.</p>
+<h2>Conclusion</h2>
+<p>Businesses that start experimenting with AI today will hold a significant advantage over those who wait until it becomes mandatory.</p>
 `,
   },
 ];

@@ -250,6 +250,16 @@ body {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+/* Distinctive display typeface for headings + tighter optical tracking */
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display), var(--font-geist-sans), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  font-feature-settings: "ss01", "ss02";
+}
+
 /* Smooth theme transition — scoped to key elements only */
 body,
 nav,

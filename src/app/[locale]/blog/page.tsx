@@ -8,14 +8,6 @@ import Footer from "@/components/Footer";
 import { articles } from "@/data/articles";
 import { useT, useLocale } from "@/i18n/I18nProvider";
 
-const categoryValues = [
-    "AI & Teknologi",
-    "Digital Agency & Branding",
-    "Mobile App Development",
-    "CRM & Customer Support",
-    "Digital Marketing & SEO",
-];
-
 const ALL = "__all__";
 
 export default function BlogPage() {
@@ -24,16 +16,21 @@ export default function BlogPage() {
     const locale = useLocale();
     const dateLocale = locale === "id" ? "id-ID" : "en-US";
 
+    // Only show articles written in the current language
+    const localeArticles = articles.filter((a) => (a.locale ?? "id") === locale);
+
     const filtered =
         activeCategory === ALL
-            ? articles
-            : articles.filter((a) => a.category === activeCategory);
+            ? localeArticles
+            : localeArticles.filter((a) => a.category === activeCategory);
 
     const sorted = [...filtered].sort(
         (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 
-    const categories = [{ value: ALL, label: t.blog.all }, ...categoryValues.map((c) => ({ value: c, label: c }))];
+    // Derive categories from the available articles for this locale
+    const uniqueCategories = Array.from(new Set(localeArticles.map((a) => a.category)));
+    const categories = [{ value: ALL, label: t.blog.all }, ...uniqueCategories.map((c) => ({ value: c, label: c }))];
 
     return (
         <>

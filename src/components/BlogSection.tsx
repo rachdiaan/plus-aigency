@@ -12,6 +12,7 @@ export default function BlogSection() {
     const locale = useLocale();
 
     const latest = [...articles]
+        .filter((a) => (a.locale ?? "id") === locale)
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         .slice(0, 3);
 
