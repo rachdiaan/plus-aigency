@@ -7,124 +7,193 @@ import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLocale } from "@/i18n/I18nProvider";
 
-/* ─────────────────────── DATA ─────────────────────── */
+/* ─────────────────────── DATA (bilingual) ─────────────────────── */
 
-const capabilities = [
-    {
-        icon: "🧠",
-        title: "AI Content Planner",
-        desc: "Generate smart content calendars with AI-driven suggestions tailored to your brand and audience.",
-        color: "primary" as const,
-    },
-    {
-        icon: "🎨",
-        title: "Visual Generator",
-        desc: "Create stunning marketing visuals, banners, and social media assets with AI image generation.",
-        color: "secondary" as const,
-    },
-    {
-        icon: "📊",
-        title: "Strategy Analyzer",
-        desc: "Analyze viral potential, predict engagement, and optimize your content strategy in real-time.",
-        color: "tertiary" as const,
-    },
-    {
-        icon: "🎙️",
-        title: "Live Stream Tools",
-        desc: "AI-powered live streaming assistant with auto-captions, real-time analytics, and audience engagement.",
-        color: "primary" as const,
-    },
-    {
-        icon: "👥",
-        title: "KOL Database",
-        desc: "Find verified influencers with engagement rates, pricing, and audience demographics at your fingertips.",
-        color: "secondary" as const,
-    },
-    {
-        icon: "⚡",
-        title: "AI Voice Assistant",
-        desc: "Hands-free marketing automation — dictate briefs, get AI suggestions, and manage campaigns by voice.",
-        color: "tertiary" as const,
-    },
+const capIcons = ["🧠", "🎨", "📊", "🎙️", "👥", "⚡"] as const;
+const capColors = ["primary", "secondary", "tertiary", "primary", "secondary", "tertiary"] as const;
+const chatMeta = [
+    { role: "bot" as const, delay: 0 },
+    { role: "user" as const, delay: 1200 },
+    { role: "bot" as const, delay: 2800 },
+    { role: "user" as const, delay: 5000 },
+    { role: "bot" as const, delay: 6500 },
+];
+const planMeta = [
+    { name: "Starter", price: "$25", period: "/month", highlight: false },
+    { name: "Premium", price: "$50", period: "/month", highlight: true },
+];
+const tmMeta = [
+    { name: "Mary Jones", avatar: "MJ" },
+    { name: "Andrew Walker", avatar: "AW" },
+    { name: "Kate Doe", avatar: "KD" },
 ];
 
-const chatMessages = [
-    { role: "bot" as const, text: "Hi! 👋 I'm plus. AI assistant. How can I help your business today?", delay: 0 },
-    { role: "user" as const, text: "I need a content plan for my coffee shop's Instagram", delay: 1200 },
-    { role: "bot" as const, text: "Great! I'll create a 7-day content calendar for your coffee shop. Here's what I suggest:\n\n📅 Mon: Behind-the-scenes brewing\n📅 Tue: Customer testimonial repost\n📅 Wed: Tips & tricks (latte art)\n📅 Thu: New menu highlight\n📅 Fri: Weekend promo teaser\n📅 Sat: User-generated content\n📅 Sun: Relaxing vibes reel", delay: 2800 },
-    { role: "user" as const, text: "That's perfect! Can you also generate a visual for Monday's post?", delay: 5000 },
-    { role: "bot" as const, text: "Absolutely! 🎨 I'm generating a warm, aesthetic behind-the-scenes visual with your brand colors... Done! You can download it from the Visual Generator tab.", delay: 6500 },
-];
+type Copy = {
+    hero: { badge: string; titleA: string; titleB: string; desc: string; studio: string; pills: string[]; ctaTry: string; ctaView: string; trust: string; assistant: string; status: string; placeholder: string };
+    caps: { tag: string; titleA: string; titleB: string; subtitle: string; learnMore: string; items: { title: string; desc: string }[] };
+    chat: string[];
+    pricing: { tag: string; title: string; subtitle: string; mostPopular: string; choose: string; teamStat: React.ReactNode; plans: { features: string[] }[] };
+    testimonials: { tag: string; title: string; items: { quote: string; role: string }[] };
+    faq: { tag: string; title: string; items: { q: string; a: string }[] };
+    cta: { tag: string; titleA: string; titleB: string; subtitle: string; launch: string; back: string };
+};
 
-const pricingPlans = [
-    {
-        name: "Starter",
-        price: "$25",
-        period: "/month",
-        features: [
-            "1,000 AI messages/month",
-            "Basic content planner",
-            "5 image generations/day",
-            "Email support",
+const COPY: Record<"en" | "id", Copy> = {
+    en: {
+        hero: {
+            badge: "AI-Powered Chat Bot",
+            titleA: "Simplify Your Life",
+            titleB: "With Our Chatbot",
+            desc: "Your Smartest AI Chatbot — Always Ready to Assist! Experience seamless conversations, instant answers, and 24/7 support. Powered by cutting-edge AI from the",
+            studio: "plus. AI Marketing Studio",
+            pills: ["AI Content Planner", "Image Generator", "KOL Finder", "Live Ops"],
+            ctaTry: "Try AI Studio",
+            ctaView: "View Capabilities",
+            trust: "Trusted by 120+ professionals",
+            assistant: "plus. AI Assistant",
+            status: "Online — Always ready",
+            placeholder: "Type your message...",
+        },
+        caps: {
+            tag: "Capabilities",
+            titleA: "Your Virtual Agent for",
+            titleB: "Smarter Interactions",
+            subtitle: "We harness the power of AI and collaboration to deliver tailored marketing solutions that drive success for MSMEs.",
+            learnMore: "Learn more →",
+            items: [
+                { title: "AI Content Planner", desc: "Generate smart content calendars with AI-driven suggestions tailored to your brand and audience." },
+                { title: "Visual Generator", desc: "Create stunning marketing visuals, banners, and social media assets with AI image generation." },
+                { title: "Strategy Analyzer", desc: "Analyze viral potential, predict engagement, and optimize your content strategy in real-time." },
+                { title: "Live Stream Tools", desc: "AI-powered live streaming assistant with auto-captions, real-time analytics, and audience engagement." },
+                { title: "KOL Database", desc: "Find verified influencers with engagement rates, pricing, and audience demographics at your fingertips." },
+                { title: "AI Voice Assistant", desc: "Hands-free marketing automation — dictate briefs, get AI suggestions, and manage campaigns by voice." },
+            ],
+        },
+        chat: [
+            "Hi! 👋 I'm plus. AI assistant. How can I help your business today?",
+            "I need a content plan for my coffee shop's Instagram",
+            "Great! I'll create a 7-day content calendar for your coffee shop. Here's what I suggest:\n\n📅 Mon: Behind-the-scenes brewing\n📅 Tue: Customer testimonial repost\n📅 Wed: Tips & tricks (latte art)\n📅 Thu: New menu highlight\n📅 Fri: Weekend promo teaser\n📅 Sat: User-generated content\n📅 Sun: Relaxing vibes reel",
+            "That's perfect! Can you also generate a visual for Monday's post?",
+            "Absolutely! 🎨 I'm generating a warm, aesthetic behind-the-scenes visual with your brand colors... Done! You can download it from the Visual Generator tab.",
         ],
-        highlight: false,
+        pricing: {
+            tag: "Flexible Pricing",
+            title: "Pick the Perfect Plan for Your Team",
+            subtitle: "Customized pricing solutions crafted to deliver value while ensuring satisfaction.",
+            mostPopular: "Most Popular",
+            choose: "Choose Plan",
+            teamStat: <>We are a team of <strong className="text-slate-900 dark:text-white">120+ dedicated professionals</strong> united by vision.</>,
+            plans: [
+                { features: ["1,000 AI messages/month", "Basic content planner", "5 image generations/day", "Email support"] },
+                { features: ["Unlimited AI messages", "Advanced content planner", "Unlimited image generation", "KOL database access", "Live stream tools", "Priority support 24/7"] },
+            ],
+        },
+        testimonials: {
+            tag: "Testimonials",
+            title: "What Our Clients Say",
+            items: [
+                { quote: "Collaborating with plus. was an exceptional journey. They truly grasped our goals and produced a solution that aligned perfectly with our vision.", role: "CEO, Laketown OH" },
+                { quote: "Working with plus. was a game changer. Their team crafted a platform that's both beautiful and intuitive, elevating our user engagement.", role: "CTO, ITactics CA" },
+                { quote: "Their expertise in blending technology with design truly impressed me. The platform transformed our digital engagement completely.", role: "CMO, Los Angeles CA" },
+            ],
+        },
+        faq: {
+            tag: "Need Assistance?",
+            title: "Frequently Asked Questions",
+            items: [
+                { q: "What are the first steps?", a: "Simply sign up, connect your social accounts, and our AI will analyze your brand to provide tailored content suggestions within minutes." },
+                { q: "Do you offer virtual consultations?", a: "Yes! Our AI assistant provides 24/7 virtual consultations. Premium users also get access to human marketing experts for strategy sessions." },
+                { q: "What industries do you specialize in?", a: "We serve MSMEs across F&B, fashion, beauty, tech, travel, and more. Our AI adapts to any industry's unique marketing needs." },
+                { q: "Do you collaborate with startups?", a: "Absolutely! We specialize in empowering startups with tailored AI solutions that drive growth and efficiency. Our Starter plan is perfect for new ventures." },
+            ],
+        },
+        cta: {
+            tag: "Get Started",
+            titleA: "Ready to Transform Your",
+            titleB: "Marketing with AI?",
+            subtitle: "Join 120+ businesses already using plus. AI Marketing Studio to grow their brand faster and smarter.",
+            launch: "Launch AI Studio",
+            back: "Back to Home",
+        },
     },
-    {
-        name: "Premium",
-        price: "$50",
-        period: "/month",
-        features: [
-            "Unlimited AI messages",
-            "Advanced content planner",
-            "Unlimited image generation",
-            "KOL database access",
-            "Live stream tools",
-            "Priority support 24/7",
+    id: {
+        hero: {
+            badge: "Chatbot AI Bertenaga AI",
+            titleA: "Permudah Hidup Anda",
+            titleB: "Dengan Chatbot Kami",
+            desc: "Chatbot AI tercerdas Anda — selalu siap membantu! Rasakan percakapan mulus, jawaban instan, dan dukungan 24/7. Didukung AI mutakhir dari",
+            studio: "plus. AI Marketing Studio",
+            pills: ["AI Content Planner", "Image Generator", "Pencari KOL", "Live Ops"],
+            ctaTry: "Coba AI Studio",
+            ctaView: "Lihat Kemampuan",
+            trust: "Dipercaya 120+ profesional",
+            assistant: "Asisten AI plus.",
+            status: "Online — Selalu siap",
+            placeholder: "Ketik pesan Anda...",
+        },
+        caps: {
+            tag: "Kemampuan",
+            titleA: "Agen Virtual Anda untuk",
+            titleB: "Interaksi yang Lebih Cerdas",
+            subtitle: "Kami memanfaatkan kekuatan AI dan kolaborasi untuk menghadirkan solusi marketing yang disesuaikan demi kesuksesan UKM.",
+            learnMore: "Selengkapnya →",
+            items: [
+                { title: "AI Content Planner", desc: "Buat kalender konten cerdas dengan saran berbasis AI yang disesuaikan dengan brand dan audiens Anda." },
+                { title: "Visual Generator", desc: "Ciptakan visual marketing, banner, dan aset media sosial yang memukau dengan AI image generation." },
+                { title: "Strategy Analyzer", desc: "Analisis potensi viral, prediksi engagement, dan optimalkan strategi konten Anda secara real-time." },
+                { title: "Live Stream Tools", desc: "Asisten live streaming bertenaga AI dengan auto-caption, analitik real-time, dan engagement audiens." },
+                { title: "Database KOL", desc: "Temukan influencer terverifikasi lengkap dengan engagement rate, harga, dan demografi audiens dalam genggaman." },
+                { title: "AI Voice Assistant", desc: "Otomasi marketing hands-free — diktekan brief, dapatkan saran AI, dan kelola kampanye dengan suara." },
+            ],
+        },
+        chat: [
+            "Hai! 👋 Saya asisten AI plus. Ada yang bisa saya bantu untuk bisnis Anda hari ini?",
+            "Saya butuh rencana konten untuk Instagram kedai kopi saya",
+            "Bagus! Saya akan membuat kalender konten 7 hari untuk kedai kopi Anda. Berikut saran saya:\n\n📅 Sen: Behind-the-scenes proses seduh\n📅 Sel: Repost testimoni pelanggan\n📅 Rab: Tips & trik (latte art)\n📅 Kam: Highlight menu baru\n📅 Jum: Teaser promo akhir pekan\n📅 Sab: Konten dari pengguna\n📅 Min: Reel suasana santai",
+            "Sempurna! Bisa juga buatkan visual untuk postingan hari Senin?",
+            "Tentu! 🎨 Saya sedang membuat visual behind-the-scenes yang hangat dan estetik dengan warna brand Anda... Selesai! Anda bisa mengunduhnya dari tab Visual Generator.",
         ],
-        highlight: true,
-        tag: "Most Popular",
+        pricing: {
+            tag: "Harga Fleksibel",
+            title: "Pilih Paket yang Tepat untuk Tim Anda",
+            subtitle: "Solusi harga yang disesuaikan untuk memberi nilai sekaligus memastikan kepuasan Anda.",
+            mostPopular: "Paling Populer",
+            choose: "Pilih Paket",
+            teamStat: <>Kami adalah tim beranggotakan <strong className="text-slate-900 dark:text-white">120+ profesional berdedikasi</strong> yang bersatu dalam satu visi.</>,
+            plans: [
+                { features: ["1.000 pesan AI/bulan", "Content planner dasar", "5 generasi gambar/hari", "Dukungan email"] },
+                { features: ["Pesan AI tanpa batas", "Content planner lanjutan", "Generasi gambar tanpa batas", "Akses database KOL", "Tools live stream", "Dukungan prioritas 24/7"] },
+            ],
+        },
+        testimonials: {
+            tag: "Testimoni",
+            title: "Apa Kata Klien Kami",
+            items: [
+                { quote: "Berkolaborasi dengan plus. adalah perjalanan yang luar biasa. Mereka benar-benar memahami tujuan kami dan menghasilkan solusi yang selaras sempurna dengan visi kami.", role: "CEO, Laketown OH" },
+                { quote: "Bekerja dengan plus. mengubah segalanya. Tim mereka merancang platform yang indah sekaligus intuitif, meningkatkan engagement pengguna kami.", role: "CTO, ITactics CA" },
+                { quote: "Keahlian mereka memadukan teknologi dengan desain sungguh mengesankan. Platform ini benar-benar mengubah engagement digital kami.", role: "CMO, Los Angeles CA" },
+            ],
+        },
+        faq: {
+            tag: "Butuh Bantuan?",
+            title: "Pertanyaan yang Sering Diajukan",
+            items: [
+                { q: "Apa langkah pertamanya?", a: "Cukup daftar, hubungkan akun media sosial Anda, dan AI kami akan menganalisis brand Anda untuk memberikan saran konten yang disesuaikan dalam hitungan menit." },
+                { q: "Apakah ada konsultasi virtual?", a: "Ya! Asisten AI kami menyediakan konsultasi virtual 24/7. Pengguna Premium juga mendapat akses ke pakar marketing manusia untuk sesi strategi." },
+                { q: "Industri apa yang menjadi spesialisasi Anda?", a: "Kami melayani UKM di bidang F&B, fashion, kecantikan, teknologi, travel, dan lainnya. AI kami beradaptasi dengan kebutuhan marketing unik setiap industri." },
+                { q: "Apakah Anda bekerja sama dengan startup?", a: "Tentu saja! Kami mengkhususkan diri memberdayakan startup dengan solusi AI yang mendorong pertumbuhan dan efisiensi. Paket Starter kami sempurna untuk usaha baru." },
+            ],
+        },
+        cta: {
+            tag: "Mulai Sekarang",
+            titleA: "Siap Mengubah",
+            titleB: "Marketing Anda dengan AI?",
+            subtitle: "Bergabunglah dengan 120+ bisnis yang sudah menggunakan plus. AI Marketing Studio untuk menumbuhkan brand mereka lebih cepat dan cerdas.",
+            launch: "Luncurkan AI Studio",
+            back: "Kembali ke Beranda",
+        },
     },
-];
-
-const testimonials = [
-    {
-        quote: "Collaborating with plus. was an exceptional journey. They truly grasped our goals and produced a solution that aligned perfectly with our vision.",
-        name: "Mary Jones",
-        role: "CEO, Laketown OH",
-        avatar: "MJ",
-    },
-    {
-        quote: "Working with plus. was a game changer. Their team crafted a platform that's both beautiful and intuitive, elevating our user engagement.",
-        name: "Andrew Walker",
-        role: "CTO, ITactics CA",
-        avatar: "AW",
-    },
-    {
-        quote: "Their expertise in blending technology with design truly impressed me. The platform transformed our digital engagement completely.",
-        name: "Kate Doe",
-        role: "CMO, Los Angeles CA",
-        avatar: "KD",
-    },
-];
-
-const faqs = [
-    {
-        q: "What are the first steps?",
-        a: "Simply sign up, connect your social accounts, and our AI will analyze your brand to provide tailored content suggestions within minutes.",
-    },
-    {
-        q: "Do you offer virtual consultations?",
-        a: "Yes! Our AI assistant provides 24/7 virtual consultations. Premium users also get access to human marketing experts for strategy sessions.",
-    },
-    {
-        q: "What industries do you specialize in?",
-        a: "We serve MSMEs across F&B, fashion, beauty, tech, travel, and more. Our AI adapts to any industry's unique marketing needs.",
-    },
-    {
-        q: "Do you collaborate with startups?",
-        a: "Absolutely! We specialize in empowering startups with tailored AI solutions that drive growth and efficiency. Our Starter plan is perfect for new ventures.",
-    },
-];
+};
 
 const colorMap = {
     primary: {
@@ -152,10 +221,12 @@ const colorMap = {
 function ChatDemo() {
     const [visibleMessages, setVisibleMessages] = useState<number>(0);
     const messagesRef = useRef<HTMLDivElement>(null);
+    const locale = useLocale();
+    const c = COPY[locale];
 
     useEffect(() => {
         const timers: ReturnType<typeof setTimeout>[] = [];
-        chatMessages.forEach((msg, i) => {
+        chatMeta.forEach((msg, i) => {
             timers.push(
                 setTimeout(() => setVisibleMessages((prev) => Math.max(prev, i + 1)), msg.delay)
             );
@@ -182,8 +253,8 @@ function ChatDemo() {
                     <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white dark:border-slate-900 bg-emerald-500" />
                 </div>
                 <div>
-                    <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">plus. AI Assistant</p>
-                    <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Online — Always ready</p>
+                    <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">{c.hero.assistant}</p>
+                    <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">{c.hero.status}</p>
                 </div>
                 <div className="ml-auto flex gap-1">
                     <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -192,27 +263,27 @@ function ChatDemo() {
 
             {/* Messages */}
             <div ref={messagesRef} className="h-80 overflow-y-auto p-4 space-y-3 bg-slate-50 dark:bg-slate-950/50">
-                {chatMessages.slice(0, visibleMessages).map((msg, i) => (
+                {c.chat.slice(0, visibleMessages).map((text, i) => (
                     <div
                         key={i}
-                        className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                        className={`flex ${chatMeta[i].role === "user" ? "justify-end" : "justify-start"}`}
                         style={{
                             animation: "fadeSlideUp 0.3s ease-out forwards",
                         }}
                     >
                         <div
-                            className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed whitespace-pre-line ${msg.role === "user"
+                            className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed whitespace-pre-line ${chatMeta[i].role === "user"
                                 ? "bg-blue-600 text-white rounded-br-md"
                                 : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 rounded-bl-md"
                                 }`}
                         >
-                            {msg.text}
+                            {text}
                         </div>
                     </div>
                 ))}
 
                 {/* Typing indicator */}
-                {visibleMessages < chatMessages.length && visibleMessages > 0 && (
+                {visibleMessages < c.chat.length && visibleMessages > 0 && (
                     <div className="flex justify-start">
                         <div className="flex gap-1 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-3 rounded-bl-md">
                             <span className="h-2 w-2 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "0ms" }} />
@@ -228,7 +299,7 @@ function ChatDemo() {
                 <div className="flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 px-4 py-2">
                     <input
                         type="text"
-                        placeholder="Type your message..."
+                        placeholder={c.hero.placeholder}
                         className="flex-1 bg-transparent text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 outline-none"
                         readOnly
                     />
@@ -247,6 +318,7 @@ function ChatDemo() {
 
 function HeroSection() {
     const locale = useLocale();
+    const c = COPY[locale];
     return (
         <section className="relative min-h-screen overflow-hidden flex items-center">
             {/* Background */}
@@ -274,30 +346,29 @@ function HeroSection() {
                         <div className="hero-animate inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5">
                             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
                             <span className="text-xs font-semibold tracking-wider text-primary uppercase">
-                                AI-Powered Chat Bot
+                                {c.hero.badge}
                             </span>
                         </div>
 
                         <h1 className="hero-animate hero-animate-delay-1 mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-5xl lg:text-6xl">
-                            Simplify Your Life
+                            {c.hero.titleA}
                             <br />
-                            <span className="gradient-text">With Our Chatbot</span>
+                            <span className="gradient-text">{c.hero.titleB}</span>
                         </h1>
 
                         <p className="hero-animate hero-animate-delay-2 mt-5 max-w-lg text-base leading-relaxed text-[#475569] dark:text-[#CBD5E1]">
-                            Your Smartest AI Chatbot — Always Ready to Assist! Experience seamless conversations,
-                            instant answers, and 24/7 support. Powered by cutting-edge AI from the{" "}
+                            {c.hero.desc}{" "}
                             <Link
                                 href={`/${locale}/studio`}
                                 className="font-semibold text-primary hover:underline"
                             >
-                                plus. AI Marketing Studio
+                                {c.hero.studio}
                             </Link>.
                         </p>
 
                         {/* Feature pills */}
                         <div className="hero-animate hero-animate-delay-2 mt-6 flex flex-wrap gap-2">
-                            {["AI Content Planner", "Image Generator", "KOL Finder", "Live Ops"].map((f) => (
+                            {c.hero.pills.map((f) => (
                                 <span key={f} className="rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-3 py-1 text-xs font-medium text-[#64748B] dark:text-[#94A3B8]">
                                     {f}
                                 </span>
@@ -310,7 +381,7 @@ function HeroSection() {
                                 className="btn-glow inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 dark:bg-white px-8 py-3.5 text-sm font-semibold text-white dark:text-slate-900 transition-all hover:scale-105 hover:shadow-2xl"
                             >
                                 <span>🚀</span>
-                                Try AI Studio
+                                {c.hero.ctaTry}
                                 <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
@@ -319,20 +390,20 @@ function HeroSection() {
                                 href="#capabilities"
                                 className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-8 py-3.5 text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:bg-slate-100 dark:hover:bg-slate-800 hover:scale-105"
                             >
-                                View Capabilities
+                                {c.hero.ctaView}
                             </a>
                         </div>
 
                         {/* Trust badge */}
                         <div className="hero-animate hero-animate-delay-3 mt-6 flex items-center gap-3 text-sm text-[#64748B] dark:text-[#94A3B8]">
                             <div className="flex -space-x-2">
-                                {["bg-primary", "bg-secondary", "bg-tertiary", "bg-primary-dark"].map((c, i) => (
-                                    <div key={i} className={`h-7 w-7 rounded-full ${c} border-2 border-white dark:border-slate-950 flex items-center justify-center text-[10px] font-bold text-white`}>
+                                {["bg-primary", "bg-secondary", "bg-tertiary", "bg-primary-dark"].map((bg, i) => (
+                                    <div key={i} className={`h-7 w-7 rounded-full ${bg} border-2 border-white dark:border-slate-950 flex items-center justify-center text-[10px] font-bold text-white`}>
                                         {["MJ", "AW", "KD", "EC"][i]}
                                     </div>
                                 ))}
                             </div>
-                            <span>Trusted by <strong className="text-[#0F172A] dark:text-[#F8FAFC]">120+ professionals</strong></span>
+                            <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">{c.hero.trust}</span>
                         </div>
                     </div>
 
@@ -352,28 +423,28 @@ function HeroSection() {
 
 function CapabilitiesSection() {
     const ref = useScrollReveal();
+    const c = COPY[useLocale()];
 
     return (
         <section id="capabilities" className="py-24 lg:py-32 bg-slate-50 dark:bg-slate-900/[0.2]">
             <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="text-center">
                     <span className="fade-up inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-purple-600 dark:text-purple-400">
-                        <span>⚡</span> Capabilities
+                        <span>⚡</span> {c.caps.tag}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
-                        Your Virtual Agent for
+                        {c.caps.titleA}
                         <br />
-                        <span className="gradient-text">Smarter Interactions</span>
+                        <span className="gradient-text">{c.caps.titleB}</span>
                     </h2>
                     <p className="fade-up fade-up-delay-2 mx-auto mt-4 max-w-xl text-base text-slate-600 dark:text-slate-400">
-                        We harness the power of AI and collaboration to deliver tailored marketing solutions
-                        that drive success for MSMEs.
+                        {c.caps.subtitle}
                     </p>
                 </div>
 
                 <div className="fade-up fade-up-delay-3 mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {capabilities.map((c, i) => {
-                        const colors = colorMap[c.color];
+                    {c.caps.items.map((item, i) => {
+                        const colors = colorMap[capColors[i]];
                         return (
                             <div
                                 key={i}
@@ -382,12 +453,12 @@ function CapabilitiesSection() {
                                 <div className="absolute -top-8 -right-8 h-24 w-24 rounded-full bg-blue-500/5 blur-2xl transition-all group-hover:bg-blue-500/10 group-hover:scale-150" />
                                 <div className="relative z-10">
                                     <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${colors.bg} text-2xl`}>
-                                        {c.icon}
+                                        {capIcons[i]}
                                     </div>
-                                    <h3 className="mt-5 text-lg font-bold text-slate-900 dark:text-white">{c.title}</h3>
-                                    <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{c.desc}</p>
+                                    <h3 className="mt-5 text-lg font-bold text-slate-900 dark:text-white">{item.title}</h3>
+                                    <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{item.desc}</p>
                                     <div className={`mt-4 text-xs font-semibold ${colors.text} opacity-0 transition-opacity group-hover:opacity-100`}>
-                                        Learn more →
+                                        {c.caps.learnMore}
                                     </div>
                                 </div>
                             </div>
@@ -402,47 +473,48 @@ function CapabilitiesSection() {
 function PricingSection() {
     const ref = useScrollReveal();
     const locale = useLocale();
+    const c = COPY[locale];
 
     return (
         <section id="pricing-plans" className="py-24 lg:py-32 bg-white dark:bg-slate-950">
             <div ref={ref} className="mx-auto max-w-5xl px-6 lg:px-8">
                 <div className="text-center">
                     <span className="fade-up inline-block rounded-full bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400">
-                        Flexible Pricing
+                        {c.pricing.tag}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-                        Pick the Perfect Plan for Your Team
+                        {c.pricing.title}
                     </h2>
                     <p className="fade-up fade-up-delay-2 mx-auto mt-4 max-w-lg text-base text-slate-600 dark:text-slate-400">
-                        Customized pricing solutions crafted to deliver value while ensuring satisfaction.
+                        {c.pricing.subtitle}
                     </p>
                 </div>
 
                 <div className="fade-up fade-up-delay-3 mt-14 grid gap-8 sm:grid-cols-2">
-                    {pricingPlans.map((plan, i) => (
+                    {c.pricing.plans.map((plan, i) => (
                         <div
                             key={i}
-                            className={`group relative overflow-hidden rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${plan.highlight
+                            className={`group relative overflow-hidden rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${planMeta[i].highlight
                                 ? "border-blue-500 bg-white dark:bg-slate-900 shadow-blue-500/10 scale-[1.02]"
                                 : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
                                 }`}
                         >
-                            {plan.tag && (
+                            {planMeta[i].highlight && (
                                 <span className="absolute top-4 right-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
-                                    {plan.tag}
+                                    {c.pricing.mostPopular}
                                 </span>
                             )}
 
-                            <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{plan.name}</p>
+                            <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{planMeta[i].name}</p>
                             <div className="mt-3 flex items-baseline gap-1">
-                                <span className="text-5xl font-extrabold text-slate-900 dark:text-white">{plan.price}</span>
-                                <span className="text-base text-slate-500 dark:text-slate-400">{plan.period}</span>
+                                <span className="text-5xl font-extrabold text-slate-900 dark:text-white">{planMeta[i].price}</span>
+                                <span className="text-base text-slate-500 dark:text-slate-400">{planMeta[i].period}</span>
                             </div>
 
                             <ul className="mt-8 space-y-3">
                                 {plan.features.map((f, j) => (
                                     <li key={j} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
-                                        <svg className={`h-4 w-4 shrink-0 ${plan.highlight ? "text-blue-500" : "text-emerald-500"}`} fill="currentColor" viewBox="0 0 20 20">
+                                        <svg className={`h-4 w-4 shrink-0 ${planMeta[i].highlight ? "text-blue-500" : "text-emerald-500"}`} fill="currentColor" viewBox="0 0 20 20">
                                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                         </svg>
                                         {f}
@@ -452,12 +524,12 @@ function PricingSection() {
 
                             <Link
                                 href={`/${locale}#pricing`}
-                                className={`mt-8 block rounded-full py-3 text-center text-sm font-semibold transition-all hover:scale-105 ${plan.highlight
+                                className={`mt-8 block rounded-full py-3 text-center text-sm font-semibold transition-all hover:scale-105 ${planMeta[i].highlight
                                     ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90"
                                     : "border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
                                     }`}
                             >
-                                Choose Plan
+                                {c.pricing.choose}
                             </Link>
                         </div>
                     ))}
@@ -465,7 +537,7 @@ function PricingSection() {
 
                 {/* Team stat */}
                 <p className="fade-up mt-10 text-center text-sm text-slate-500">
-                    We are a team of <strong className="text-slate-900 dark:text-white">120+ dedicated professionals</strong> united by vision.
+                    {c.pricing.teamStat}
                 </p>
             </div>
         </section>
@@ -474,21 +546,22 @@ function PricingSection() {
 
 function TestimonialsSection() {
     const ref = useScrollReveal();
+    const c = COPY[useLocale()];
 
     return (
         <section className="py-24 lg:py-32 bg-slate-50 dark:bg-[#0B1120]">
             <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="text-center">
                     <span className="fade-up inline-flex items-center gap-2 rounded-full bg-tertiary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-tertiary">
-                        <span>💬</span> Testimonials
+                        <span>💬</span> {c.testimonials.tag}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-4xl">
-                        What Our Clients Say
+                        {c.testimonials.title}
                     </h2>
                 </div>
 
                 <div className="fade-up fade-up-delay-2 mt-14 grid gap-8 sm:grid-cols-3">
-                    {testimonials.map((t, i) => (
+                    {c.testimonials.items.map((t, i) => (
                         <div
                             key={i}
                             className="group relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
@@ -499,10 +572,10 @@ function TestimonialsSection() {
                             <p className="text-sm leading-relaxed text-[#475569] dark:text-[#CBD5E1] italic">&ldquo;{t.quote}&rdquo;</p>
                             <div className="mt-6 flex items-center gap-3">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-xs font-bold text-white">
-                                    {t.avatar}
+                                    {tmMeta[i].avatar}
                                 </div>
                                 <div>
-                                    <p className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{t.name}</p>
+                                    <p className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{tmMeta[i].name}</p>
                                     <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">{t.role}</p>
                                 </div>
                             </div>
@@ -517,21 +590,22 @@ function TestimonialsSection() {
 function FAQSection() {
     const ref = useScrollReveal();
     const [openIdx, setOpenIdx] = useState<number | null>(null);
+    const c = COPY[useLocale()];
 
     return (
         <section className="py-24 lg:py-32 bg-white dark:bg-slate-950">
             <div ref={ref} className="mx-auto max-w-3xl px-6 lg:px-8">
                 <div className="text-center">
                     <span className="fade-up inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-                        Need Assistance?
+                        {c.faq.tag}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-4xl">
-                        Frequently Asked Questions
+                        {c.faq.title}
                     </h2>
                 </div>
 
                 <div className="fade-up fade-up-delay-2 mt-14 space-y-3">
-                    {faqs.map((faq, i) => (
+                    {c.faq.items.map((faq, i) => (
                         <div
                             key={i}
                             className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 transition-all hover:border-blue-500/20"
@@ -565,6 +639,7 @@ function FAQSection() {
 function CTASection() {
     const ref = useScrollReveal();
     const locale = useLocale();
+    const c = COPY[locale];
 
     return (
         <section className="py-24 lg:py-32 bg-slate-50 dark:bg-[#0B1120]">
@@ -577,16 +652,15 @@ function CTASection() {
 
                     <div className="relative z-10">
                         <span className="inline-flex items-center gap-2 rounded-full bg-tertiary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-tertiary">
-                            <span>🚀</span> Get Started
+                            <span>🚀</span> {c.cta.tag}
                         </span>
                         <h2 className="mt-5 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-4xl">
-                            Ready to Transform Your
+                            {c.cta.titleA}
                             <br />
-                            <span className="gradient-text">Marketing with AI?</span>
+                            <span className="gradient-text">{c.cta.titleB}</span>
                         </h2>
                         <p className="mx-auto mt-4 max-w-lg text-base text-[#475569] dark:text-[#CBD5E1]">
-                            Join 120+ businesses already using plus. AI Marketing Studio to grow their brand
-                            faster and smarter.
+                            {c.cta.subtitle}
                         </p>
 
                         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -594,7 +668,7 @@ function CTASection() {
                                 href={`/${locale}/studio`}
                                 className="btn-glow inline-flex items-center gap-2 rounded-full bg-slate-900 dark:bg-white px-8 py-3.5 text-sm font-semibold text-white dark:text-slate-900 transition-all hover:scale-105 hover:shadow-2xl"
                             >
-                                Launch AI Studio
+                                {c.cta.launch}
                                 <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
@@ -603,7 +677,7 @@ function CTASection() {
                                 href={`/${locale}`}
                                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-8 py-3.5 text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:bg-slate-100 dark:hover:bg-slate-800 hover:scale-105"
                             >
-                                Back to Home
+                                {c.cta.back}
                             </Link>
                         </div>
                     </div>
