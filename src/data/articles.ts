@@ -1812,4 +1812,360 @@ export const articles: Article[] = [
 <p>Businesses that start experimenting with AI today will hold a significant advantage over those who wait until it becomes mandatory.</p>
 `,
   },
+  {
+    id: 63,
+    slug: "keamanan-siber-untuk-bisnis",
+    title: "Keamanan Siber untuk Bisnis: Panduan Dasar yang Wajib Dipahami",
+    description:
+      "Panduan dasar keamanan siber untuk bisnis: ancaman umum, langkah perlindungan, dan cara membangun budaya keamanan di tim Anda.",
+    category: "AI & Teknologi",
+    tags: ["Keamanan Siber", "Cybersecurity", "Proteksi Data"],
+    date: "2026-03-13",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Seiring bisnis bergerak ke ranah digital, risiko keamanan siber pun meningkat. Serangan tidak hanya menargetkan perusahaan besar — UKM justru sering menjadi sasaran karena perlindungannya lebih lemah.</p>
+<h2>Ancaman yang Paling Umum</h2>
+<ul>
+<li>Phishing — email atau pesan palsu untuk mencuri data login</li>
+<li>Ransomware — mengunci data dan meminta tebusan</li>
+<li>Kebocoran data pelanggan akibat sistem yang tidak terlindungi</li>
+</ul>
+<h2>Langkah Perlindungan Dasar</h2>
+<ul>
+<li>Aktifkan autentikasi dua faktor (2FA) di semua akun penting</li>
+<li>Lakukan backup data secara rutin dan terpisah</li>
+<li>Perbarui software dan sistem secara berkala</li>
+<li>Gunakan kata sandi kuat dan unik untuk setiap layanan</li>
+</ul>
+<h2>Bangun Budaya Keamanan</h2>
+<p>Teknologi saja tidak cukup. Latih tim untuk mengenali tanda-tanda serangan, karena faktor manusia sering menjadi celah terbesar.</p>
+<h2>Kesimpulan</h2>
+<p>Keamanan siber bukan biaya, melainkan investasi untuk melindungi kelangsungan bisnis dan kepercayaan pelanggan Anda.</p>
+`,
+  },
+  {
+    id: 64,
+    slug: "strategi-meningkatkan-penjualan-ecommerce",
+    title: "Strategi Meningkatkan Penjualan E-Commerce yang Terbukti",
+    description:
+      "Kumpulan strategi praktis untuk meningkatkan penjualan toko online Anda — dari optimasi produk hingga retargeting dan loyalitas pelanggan.",
+    category: "Digital Marketing & SEO",
+    tags: ["E-Commerce", "Penjualan Online", "Konversi"],
+    date: "2026-03-14",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Memiliki toko online saja tidak cukup. Persaingan e-commerce semakin ketat, dan dibutuhkan strategi yang tepat agar pengunjung berubah menjadi pembeli.</p>
+<h2>Optimasi Halaman Produk</h2>
+<p>Foto berkualitas, deskripsi yang jelas, dan ulasan pelanggan adalah faktor penentu keputusan beli. Pastikan setiap halaman produk menjawab keraguan calon pembeli.</p>
+<h2>Permudah Proses Checkout</h2>
+<ul>
+<li>Kurangi jumlah langkah hingga seminimal mungkin</li>
+<li>Sediakan beragam metode pembayaran lokal</li>
+<li>Tampilkan biaya pengiriman secara transparan sejak awal</li>
+</ul>
+<h2>Manfaatkan Retargeting</h2>
+<p>Sebagian besar pengunjung tidak langsung membeli. Kampanye retargeting mengingatkan mereka tentang produk yang dilihat dan mendorong mereka kembali.</p>
+<h2>Bangun Loyalitas</h2>
+<p>Program poin, penawaran khusus, dan layanan purna jual yang baik membuat pelanggan kembali — dan pelanggan setia jauh lebih murah daripada akuisisi baru.</p>
+<h2>Kesimpulan</h2>
+<p>Peningkatan penjualan e-commerce datang dari perbaikan kecil yang konsisten di setiap tahap perjalanan pembeli.</p>
+`,
+  },
+  {
+    id: 65,
+    slug: "marketing-automation-efisiensi",
+    title: "Marketing Automation: Otomatisasi yang Meningkatkan Efisiensi",
+    description:
+      "Pahami apa itu marketing automation, manfaatnya bagi bisnis, dan proses apa saja yang paling tepat untuk diotomatisasi.",
+    category: "Digital Marketing & SEO",
+    tags: ["Marketing Automation", "Efisiensi", "Otomasi"],
+    date: "2026-03-15",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Tim marketing sering kewalahan dengan tugas berulang. Marketing automation membantu mengotomatiskan tugas-tugas ini sehingga tim bisa fokus pada strategi.</p>
+<h2>Apa yang Bisa Diotomatisasi?</h2>
+<ul>
+<li>Email selamat datang dan nurturing untuk leads baru</li>
+<li>Follow-up otomatis berdasarkan perilaku pelanggan</li>
+<li>Penjadwalan posting media sosial</li>
+<li>Segmentasi audiens berdasarkan data</li>
+</ul>
+<h2>Manfaat Utama</h2>
+<p>Selain menghemat waktu, automation memastikan tidak ada leads yang terlewat dan komunikasi tetap konsisten — dua hal yang sulit dijaga secara manual.</p>
+<h2>Hindari Kesalahan Umum</h2>
+<p>Automation bukan berarti menghapus sentuhan personal. Pesan yang terlalu robotik justru menurunkan engagement. Seimbangkan otomatisasi dengan personalisasi.</p>
+<h2>Kesimpulan</h2>
+<p>Marketing automation yang dirancang dengan baik melipatgandakan kapasitas tim tanpa menambah beban kerja.</p>
+`,
+  },
+  {
+    id: 66,
+    slug: "prinsip-ui-ux-design",
+    title: "Prinsip UI/UX Design untuk Pengalaman Pengguna yang Optimal",
+    description:
+      "Prinsip dasar UI/UX design yang membuat produk digital mudah digunakan, menyenangkan, dan mendorong konversi lebih tinggi.",
+    category: "Digital Agency & Branding",
+    tags: ["UI/UX", "Desain Produk", "User Experience"],
+    date: "2026-03-16",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Desain yang baik bukan hanya soal tampilan menarik, tetapi tentang seberapa mudah dan menyenangkan produk digunakan. UI dan UX adalah dua sisi mata uang yang sama.</p>
+<h2>UI vs UX: Apa Bedanya?</h2>
+<p>UI (User Interface) berkaitan dengan tampilan visual — warna, tombol, tipografi. UX (User Experience) berkaitan dengan keseluruhan pengalaman — seberapa mudah pengguna mencapai tujuannya.</p>
+<h2>Prinsip Dasar yang Penting</h2>
+<ul>
+<li><strong>Kesederhanaan</strong> — hilangkan elemen yang tidak perlu</li>
+<li><strong>Konsistensi</strong> — pola yang sama di seluruh produk</li>
+<li><strong>Hierarki visual</strong> — pandu mata pengguna ke hal terpenting</li>
+<li><strong>Feedback</strong> — beri respons jelas atas setiap aksi pengguna</li>
+</ul>
+<h2>Uji dengan Pengguna Nyata</h2>
+<p>Asumsi desainer sering berbeda dari perilaku pengguna sebenarnya. Pengujian usability mengungkap masalah yang tidak terlihat di atas kertas.</p>
+<h2>Kesimpulan</h2>
+<p>UI/UX yang baik mengurangi friksi, meningkatkan kepuasan, dan pada akhirnya mendorong konversi serta loyalitas.</p>
+`,
+  },
+  {
+    id: 67,
+    slug: "conversion-rate-optimization-panduan",
+    title: "Conversion Rate Optimization (CRO): Panduan Praktis",
+    description:
+      "Pelajari cara meningkatkan tingkat konversi website Anda melalui CRO — dari analisis data hingga A/B testing yang efektif.",
+    category: "Digital Marketing & SEO",
+    tags: ["CRO", "Konversi", "Optimasi Website"],
+    date: "2026-03-17",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Mendatangkan traffic ke website itu penting, tetapi percuma jika pengunjung tidak melakukan aksi yang diinginkan. Di sinilah CRO berperan.</p>
+<h2>Apa Itu CRO?</h2>
+<p>Conversion Rate Optimization adalah proses sistematis meningkatkan persentase pengunjung yang menyelesaikan tujuan — entah membeli, mendaftar, atau menghubungi.</p>
+<h2>Langkah-Langkah CRO</h2>
+<ul>
+<li>Analisis data untuk menemukan titik di mana pengunjung berhenti</li>
+<li>Bentuk hipotesis perbaikan berdasarkan data, bukan tebakan</li>
+<li>Lakukan A/B testing untuk menguji perubahan</li>
+<li>Terapkan yang menang, lalu ulangi prosesnya</li>
+</ul>
+<h2>Elemen yang Sering Diuji</h2>
+<p>Headline, warna dan teks tombol CTA, panjang formulir, serta penempatan bukti sosial seperti testimoni adalah elemen yang paling berdampak.</p>
+<h2>Kesimpulan</h2>
+<p>CRO adalah proses berkelanjutan. Peningkatan kecil yang konsisten dapat melipatgandakan hasil dari traffic yang sudah ada.</p>
+`,
+  },
+  {
+    id: 68,
+    slug: "personal-branding-era-digital",
+    title: "Personal Branding di Era Digital: Panduan Membangun Reputasi",
+    description:
+      "Cara membangun personal branding yang kuat di era digital untuk profesional, founder, dan kreator — beserta langkah praktisnya.",
+    category: "Digital Agency & Branding",
+    tags: ["Personal Branding", "Reputasi", "Karier"],
+    date: "2026-03-18",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80&auto=format",
+    locale: "id",
+    content: `
+<p>Di era digital, reputasi online seseorang sering menjadi kesan pertama. Personal branding yang kuat membuka peluang karier, bisnis, dan kolaborasi.</p>
+<h2>Mulai dari Kejelasan</h2>
+<p>Tentukan untuk apa Anda ingin dikenal. Personal branding yang efektif fokus pada satu atau dua area keahlian, bukan mencoba menjadi segalanya.</p>
+<h2>Konsisten di Semua Platform</h2>
+<ul>
+<li>Gunakan foto, nama, dan gaya komunikasi yang konsisten</li>
+<li>Bagikan konten yang relevan dengan bidang Anda secara rutin</li>
+<li>Berinteraksi secara otentik, bukan sekadar promosi diri</li>
+</ul>
+<h2>Berikan Nilai Lebih Dulu</h2>
+<p>Personal branding terkuat dibangun dengan memberi — berbagi ilmu, pengalaman, dan insight yang bermanfaat bagi audiens Anda.</p>
+<h2>Kesimpulan</h2>
+<p>Personal branding bukan tentang pencitraan, melainkan menampilkan keahlian dan nilai Anda secara konsisten dan otentik.</p>
+`,
+  },
+  {
+    id: 69,
+    slug: "cybersecurity-for-business-guide",
+    title: "Cybersecurity for Business: A Practical Guide",
+    description:
+      "A practical cybersecurity guide for businesses: common threats, essential protections, and how to build a security-aware team culture.",
+    category: "AI & Technology",
+    tags: ["Cybersecurity", "Data Protection", "IT Security"],
+    date: "2026-03-19",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>As businesses move online, cybersecurity risks grow. Attacks don't only target large enterprises — small businesses are frequent targets precisely because their defenses are weaker.</p>
+<h2>The Most Common Threats</h2>
+<ul>
+<li>Phishing — fake emails or messages designed to steal login data</li>
+<li>Ransomware — locking your data and demanding payment</li>
+<li>Customer data leaks from unprotected systems</li>
+</ul>
+<h2>Essential Protection Steps</h2>
+<ul>
+<li>Enable two-factor authentication (2FA) on all critical accounts</li>
+<li>Back up data regularly and keep it separate</li>
+<li>Keep software and systems updated</li>
+<li>Use strong, unique passwords for every service</li>
+</ul>
+<h2>Build a Security Culture</h2>
+<p>Technology alone isn't enough. Train your team to recognize attack signals, because the human factor is often the biggest vulnerability.</p>
+<h2>Conclusion</h2>
+<p>Cybersecurity is not a cost — it's an investment in protecting your business continuity and customer trust.</p>
+`,
+  },
+  {
+    id: 70,
+    slug: "ecommerce-growth-strategies",
+    title: "E-Commerce Growth: Proven Strategies to Increase Online Sales",
+    description:
+      "Practical strategies to grow your online store's sales — from product page optimization to retargeting and customer loyalty.",
+    category: "Digital Marketing & SEO",
+    tags: ["E-Commerce", "Online Sales", "Conversion"],
+    date: "2026-03-20",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Simply having an online store isn't enough. E-commerce competition keeps intensifying, and the right strategy is what turns visitors into buyers.</p>
+<h2>Optimize Product Pages</h2>
+<p>Quality photos, clear descriptions, and customer reviews drive purchase decisions. Make sure every product page answers a buyer's doubts.</p>
+<h2>Simplify Checkout</h2>
+<ul>
+<li>Reduce the number of steps to a minimum</li>
+<li>Offer multiple local payment methods</li>
+<li>Show shipping costs transparently from the start</li>
+</ul>
+<h2>Leverage Retargeting</h2>
+<p>Most visitors don't buy on the first visit. Retargeting campaigns remind them of products they viewed and bring them back.</p>
+<h2>Build Loyalty</h2>
+<p>Points programs, exclusive offers, and great after-sales service keep customers returning — and loyal customers are far cheaper than new acquisitions.</p>
+<h2>Conclusion</h2>
+<p>E-commerce growth comes from small, consistent improvements at every stage of the buyer journey.</p>
+`,
+  },
+  {
+    id: 71,
+    slug: "marketing-automation-work-smarter",
+    title: "Marketing Automation: Working Smarter, Not Harder",
+    description:
+      "Understand what marketing automation is, its benefits for business, and which processes are best suited for automation.",
+    category: "Digital Marketing & SEO",
+    tags: ["Marketing Automation", "Efficiency", "Automation"],
+    date: "2026-03-21",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Marketing teams are often buried in repetitive tasks. Marketing automation handles these so the team can focus on strategy.</p>
+<h2>What Can Be Automated?</h2>
+<ul>
+<li>Welcome and nurturing emails for new leads</li>
+<li>Behavior-based automated follow-ups</li>
+<li>Social media post scheduling</li>
+<li>Data-driven audience segmentation</li>
+</ul>
+<h2>Key Benefits</h2>
+<p>Beyond saving time, automation ensures no lead slips through and communication stays consistent — two things that are hard to maintain manually.</p>
+<h2>Avoid Common Mistakes</h2>
+<p>Automation doesn't mean removing the personal touch. Overly robotic messages reduce engagement. Balance automation with personalization.</p>
+<h2>Conclusion</h2>
+<p>Well-designed marketing automation multiplies your team's capacity without adding to their workload.</p>
+`,
+  },
+  {
+    id: 72,
+    slug: "ui-ux-design-principles",
+    title: "UI/UX Design Principles Every Digital Product Needs",
+    description:
+      "Core UI/UX design principles that make digital products easy to use, delightful, and conversion-friendly.",
+    category: "Digital Agency & Branding",
+    tags: ["UI/UX", "Product Design", "User Experience"],
+    date: "2026-03-22",
+    readTime: "6 min",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Good design is not just about looking attractive — it's about how easy and enjoyable a product is to use. UI and UX are two sides of the same coin.</p>
+<h2>UI vs UX: What's the Difference?</h2>
+<p>UI (User Interface) covers the visuals — colors, buttons, typography. UX (User Experience) covers the overall experience — how easily users reach their goals.</p>
+<h2>Essential Principles</h2>
+<ul>
+<li><strong>Simplicity</strong> — remove anything unnecessary</li>
+<li><strong>Consistency</strong> — the same patterns across the product</li>
+<li><strong>Visual hierarchy</strong> — guide the eye to what matters most</li>
+<li><strong>Feedback</strong> — give a clear response to every user action</li>
+</ul>
+<h2>Test With Real Users</h2>
+<p>Designer assumptions often differ from real user behavior. Usability testing reveals problems invisible on paper.</p>
+<h2>Conclusion</h2>
+<p>Great UI/UX reduces friction, increases satisfaction, and ultimately drives conversion and loyalty.</p>
+`,
+  },
+  {
+    id: 73,
+    slug: "conversion-rate-optimization-guide",
+    title: "Conversion Rate Optimization (CRO): A Practical Guide",
+    description:
+      "Learn how to improve your website's conversion rate through CRO — from data analysis to effective A/B testing.",
+    category: "Digital Marketing & SEO",
+    tags: ["CRO", "Conversion", "Website Optimization"],
+    date: "2026-03-23",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>Driving traffic to a website matters, but it's wasted if visitors don't take the desired action. That's where CRO comes in.</p>
+<h2>What Is CRO?</h2>
+<p>Conversion Rate Optimization is the systematic process of increasing the percentage of visitors who complete a goal — whether buying, signing up, or getting in touch.</p>
+<h2>The CRO Steps</h2>
+<ul>
+<li>Analyze data to find where visitors drop off</li>
+<li>Form improvement hypotheses based on data, not guesses</li>
+<li>Run A/B tests to validate changes</li>
+<li>Roll out the winner, then repeat the process</li>
+</ul>
+<h2>Frequently Tested Elements</h2>
+<p>Headlines, CTA button color and copy, form length, and the placement of social proof like testimonials are the highest-impact elements.</p>
+<h2>Conclusion</h2>
+<p>CRO is an ongoing process. Small, consistent improvements can multiply the results from your existing traffic.</p>
+`,
+  },
+  {
+    id: 74,
+    slug: "personal-branding-digital-age",
+    title: "Personal Branding in the Digital Age: Building Your Reputation",
+    description:
+      "How to build a strong personal brand in the digital age for professionals, founders, and creators — with practical steps.",
+    category: "Digital Agency & Branding",
+    tags: ["Personal Branding", "Reputation", "Career"],
+    date: "2026-03-24",
+    readTime: "5 min",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80&auto=format",
+    locale: "en",
+    content: `
+<p>In the digital age, someone's online reputation is often the first impression. A strong personal brand opens doors to career, business, and collaboration opportunities.</p>
+<h2>Start With Clarity</h2>
+<p>Decide what you want to be known for. Effective personal branding focuses on one or two areas of expertise, not trying to be everything.</p>
+<h2>Be Consistent Everywhere</h2>
+<ul>
+<li>Use a consistent photo, name, and communication style</li>
+<li>Share content relevant to your field regularly</li>
+<li>Engage authentically, not just self-promotion</li>
+</ul>
+<h2>Give Value First</h2>
+<p>The strongest personal brands are built by giving — sharing knowledge, experience, and insights that genuinely help your audience.</p>
+<h2>Conclusion</h2>
+<p>Personal branding isn't about image-crafting — it's about consistently and authentically showcasing your expertise and value.</p>
+`,
+  },
 ];

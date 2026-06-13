@@ -60,14 +60,16 @@ export default async function BlogLayout({
                 url: `${SITE}/favicon.png`,
             },
         },
-        blogPost: articles.map((article) => ({
-            "@type": "BlogPosting",
-            headline: article.title,
-            description: article.description,
-            url: `${SITE}/${loc}/blog/${article.slug}`,
-            datePublished: article.date,
-            image: article.image,
-        })),
+        blogPost: articles
+            .filter((article) => (article.locale ?? "id") === loc)
+            .map((article) => ({
+                "@type": "BlogPosting",
+                headline: article.title,
+                description: article.description,
+                url: `${SITE}/${loc}/blog/${article.slug}`,
+                datePublished: article.date,
+                image: article.image,
+            })),
     };
 
     return (

@@ -73,7 +73,7 @@ export default async function ArticlePage({
     }
 
     const related = articles
-        .filter((a) => a.category === article.category && a.id !== article.id)
+        .filter((a) => (a.locale ?? "id") === locale && a.category === article.category && a.id !== article.id)
         .slice(0, 3);
 
     const articleUrl = `${SITE}/${locale}/blog/${article.slug}`;
