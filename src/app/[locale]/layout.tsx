@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import { notFound } from "next/navigation";
 import ThemeProvider from "@/components/ThemeProvider";
+import ScrollToTop from "@/components/ScrollToTop";
 import { I18nProvider } from "@/i18n/I18nProvider";
 import { getDictionary } from "@/i18n/getDictionary";
 import { locales, isLocale } from "@/i18n/config";
@@ -116,12 +117,35 @@ export default async function LocaleLayout({
     sameAs: ["https://www.instagram.com/", "https://www.linkedin.com/"],
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "plus.",
+    url: `${SITE}/${locale}`,
+    inLanguage: locale === "id" ? "id-ID" : "en-US",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE}/${locale}/blog?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        {/* Speed up first image paint from the CDN (better LCP) */}
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} antialiased`}>
@@ -132,6 +156,7 @@ export default async function LocaleLayout({
           <I18nProvider locale={locale} dict={dict}>
             {children}
           </I18nProvider>
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>
