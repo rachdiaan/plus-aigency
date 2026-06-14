@@ -256,6 +256,16 @@ body {
     color 0.4s ease;
 }
 
+/* Distinctive display typeface for headings + tighter optical tracking */
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display), var(--font-geist-sans), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  font-feature-settings: "ss01", "ss02";
+}
+
 /* Smooth theme transition — scoped to key elements only */
 body,
 nav,
@@ -414,6 +424,39 @@ button {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
   border-color: var(--primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   Article content (blog)
+   ═══════════════════════════════════════════════════ */
+.article-content {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.article-content h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+}
+
+.article-content ul {
+  margin: 1rem 0 1.25rem 1.25rem;
+  list-style-type: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.article-content strong {
+  color: var(--foreground);
+  font-weight: 600;
 }
 
 /* ═══════════════════════════════════════════════════

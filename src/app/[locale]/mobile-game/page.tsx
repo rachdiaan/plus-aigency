@@ -3,28 +3,87 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useTranslation } from "@/components/LanguageProvider";
+import { useLocale } from "@/i18n/I18nProvider";
 
-/* ─────────────────────── DATA (non-translatable configurations) ─────────────────────── */
+/* ─────────────────────── DATA (bilingual) ─────────────────────── */
 
-const techStack = [
-    "Unity",
-    "Unreal Engine",
-    "Godot",
-    "Firebase",
-    "AWS GameLift",
-    "PlayFab",
-    "Photon",
-    "Nakama",
+const genreMeta = [
+    { img: "https://images.unsplash.com/photo-1511882150382-421056c89033?w=800&q=80&auto=format", color: "from-red-500/80 to-orange-500/80", icon: "🏎️" },
+    { img: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&q=80&auto=format", color: "from-emerald-500/80 to-teal-500/80", icon: "⚽" },
+    { img: "https://images.unsplash.com/photo-1552820728-8b83bb6b2b28?w=800&q=80&auto=format", color: "from-violet-500/80 to-indigo-500/80", icon: "♟️" },
+    { img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80&auto=format", color: "from-rose-500/80 to-pink-500/80", icon: "⚔️" },
 ];
+const featureIcons = ["🎮", "🌐", "🎨", "🔒", "📊", "🚀"];
+const tmMeta = [
+    { name: "Emily Carter", location: "Rivertown, CA", avatar: "EC" },
+    { name: "Andrew Walker", location: "Omaha, NE", avatar: "AW" },
+    { name: "Nicole Brown", location: "Austin, TX", avatar: "NB" },
+];
+const statMeta = [
+    { value: "50M+", icon: "📲" },
+    { value: "200+", icon: "🎮" },
+    { value: "99.9%", icon: "⚡" },
+    { value: "4.8★", icon: "⭐" },
+];
+const techStack = ["Unity", "Unreal Engine", "Godot", "Firebase", "AWS GameLift", "PlayFab", "Photon", "Nakama"];
+
+const COPY = {
+    en: {
+        hero: { badge: "Mobile Game Development", titleA: "Level Up Your", titleB: "Gaming Vision", subtitle: "We combine innovation with expertise to create immersive gaming experiences that captivate millions of players worldwide.", trusted: "Trusted by 20k+ players worldwide", explore: "Explore Our Games", capabilities: "Our Capabilities", scroll: "Scroll to explore" },
+        features: { tag: "Our Capabilities", titleA: "Everything You Need to", titleB: "Ship Great Games", subtitle: "A forward-thinking IT solutions provider dedicated to empowering game studios through innovative technology.", poweredBy: "Powered By", items: [
+            { title: "Cross-Platform Play", desc: "Build once, play everywhere — iOS, Android, PC, and console with seamless cross-play support." },
+            { title: "Multiplayer Infrastructure", desc: "Scalable server architecture supporting millions of concurrent players with low-latency matchmaking." },
+            { title: "Stunning Visuals", desc: "Next-gen graphics powered by Unity and Unreal Engine with custom shaders and particle systems." },
+            { title: "Anti-Cheat & Security", desc: "Enterprise-grade security protecting player data and ensuring fair competitive gameplay." },
+            { title: "Live Analytics", desc: "Real-time player behavior analytics, retention tracking, and monetization optimization dashboards." },
+            { title: "Live Ops Ready", desc: "Dynamic content delivery for events, seasons, battle passes, and A/B testing without app updates." },
+        ] },
+        showcase: { tag: "Our Projects", titleA: "Games That Players", titleB: " Love", subtitle: "From concept to chart-topping launch — explore our portfolio of games across every genre.", view: "View Project", genres: [
+            { genre: "Racing", title: "High-Speed Thrills", desc: "Heart-pounding racing experiences with realistic physics, stunning tracks, and multiplayer competition." },
+            { genre: "Sports", title: "Athletic Champions", desc: "Immersive sports simulations that capture the excitement of the arena with realistic gameplay mechanics." },
+            { genre: "Strategy", title: "Tactical Mastery", desc: "Deep strategic gameplay that challenges your mind — build empires, command armies, and outwit opponents." },
+            { genre: "Fighting", title: "Combat Arena", desc: "Intense fighting games with fluid combat systems, unique characters, and competitive ranked modes." },
+        ] },
+        stats: ["Downloads", "Games Shipped", "Uptime SLA", "Avg Rating"],
+        testimonials: { tag: "Client Testimonials", title: "What Our Partners Say", items: [
+            "plus. revolutionized our game launch with their tailored solutions. Their expertise and support were invaluable in achieving our goals.",
+            "Their cutting-edge solutions and expert guidance truly elevated our game's performance. Player retention increased 340% in 3 months.",
+            "plus. transformed our mobile game with their cloud solutions. The transition from beta to live was seamless and efficient.",
+        ] },
+        cta: { badge: "Ready to Launch?", titleA: "Transform Your Gaming", titleB: "Vision Into Reality", subtitle: "A forward-thinking studio dedicated to delivering innovative gaming experiences that drive success for every client.", start: "Get Started Now", back: "Back to Home" },
+    },
+    id: {
+        hero: { badge: "Pengembangan Game Mobile", titleA: "Tingkatkan", titleB: "Visi Gaming Anda", subtitle: "Kami memadukan inovasi dengan keahlian untuk menciptakan pengalaman bermain imersif yang memikat jutaan pemain di seluruh dunia.", trusted: "Dipercaya 20rb+ pemain di seluruh dunia", explore: "Jelajahi Game Kami", capabilities: "Kemampuan Kami", scroll: "Gulir untuk menjelajah" },
+        features: { tag: "Kemampuan Kami", titleA: "Semua yang Anda Butuhkan untuk", titleB: "Merilis Game Hebat", subtitle: "Penyedia solusi IT yang berpikir maju dan berdedikasi memberdayakan studio game melalui teknologi inovatif.", poweredBy: "Didukung Oleh", items: [
+            { title: "Cross-Platform Play", desc: "Bangun sekali, mainkan di mana saja — iOS, Android, PC, dan konsol dengan dukungan cross-play yang mulus." },
+            { title: "Infrastruktur Multiplayer", desc: "Arsitektur server yang skalabel mendukung jutaan pemain bersamaan dengan matchmaking latensi rendah." },
+            { title: "Visual Memukau", desc: "Grafis next-gen yang didukung Unity dan Unreal Engine dengan custom shader dan sistem partikel." },
+            { title: "Anti-Cheat & Keamanan", desc: "Keamanan tingkat enterprise yang melindungi data pemain dan memastikan permainan kompetitif yang adil." },
+            { title: "Analitik Langsung", desc: "Analitik perilaku pemain real-time, pelacakan retensi, dan dashboard optimasi monetisasi." },
+            { title: "Siap Live Ops", desc: "Pengiriman konten dinamis untuk event, season, battle pass, dan A/B testing tanpa update aplikasi." },
+        ] },
+        showcase: { tag: "Proyek Kami", titleA: "Game yang", titleB: " Disukai Pemain", subtitle: "Dari konsep hingga rilis yang memuncaki tangga lagu — jelajahi portofolio game kami di setiap genre.", view: "Lihat Proyek", genres: [
+            { genre: "Racing", title: "Sensasi Kecepatan Tinggi", desc: "Pengalaman balap yang memacu adrenalin dengan fisika realistis, trek menakjubkan, dan kompetisi multiplayer." },
+            { genre: "Olahraga", title: "Juara Atletik", desc: "Simulasi olahraga imersif yang menangkap kegembiraan arena dengan mekanik permainan yang realistis." },
+            { genre: "Strategi", title: "Penguasaan Taktis", desc: "Permainan strategis mendalam yang menantang pikiran — bangun kerajaan, pimpin pasukan, dan kalahkan lawan." },
+            { genre: "Fighting", title: "Arena Pertarungan", desc: "Game fighting intens dengan sistem pertarungan yang halus, karakter unik, dan mode ranked kompetitif." },
+        ] },
+        stats: ["Unduhan", "Game Dirilis", "Uptime SLA", "Rating Rata-rata"],
+        testimonials: { tag: "Testimoni Klien", title: "Apa Kata Partner Kami", items: [
+            "plus. merevolusi peluncuran game kami dengan solusi yang disesuaikan. Keahlian dan dukungan mereka sangat berharga dalam mencapai tujuan kami.",
+            "Solusi mutakhir dan panduan ahli mereka benar-benar meningkatkan performa game kami. Retensi pemain naik 340% dalam 3 bulan.",
+            "plus. mengubah game mobile kami dengan solusi cloud mereka. Transisi dari beta ke live berjalan mulus dan efisien.",
+        ] },
+        cta: { badge: "Siap Diluncurkan?", titleA: "Wujudkan Visi Gaming", titleB: "Anda Menjadi Nyata", subtitle: "Studio yang berpikir maju dan berdedikasi menghadirkan pengalaman gaming inovatif yang mendorong kesuksesan setiap klien.", start: "Mulai Sekarang", back: "Kembali ke Beranda" },
+    },
+};
 
 /* ─────────────────────── SECTIONS ─────────────────────── */
 
 function HeroSection() {
-    const t = useTranslation();
-    const p = t.mobileGamePage;
-
+    const c = COPY[useLocale()].hero;
     return (
         <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
             {/* Background */}
@@ -69,23 +128,23 @@ function HeroSection() {
                 >
                     <span className="text-lg">🎮</span>
                     <span className="text-xs font-semibold tracking-wider text-white/80 uppercase">
-                        {p.heroBadge}
+                        {c.badge}
                     </span>
                 </div>
 
                 {/* Headline */}
                 <h1 className="hero-animate hero-animate-delay-1 mt-8 text-5xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-8xl">
-                    <span className="block drop-shadow-2xl">{p.heroHeading1}</span>
+                    <span className="block drop-shadow-2xl">{c.titleA}</span>
                     <span className="block mt-2">
                         <span className="bg-gradient-to-r from-[#FF6B6B] via-[#FFE66D] to-[#4ECDC4] bg-clip-text text-transparent">
-                            {p.heroHeading2}
+                            {c.titleB}
                         </span>
                     </span>
                 </h1>
 
                 {/* Subtitle */}
                 <p className="hero-animate hero-animate-delay-2 mx-auto mt-6 max-w-2xl text-lg font-medium text-white/70 sm:text-xl leading-relaxed">
-                    {p.heroDesc}
+                    {c.subtitle}
                 </p>
 
                 {/* Trusted badge */}
@@ -93,7 +152,7 @@ function HeroSection() {
                     <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    {p.trustedBadge}
+                    {c.trusted}
                 </div>
 
                 {/* CTAs */}
@@ -108,7 +167,7 @@ function HeroSection() {
                         }}
                     >
                         <span className="text-lg">🕹️</span>
-                        {p.heroCta1}
+                        {c.explore}
                         <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
@@ -117,13 +176,13 @@ function HeroSection() {
                         href="#features"
                         className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all hover:border-white/60 hover:bg-white/10 hover:scale-105"
                     >
-                        {p.heroCta2}
+                        {c.capabilities}
                     </a>
                 </div>
 
                 {/* Scroll indicator */}
                 <div className="hero-animate hero-animate-delay-3 mt-16 flex flex-col items-center gap-2">
-                    <span className="text-xs text-white/40 uppercase tracking-widest">{p.scrollIndicator}</span>
+                    <span className="text-xs text-white/40 uppercase tracking-widest">{c.scroll}</span>
                     <div className="h-10 w-6 rounded-full border-2 border-white/20 p-1">
                         <div className="h-2 w-full rounded-full bg-white/40 animate-bounce" />
                     </div>
@@ -141,37 +200,27 @@ function HeroSection() {
 
 function FeaturesSection() {
     const ref = useScrollReveal();
-    const t = useTranslation();
-    const p = t.mobileGamePage;
-
-    const features = [
-        { icon: "🎮", title: p.features[0].title, desc: p.features[0].desc },
-        { icon: "🌐", title: p.features[1].title, desc: p.features[1].desc },
-        { icon: "🎨", title: p.features[2].title, desc: p.features[2].desc },
-        { icon: "🔒", title: p.features[3].title, desc: p.features[3].desc },
-        { icon: "📊", title: p.features[4].title, desc: p.features[4].desc },
-        { icon: "🚀", title: p.features[5].title, desc: p.features[5].desc },
-    ];
+    const c = COPY[useLocale()].features;
 
     return (
         <section id="features" className="py-24 lg:py-32 bg-background">
             <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="text-center">
                     <span className="fade-up inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-                        <span>⚡</span> {p.featuresBadge}
+                        <span>⚡</span> {c.tag}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                        {p.featuresHeading.split("\n")[0]}
+                        {c.titleA}
                         <br />
-                        <span className="gradient-text">{p.featuresHeading.split("\n")[1]}</span>
+                        <span className="gradient-text">{c.titleB}</span>
                     </h2>
                     <p className="fade-up fade-up-delay-2 mx-auto mt-4 max-w-xl text-base text-foreground-secondary">
-                        {p.featuresDesc}
+                        {c.subtitle}
                     </p>
                 </div>
 
                 <div className="fade-up fade-up-delay-3 mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {features.map((f, i) => (
+                    {c.items.map((f, i) => (
                         <div
                             key={i}
                             className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-primary/30"
@@ -180,7 +229,7 @@ function FeaturesSection() {
                             <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-primary/5 blur-2xl transition-all group-hover:bg-primary/10 group-hover:scale-150" />
 
                             <div className="relative z-10">
-                                <span className="text-3xl">{f.icon}</span>
+                                <span className="text-3xl">{featureIcons[i]}</span>
                                 <h3 className="mt-4 text-lg font-bold text-foreground">{f.title}</h3>
                                 <p className="mt-2 text-sm leading-relaxed text-foreground-secondary">{f.desc}</p>
                             </div>
@@ -190,7 +239,7 @@ function FeaturesSection() {
 
                 {/* Tech Stack */}
                 <div className="fade-up mt-16 text-center">
-                    <p className="text-xs font-semibold uppercase tracking-widest text-muted mb-5">{p.featuresBadge}</p>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-muted mb-5">{c.poweredBy}</p>
                     <div className="flex flex-wrap items-center justify-center gap-3">
                         {techStack.map((tech) => (
                             <span
@@ -209,34 +258,26 @@ function FeaturesSection() {
 
 function ShowcaseSection() {
     const ref = useScrollReveal();
-    const t = useTranslation();
-    const p = t.mobileGamePage;
-
-    const gameGenres = [
-        { genre: p.gameGenres[0].genre, title: p.gameGenres[0].title, desc: p.gameGenres[0].desc, img: "https://images.unsplash.com/photo-1511882150382-421056c89033?w=800&q=80&auto=format", color: "from-red-500/80 to-orange-500/80", icon: "🏎️" },
-        { genre: p.gameGenres[1].genre, title: p.gameGenres[1].title, desc: p.gameGenres[1].desc, img: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&q=80&auto=format", color: "from-emerald-500/80 to-teal-500/80", icon: "⚽" },
-        { genre: p.gameGenres[2].genre, title: p.gameGenres[2].title, desc: p.gameGenres[2].desc, img: "https://images.unsplash.com/photo-1552820728-8b83bb6b2b28?w=800&q=80&auto=format", color: "from-violet-500/80 to-indigo-500/80", icon: "♟️" },
-        { genre: p.gameGenres[3].genre, title: p.gameGenres[3].title, desc: p.gameGenres[3].desc, img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80&auto=format", color: "from-rose-500/80 to-pink-500/80", icon: "⚔️" },
-    ];
+    const c = COPY[useLocale()].showcase;
 
     return (
         <section id="showcase" className="py-24 lg:py-32 bg-section-alt overflow-hidden">
             <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="text-center">
                     <span className="fade-up inline-flex items-center gap-2 rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-secondary">
-                        <span>🎯</span> {p.showcaseBadge}
+                        <span>🎯</span> {c.tag}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                        {p.showcaseHeading.split("\n")[0]}
-                        <span className="gradient-text"> {p.showcaseHeading.split("\n")[1]}</span>
+                        {c.titleA}
+                        <span className="gradient-text">{c.titleB}</span>
                     </h2>
                     <p className="fade-up fade-up-delay-2 mx-auto mt-4 max-w-lg text-base text-foreground-secondary">
-                        {p.showcaseDesc}
+                        {c.subtitle}
                     </p>
                 </div>
 
                 <div className="fade-up fade-up-delay-3 mt-16 grid gap-8 sm:grid-cols-2">
-                    {gameGenres.map((game, i) => (
+                    {c.genres.map((game, i) => (
                         <div
                             key={i}
                             className="group relative overflow-hidden rounded-3xl border border-border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
@@ -244,14 +285,14 @@ function ShowcaseSection() {
                         >
                             {/* Background image */}
                             <Image
-                                src={game.img}
+                                src={genreMeta[i].img}
                                 alt={game.title}
                                 fill
                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                             />
 
                             {/* Gradient overlay */}
-                            <div className={`absolute inset-0 bg-gradient-to-t ${game.color} opacity-70 transition-opacity duration-300 group-hover:opacity-85`} />
+                            <div className={`absolute inset-0 bg-gradient-to-t ${genreMeta[i].color} opacity-70 transition-opacity duration-300 group-hover:opacity-85`} />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                             {/* Content */}
@@ -259,7 +300,7 @@ function ShowcaseSection() {
                                 {/* Genre tag */}
                                 <div className="mb-auto mt-4">
                                     <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-sm border border-white/20">
-                                        {game.icon} {game.genre}
+                                        {genreMeta[i].icon} {game.genre}
                                     </span>
                                 </div>
 
@@ -272,7 +313,7 @@ function ShowcaseSection() {
 
                                 {/* Hover action */}
                                 <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-white translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                                    {t.navbar.viewAllProducts.split(" ")[0]} Project
+                                    {c.view}
                                     <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                     </svg>
@@ -288,15 +329,7 @@ function ShowcaseSection() {
 
 function StatsSection() {
     const ref = useScrollReveal();
-    const t = useTranslation();
-    const p = t.mobileGamePage;
-
-    const stats = [
-        { value: "50M+", label: p.stats[0].label, icon: "📲" },
-        { value: "200+", label: p.stats[1].label, icon: "🎮" },
-        { value: "99.9%", label: p.stats[2].label, icon: "⚡" },
-        { value: "4.8★", label: p.stats[3].label, icon: "⭐" },
-    ];
+    const labels = COPY[useLocale()].stats;
 
     return (
         <section className="py-20 lg:py-28 bg-background relative overflow-hidden">
@@ -305,11 +338,11 @@ function StatsSection() {
 
             <div ref={ref} className="relative mx-auto max-w-5xl px-6 lg:px-8">
                 <div className="fade-up grid grid-cols-2 gap-8 lg:grid-cols-4">
-                    {stats.map((s, i) => (
+                    {statMeta.map((s, i) => (
                         <div key={i} className="group text-center">
                             <span className="block text-3xl mb-3 transition-transform group-hover:scale-125 group-hover:-rotate-12">{s.icon}</span>
                             <p className="text-4xl font-extrabold text-foreground lg:text-5xl">{s.value}</p>
-                            <p className="mt-2 text-sm font-medium text-muted">{s.label}</p>
+                            <p className="mt-2 text-sm font-medium text-muted">{labels[i]}</p>
                         </div>
                     ))}
                 </div>
@@ -320,29 +353,22 @@ function StatsSection() {
 
 function TestimonialsSection() {
     const ref = useScrollReveal();
-    const t = useTranslation();
-    const p = t.mobileGamePage;
-
-    const testimonials = [
-        { quote: p.testimonials[0].quote, name: p.testimonials[0].name, location: p.testimonials[0].location, avatar: "EC" },
-        { quote: p.testimonials[1].quote, name: p.testimonials[1].name, location: p.testimonials[1].location, avatar: "AW" },
-        { quote: p.testimonials[2].quote, name: p.testimonials[2].name, location: p.testimonials[2].location, avatar: "NB" },
-    ];
+    const c = COPY[useLocale()].testimonials;
 
     return (
         <section className="py-24 lg:py-32 bg-section-alt">
             <div ref={ref} className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="text-center">
                     <span className="fade-up inline-flex items-center gap-2 rounded-full bg-tertiary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-tertiary">
-                        <span>💬</span> {p.testimonialsBadge}
+                        <span>💬</span> {c.tag}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                        {p.testimonialsHeading}
+                        {c.title}
                     </h2>
                 </div>
 
                 <div className="fade-up fade-up-delay-2 mt-14 grid gap-8 sm:grid-cols-3">
-                    {testimonials.map((t, i) => (
+                    {c.items.map((quote, i) => (
                         <div
                             key={i}
                             className="group relative rounded-2xl border border-border bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-tertiary/20"
@@ -353,16 +379,16 @@ function TestimonialsSection() {
                             </svg>
 
                             <p className="text-sm leading-relaxed text-foreground-secondary italic">
-                                &ldquo;{t.quote}&rdquo;
+                                &ldquo;{quote}&rdquo;
                             </p>
 
                             <div className="mt-6 flex items-center gap-3">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-xs font-bold text-white">
-                                    {t.avatar}
+                                    {tmMeta[i].avatar}
                                 </div>
                                 <div>
-                                    <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                                    <p className="text-xs text-muted">{t.location}</p>
+                                    <p className="text-sm font-semibold text-foreground">{tmMeta[i].name}</p>
+                                    <p className="text-xs text-muted">{tmMeta[i].location}</p>
                                 </div>
                             </div>
                         </div>
@@ -375,8 +401,8 @@ function TestimonialsSection() {
 
 function CTASection() {
     const ref = useScrollReveal();
-    const t = useTranslation();
-    const p = t.mobileGamePage;
+    const locale = useLocale();
+    const c = COPY[locale].cta;
 
     return (
         <section id="cta" className="py-24 lg:py-32 bg-background">
@@ -407,24 +433,24 @@ function CTASection() {
                     {/* Content */}
                     <div className="relative z-10 flex flex-col items-center justify-center px-6 py-16 sm:px-12 sm:py-20 lg:py-24">
                         <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white/70 backdrop-blur-sm">
-                            🚀 {p.ctaBadge}
+                            🚀 {c.badge}
                         </span>
 
                         <h2 className="mt-6 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl drop-shadow-lg">
-                            {p.ctaHeading1}
+                            {c.titleA}
                             <br />
                             <span className="bg-gradient-to-r from-[#FF6B6B] via-[#FFE66D] to-[#4ECDC4] bg-clip-text text-transparent">
-                                {p.ctaHeading2}
+                                {c.titleB}
                             </span>
                         </h2>
 
                         <p className="mx-auto mt-4 max-w-lg text-base text-white/60 leading-relaxed">
-                            {p.ctaDesc}
+                            {c.subtitle}
                         </p>
 
                         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-                            <a
-                                href="/#pricing"
+                            <Link
+                                href={`/${locale}#pricing`}
                                 className="group inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold text-white transition-all hover:scale-105 hover:shadow-2xl"
                                 style={{
                                     background: "linear-gradient(135deg, #FF6B6B 0%, #FFE66D 50%, #4ECDC4 100%)",
@@ -432,17 +458,17 @@ function CTASection() {
                                     animation: "gradientShift 3s ease infinite",
                                 }}
                             >
-                                {p.ctaCta1}
+                                {c.start}
                                 <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
-                            </a>
-                            <a
-                                href="/"
+                            </Link>
+                            <Link
+                                href={`/${locale}`}
                                 className="inline-flex items-center gap-2 rounded-full border-2 border-white/25 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all hover:border-white/50 hover:bg-white/10 hover:scale-105"
                             >
-                                {p.ctaCta2}
-                            </a>
+                                {c.back}
+                            </Link>
                         </div>
                     </div>
                 </div>

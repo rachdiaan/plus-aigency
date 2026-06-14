@@ -1,15 +1,7 @@
 "use client";
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useTranslation } from "@/components/LanguageProvider";
-
-const aiFeatureMeta = [
-    { icon: "🎨", accent: "primary" as const, href: "/ai-image-generator" },
-    { icon: "✍️", accent: "secondary" as const, href: "/ai-text-generator" },
-    { icon: "💬", accent: "primary" as const, href: "/chat-bot" },
-    { icon: "🎬", accent: "tertiary" as const, href: "/ai-video-generator" },
-    { icon: "🎵", accent: "secondary" as const, href: "/ai-music-generator" },
-];
+import { useT } from "@/i18n/I18nProvider";
 
 const accentMap = {
     primary: "bg-primary/10",
@@ -17,15 +9,25 @@ const accentMap = {
     tertiary: "bg-tertiary/10",
 };
 
-const servicesMeta = [
-    { icon: "☁️" },
-    { icon: "📈" },
-    { icon: "💡" },
-];
-
 export default function AIFeatures() {
     const ref = useScrollReveal();
-    const t = useTranslation();
+    const t = useT();
+    const f = t.aiFeatures.items;
+    const s = t.aiFeatures.services;
+
+    const aiFeatures = [
+        { title: f.image.title, description: f.image.description, icon: "🎨", accent: "primary" as const },
+        { title: f.text.title, description: f.text.description, icon: "✍️", accent: "secondary" as const },
+        { title: f.chat.title, description: f.chat.description, icon: "💬", accent: "primary" as const },
+        { title: f.video.title, description: f.video.description, icon: "🎬", accent: "tertiary" as const },
+        { title: f.music.title, description: f.music.description, icon: "🎵", accent: "secondary" as const },
+    ];
+
+    const services = [
+        { title: s.cloud.title, description: s.cloud.description, icon: "☁️" },
+        { title: s.marketing.title, description: s.marketing.description, icon: "📈" },
+        { title: s.innovative.title, description: s.innovative.description, icon: "💡" },
+    ];
 
     return (
         <section id="features" className="py-24 lg:py-32 bg-background">
@@ -34,10 +36,10 @@ export default function AIFeatures() {
                 {/* AI Features */}
                 <div className="mx-auto max-w-2xl text-center">
                     <span className="fade-up inline-block rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-secondary">
-                        {t.aiFeatures.badge}
+                        {t.aiFeatures.tag}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-4xl lg:text-5xl">
-                        {t.aiFeatures.heading}
+                        {t.aiFeatures.title}
                     </h2>
                     <p className="fade-up fade-up-delay-2 mt-4 text-base leading-relaxed text-[#475569] dark:text-[#94A3B8]">
                         {t.aiFeatures.description}
@@ -67,10 +69,10 @@ export default function AIFeatures() {
                 <div className="mt-24">
                     <div className="mx-auto max-w-2xl text-center">
                         <span className="fade-up inline-block rounded-full bg-tertiary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-tertiary">
-                            {t.aiFeatures.servicesBadge}
+                            {t.aiFeatures.servicesTag}
                         </span>
                         <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-4xl">
-                            {t.aiFeatures.servicesHeading}
+                            {t.aiFeatures.servicesTitle}
                         </h2>
                     </div>
 

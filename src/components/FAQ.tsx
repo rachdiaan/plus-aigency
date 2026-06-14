@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useTranslation } from "@/components/LanguageProvider";
+import { useT } from "@/i18n/I18nProvider";
 
 function ChevronIcon({ open }: { open: boolean }) {
     return (
@@ -26,7 +26,8 @@ function ChevronIcon({ open }: { open: boolean }) {
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
     const ref = useScrollReveal();
-    const t = useTranslation();
+    const t = useT();
+    const faqs = t.faqItems;
 
     const toggle = (i: number) => {
         setOpenIndex(openIndex === i ? null : i);
@@ -37,10 +38,10 @@ export default function FAQ() {
             <div ref={ref} className="mx-auto max-w-3xl px-6 lg:px-8">
                 <div className="text-center">
                     <span className="fade-up inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-                        {t.faq.badge}
+                        {t.faq.tag}
                     </span>
                     <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-4xl lg:text-5xl">
-                        {t.faq.heading}
+                        {t.faq.title}
                     </h2>
                     <p className="fade-up fade-up-delay-2 mt-4 text-base text-[#475569] dark:text-[#94A3B8]">
                         {t.faq.description}

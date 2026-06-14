@@ -1,9 +1,11 @@
 "use client";
 
-import { useTranslation } from "@/components/LanguageProvider";
+import Link from "next/link";
+import { useT, useLocale } from "@/i18n/I18nProvider";
 
 export default function Hero() {
-    const t = useTranslation();
+    const t = useT();
+    const locale = useLocale();
 
     return (
         <section
@@ -55,9 +57,9 @@ export default function Hero() {
                     className="hero-animate hero-animate-delay-1 mt-8 text-5xl font-bold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl drop-shadow-lg"
                     style={{ color: "var(--hero-text)", textShadow: "0 2px 24px rgba(0,0,0,0.4)" }}
                 >
-                    {t.hero.heading1}
+                    {t.hero.titleLine1}
                     <br />
-                    <span className="opacity-90">{t.hero.heading2}</span>
+                    <span className="opacity-90">{t.hero.titleLine2}</span>
                 </h1>
 
                 <p
@@ -75,9 +77,9 @@ export default function Hero() {
                 </p>
 
                 <div className="hero-animate hero-animate-delay-3 mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                    <a
-                        href="#products"
-                        className="btn-glow inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_20px_40px_-10px_rgba(12,116,235,0.4)]"
+                    <Link
+                        href={`/${locale}#products`}
+                        className="btn-glow inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold transition-all hover:scale-105 hover:shadow-2xl"
                         style={{
                             background: "var(--hero-btn-bg)",
                             color: "var(--hero-btn-text)",
@@ -87,10 +89,10 @@ export default function Hero() {
                         <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
-                    </a>
-                    <a
-                        href="#pricing"
-                        className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-bold backdrop-blur-md border-2 transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:bg-slate-100/10 dark:hover:bg-slate-800/50 drop-shadow-md hover:shadow-xl"
+                    </Link>
+                    <Link
+                        href={`/${locale}#pricing`}
+                        className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-bold backdrop-blur-md border-2 transition-all hover:scale-105 drop-shadow-md"
                         style={{
                             borderColor: "var(--hero-btn-outline-border)",
                             color: "var(--hero-btn-outline-text)",
@@ -98,7 +100,7 @@ export default function Hero() {
                         }}
                     >
                         {t.hero.ctaSecondary}
-                    </a>
+                    </Link>
                 </div>
             </div>
 
