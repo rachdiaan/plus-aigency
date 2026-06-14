@@ -125,7 +125,21 @@ function LanguageToggle() {
     const switchTo = (target: Locale) => {
         if (target === locale) return;
         persistLocale(target);
-        router.push(swapLocaleInPath(pathname, target));
+        const navigate = () => router.push(swapLocaleInPath(pathname, target));
+        // Smooth crossfade between languages. The `lang-transition` class
+        // re-enables a root fade just for this (theme toggle keeps its own
+        // circular-reveal animation untouched).
+        const doc = document as Document & {
+            startViewTransition?: (cb: () => void) => { finished: Promise<void> };
+        };
+        if (typeof doc.startViewTransition === "function") {
+            const root = document.documentElement;
+            root.classList.add("lang-transition");
+            const t = doc.startViewTransition(navigate);
+            t.finished.finally(() => root.classList.remove("lang-transition"));
+        } else {
+            navigate();
+        }
     };
 
     return (

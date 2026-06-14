@@ -3,8 +3,10 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useTranslation } from "@/components/LanguageProvider";
+import { useLocale } from "@/i18n/I18nProvider";
 
 interface Testimonial {
     quote: string;
@@ -77,6 +79,7 @@ export default function ProductPageTemplate({
     themeColors = {},
 }: ProductPageTemplateProps) {
     const t = useTranslation();
+    const locale = useLocale();
     const p = t[pageKey] as unknown as ProductPageData;
 
     const heroRef = useScrollReveal();
@@ -114,15 +117,15 @@ export default function ProductPageTemplate({
                                 {p.heroDesc}
                             </p>
                             <div className="fade-up fade-up-delay-3 mt-10 flex flex-col sm:flex-row gap-4">
-                                <a href="/#pricing" className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/25 hover:scale-105 transition-all">
+                                <Link href={`/${locale}#pricing`} className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/25 hover:scale-105 transition-all">
                                     {p.heroCta1}
                                     <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                     </svg>
-                                </a>
-                                <a href="/#contact" className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-slate-200 dark:border-slate-700 px-8 py-3.5 text-sm font-semibold hover:scale-105 transition-all text-[#0F172A] dark:text-white">
+                                </Link>
+                                <Link href={`/${locale}#contact`} className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-slate-200 dark:border-slate-700 px-8 py-3.5 text-sm font-semibold hover:scale-105 transition-all text-[#0F172A] dark:text-white">
                                     {p.heroCta2}
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -210,12 +213,12 @@ export default function ProductPageTemplate({
                         </h2>
                         <p className="fade-up fade-up-delay-1 mt-6 text-lg text-[#475569] dark:text-[#94A3B8]">{p.ctaDesc}</p>
                         <div className="fade-up fade-up-delay-2 mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <a href="/#pricing" className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-primary/25 hover:scale-105 transition-all">
+                            <Link href={`/${locale}#pricing`} className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-primary/25 hover:scale-105 transition-all">
                                 {p.ctaCta1}
-                            </a>
-                            <a href="/#contact" className="inline-flex items-center gap-2 rounded-full border-2 border-slate-200 dark:border-slate-700 px-8 py-4 text-sm font-semibold hover:scale-105 transition-all text-[#0F172A] dark:text-white">
+                            </Link>
+                            <Link href={`/${locale}#contact`} className="inline-flex items-center gap-2 rounded-full border-2 border-slate-200 dark:border-slate-700 px-8 py-4 text-sm font-semibold hover:scale-105 transition-all text-[#0F172A] dark:text-white">
                                 {p.ctaCta2}
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </section>

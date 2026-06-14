@@ -689,29 +689,34 @@ button {
   }
 }
 
-/* ─── Logo Animations ─── */
+/* ─── Logo Animations (clean + smooth) ─── */
 @keyframes logoEntrance {
   from {
     opacity: 0;
-    transform: translateY(-4px);
+    transform: translateY(-6px) scale(0.96);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 .logo-wrapper {
-  animation: logoEntrance 0.5s ease-out forwards;
+  animation: logoEntrance 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.logo-image {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 .logo-wrapper:hover .logo-image {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
-.dark .logo-wrapper:hover .logo-image {
-  filter: brightness(0) invert(1);
+.logo-wrapper:active .logo-image {
+  transform: scale(0.98);
 }
 
 @theme {
@@ -769,5 +774,21 @@ button {
   animation: none;
   mix-blend-mode: normal;
   display: block;
+}
+
+/* Scoped crossfade for language switching (does not affect theme toggle) */
+@keyframes vtFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes vtFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+html.lang-transition::view-transition-old(root) {
+  animation: vtFadeOut 0.32s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+html.lang-transition::view-transition-new(root) {
+  animation: vtFadeIn 0.32s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 

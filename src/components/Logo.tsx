@@ -20,10 +20,12 @@ export default function Logo({
     href?: string;
     className?: string;
 }) {
+    // Aspect ratio matches the trimmed logo (~2.13:1) so it renders crisp
+    // and tight — no squashing, no floating in empty space.
     const sizeMap = {
-        small: { width: 64, height: 24 },
-        default: { width: 80, height: 30 },
-        large: { width: 104, height: 40 },
+        small: { width: 51, height: 24 },
+        default: { width: 72, height: 34 },
+        large: { width: 90, height: 42 },
     };
 
     const { width, height } = sizeMap[size];
