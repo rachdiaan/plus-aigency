@@ -203,8 +203,7 @@ const colorMap = {
 
 /* ─────────────────────── COMPONENTS ─────────────────────── */
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function ChatDemo({ p }: { p: any }) {
+function ChatDemo() {
     const [visibleMessages, setVisibleMessages] = useState<number>(0);
     const messagesRef = useRef<HTMLDivElement>(null);
     const locale = useLocale();
@@ -667,196 +666,18 @@ function CTASection() {
 /* ─────────────────────── PAGE ─────────────────────── */
 
 export default function ChatBotPage() {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const t: any = useTranslation();
-    const p = t.chatBotPage;
-    const capsRef = useScrollReveal();
-    const priceRef = useScrollReveal();
-    const testRef = useScrollReveal();
-    const faqRef = useScrollReveal();
-    const ctaRef = useScrollReveal();
-    const [openIdx, setOpenIdx] = useState<number | null>(null);
-
     return (
         <>
             <Navbar />
             <main>
-                {/* ── Hero ── */}
-                <section className="relative min-h-screen overflow-hidden flex items-center">
-                    <div className="absolute inset-0 bg-background">
-                        <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(ellipse at 20% 50%, rgba(79,110,247,0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(124,92,252,0.12) 0%, transparent 50%), radial-gradient(ellipse at 60% 80%, rgba(16,185,129,0.08) 0%, transparent 50%)" }} />
-                        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, currentColor 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
-                    </div>
-                    <div className="relative z-10 mx-auto max-w-7xl px-6 pt-28 pb-16 lg:px-8">
-                        <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-                            <div>
-                                <div className="hero-animate inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                                    <span className="text-xs font-semibold tracking-wider text-primary uppercase">{p.heroBadge}</span>
-                                </div>
-                                <h1 className="hero-animate hero-animate-delay-1 mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-5xl lg:text-6xl">
-                                    {p.heroHeading1}<br /><span className="gradient-text">{p.heroHeading2}</span>
-                                </h1>
-                                <p className="hero-animate hero-animate-delay-2 mt-5 max-w-lg text-base leading-relaxed text-[#475569] dark:text-[#CBD5E1]">{p.heroDesc}</p>
-                                <div className="hero-animate hero-animate-delay-2 mt-6 flex flex-wrap gap-2">
-                                    {["AI Content Planner", "Image Generator", "KOL Finder", "Live Ops"].map((f) => (
-                                        <span key={f} className="rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-3 py-1 text-xs font-medium text-[#64748B] dark:text-[#94A3B8]">{f}</span>
-                                    ))}
-                                </div>
-                                <div className="hero-animate hero-animate-delay-3 mt-8 flex flex-col gap-3 sm:flex-row">
-                                    <a href="/studio" className="btn-glow inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 dark:bg-white px-8 py-3.5 text-sm font-semibold text-white dark:text-slate-900 transition-all hover:scale-105 hover:shadow-2xl">
-                                        <span>🚀</span>{p.heroCta1}
-                                        <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-                                    </a>
-                                    <a href="#capabilities" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-8 py-3.5 text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:bg-slate-100 dark:hover:bg-slate-800 hover:scale-105">{p.heroCta2}</a>
-                                </div>
-                                <div className="hero-animate hero-animate-delay-3 mt-6 flex items-center gap-3 text-sm text-[#64748B] dark:text-[#94A3B8]">
-                                    <div className="flex -space-x-2">
-                                        {["bg-primary", "bg-secondary", "bg-tertiary", "bg-primary-dark"].map((c, i) => (
-                                            <div key={i} className={`h-7 w-7 rounded-full ${c} border-2 border-white dark:border-slate-950 flex items-center justify-center text-[10px] font-bold text-white`}>{["MJ", "AW", "KD", "EC"][i]}</div>
-                                        ))}
-                                    </div>
-                                    <span>Trusted by <strong className="text-[#0F172A] dark:text-[#F8FAFC]">120+ professionals</strong></span>
-                                </div>
-                            </div>
-                            <div className="hero-animate hero-animate-delay-2 relative">
-                                <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/5 to-tertiary/10 blur-2xl" />
-                                <div className="relative"><ChatDemo p={p} /></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── Capabilities ── */}
-                <section id="capabilities" className="py-24 lg:py-32 bg-slate-50 dark:bg-slate-900/[0.2]">
-                    <div ref={capsRef} className="mx-auto max-w-7xl px-6 lg:px-8">
-                        <div className="text-center">
-                            <span className="fade-up inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-purple-600 dark:text-purple-400"><span>⚡</span> {p.capsBadge}</span>
-                            <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl whitespace-pre-line">{p.capsHeading}</h2>
-                            <p className="fade-up fade-up-delay-2 mx-auto mt-4 max-w-xl text-base text-slate-600 dark:text-slate-400">{p.capsDesc}</p>
-                        </div>
-                        <div className="fade-up fade-up-delay-3 mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {capIcons.map((icon, i) => {
-                                const colors = colorMap[capColors[i]];
-                                return (
-                                    <div key={i} className={`group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl ${colors.glow}`}>
-                                        <div className="absolute -top-8 -right-8 h-24 w-24 rounded-full bg-blue-500/5 blur-2xl transition-all group-hover:bg-blue-500/10 group-hover:scale-150" />
-                                        <div className="relative z-10">
-                                            <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${colors.bg} text-2xl`}>{icon}</div>
-                                            <h3 className="mt-5 text-lg font-bold text-slate-900 dark:text-white">{capabilities[i].title}</h3>
-                                            <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{capabilities[i].desc}</p>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── Pricing ── */}
-                <section id="pricing-plans" className="py-24 lg:py-32 bg-white dark:bg-slate-950">
-                    <div ref={priceRef} className="mx-auto max-w-5xl px-6 lg:px-8">
-                        <div className="text-center">
-                            <span className="fade-up inline-block rounded-full bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400">{p.pricingBadge}</span>
-                            <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">{p.pricingHeading}</h2>
-                            <p className="fade-up fade-up-delay-2 mx-auto mt-4 max-w-lg text-base text-slate-600 dark:text-slate-400">{p.pricingDesc}</p>
-                        </div>
-                        <div className="fade-up fade-up-delay-3 mt-14 grid gap-8 sm:grid-cols-2">
-                            {pricingPlans.map((plan, i) => (
-                                <div key={i} className={`group relative overflow-hidden rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${plan.highlight ? "border-blue-500 bg-white dark:bg-slate-900 shadow-blue-500/10 scale-[1.02]" : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"}`}>
-                                    {plan.tag && <span className="absolute top-4 right-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">{plan.tag}</span>}
-                                    <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{plan.name}</p>
-                                    <div className="mt-3 flex items-baseline gap-1"><span className="text-5xl font-extrabold text-slate-900 dark:text-white">{plan.price}</span><span className="text-base text-slate-500 dark:text-slate-400">{plan.period}</span></div>
-                                    <ul className="mt-8 space-y-3">
-                                        {plan.features.map((f, j) => (
-                                            <li key={j} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
-                                                <svg className={`h-4 w-4 shrink-0 ${plan.highlight ? "text-blue-500" : "text-emerald-500"}`} fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-                                                {f}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <a href="/#pricing" className={`mt-8 block rounded-full py-3 text-center text-sm font-semibold transition-all hover:scale-105 ${plan.highlight ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90" : "border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700"}`}>{p.pricingCta}</a>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── Testimonials ── */}
-                <section className="py-24 lg:py-32 bg-slate-50 dark:bg-[#0B1120]">
-                    <div ref={testRef} className="mx-auto max-w-7xl px-6 lg:px-8">
-                        <div className="text-center">
-                            <span className="fade-up inline-flex items-center gap-2 rounded-full bg-tertiary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-tertiary"><span>💬</span> {p.testimonialsBadge}</span>
-                            <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-4xl">{p.testimonialsHeading}</h2>
-                        </div>
-                        <div className="fade-up fade-up-delay-2 mt-14 grid gap-8 sm:grid-cols-3">
-                            {testimonials.map((tm, i) => (
-                                <div key={i} className="group relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                                    <svg className="h-8 w-8 text-primary/15 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
-                                    <p className="text-sm leading-relaxed text-[#475569] dark:text-[#CBD5E1] italic">&ldquo;{tm.quote}&rdquo;</p>
-                                    <div className="mt-6 flex items-center gap-3">
-                                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-xs font-bold text-white">{tm.avatar}</div>
-                                        <div><p className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{tm.name}</p><p className="text-xs text-[#64748B] dark:text-[#94A3B8]">{tm.role}</p></div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── FAQ ── */}
-                <section className="py-24 lg:py-32 bg-white dark:bg-slate-950">
-                    <div ref={faqRef} className="mx-auto max-w-3xl px-6 lg:px-8">
-                        <div className="text-center">
-                            <span className="fade-up inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">{p.faqBadge}</span>
-                            <h2 className="fade-up fade-up-delay-1 mt-5 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-4xl">{p.faqHeading}</h2>
-                        </div>
-                        <div className="fade-up fade-up-delay-2 mt-14 space-y-3">
-                            {faqs.map((faq, i) => (
-                                <div key={i} className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 transition-all hover:border-blue-500/20">
-                                    <button onClick={() => setOpenIdx(openIdx === i ? null : i)} className="flex w-full items-center justify-between px-6 py-5 text-left">
-                                        <span className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC] pr-4">{faq.q}</span>
-                                        <svg className={`h-4 w-4 shrink-0 text-[#94A3B8] dark:text-[#64748B] transition-transform duration-200 ${openIdx === i ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-                                    </button>
-                                    <div className={`overflow-hidden transition-all duration-300 ${openIdx === i ? "max-h-48 opacity-100" : "max-h-0 opacity-0"}`}>
-                                        <p className="px-6 pb-5 text-sm leading-relaxed text-[#475569] dark:text-[#CBD5E1]">{faq.a}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── CTA ── */}
-                <section className="py-24 lg:py-32 bg-slate-50 dark:bg-[#0B1120]">
-                    <div ref={ctaRef} className="mx-auto max-w-7xl px-6 lg:px-8">
-                        <div className="fade-up relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-10 text-center sm:p-16">
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-                            <div className="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-primary/8 blur-3xl" />
-                            <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-secondary/6 blur-3xl" />
-                            <div className="relative z-10">
-                                <h2 className="mt-5 text-3xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] sm:text-4xl">{p.ctaHeading1}<br /><span className="gradient-text">{p.ctaHeading2}</span></h2>
-                                <p className="mx-auto mt-4 max-w-lg text-base text-[#475569] dark:text-[#CBD5E1]">{p.ctaDesc}</p>
-                                <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                                    <a href="/studio" className="btn-glow inline-flex items-center gap-2 rounded-full bg-slate-900 dark:bg-white px-8 py-3.5 text-sm font-semibold text-white dark:text-slate-900 transition-all hover:scale-105 hover:shadow-2xl">{p.ctaCta1}<svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></a>
-                                    <a href="/" className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-8 py-3.5 text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC] transition-all hover:bg-slate-100 dark:hover:bg-slate-800 hover:scale-105">{p.ctaCta2}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <HeroSection />
+                <CapabilitiesSection />
+                <PricingSection />
+                <TestimonialsSection />
+                <FAQSection />
+                <CTASection />
             </main>
             <Footer />
         </>
     );
 }
-
-/* Capabilities data kept for icon/color since titles stay same across both languages for now */
-const capabilities = [
-    { title: "AI Content Planner", desc: "Generate smart content calendars with AI-driven suggestions tailored to your brand and audience." },
-    { title: "Visual Generator", desc: "Create stunning marketing visuals, banners, and social media assets with AI image generation." },
-    { title: "Strategy Analyzer", desc: "Analyze viral potential, predict engagement, and optimize your content strategy in real-time." },
-    { title: "Live Stream Tools", desc: "AI-powered live streaming assistant with auto-captions, real-time analytics, and audience engagement." },
-    { title: "KOL Database", desc: "Find verified influencers with engagement rates, pricing, and audience demographics at your fingertips." },
-    { title: "AI Voice Assistant", desc: "Hands-free marketing automation — dictate briefs, get AI suggestions, and manage campaigns by voice." },
-];

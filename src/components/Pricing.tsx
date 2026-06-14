@@ -205,8 +205,8 @@ export default function Pricing() {
                                     ))}
                                 </ul>
                             </div>
-                        );
-                    })}
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

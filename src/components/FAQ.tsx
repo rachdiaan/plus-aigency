@@ -49,7 +49,7 @@ export default function FAQ() {
                 </div>
 
                 <div className="fade-up fade-up-delay-3 mt-14 flex flex-col gap-4">
-                    {t.faq.items.map((faq: { question: string; answer: string }, i: number) => (
+                    {t.faqItems.map((faq: { question: string; answer: string }, i: number) => (
                         <div
                             key={i}
                             className={`rounded-2xl border transition-all duration-300 ${openIndex === i

@@ -16,6 +16,22 @@ export function getSupabaseAdmin(): SupabaseClient | null {
         auth: { persistSession: false, autoRefreshToken: false },
     });
 }
-
 export const isSupabaseConfigured = () =>
     Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? '';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
+
+const isClientConfigured = supabaseUrl.startsWith('https://') && supabaseAnonKey.length > 0;
+
+// Client-side Supabase client (for use in React components)
+export const supabase: SupabaseClient | null = isClientConfigured
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;
+
+// Server-side Supabase client (for use in API routes / server components)
+export const createServerSupabaseClient = (): SupabaseClient | null => {
+  if (!isClientConfigured) return null;
+
+  return createClient(supabaseUrl, supabaseAnonKey);
+};
