@@ -5,6 +5,7 @@ import { callGeminiStructured } from "@/lib/ai";
 import { MOCK_CALENDAR } from "@/lib/mockData";
 import { CalendarItem } from "@/types";
 import { Schema, Type } from "@google/genai";
+import { supabase } from "@/lib/supabase";
 
 export const ViewPlanner: React.FC<{ onAutoFill: () => void, addNotification: (t: 'success' | 'error', m: string) => void }> = ({ onAutoFill, addNotification }) => {
     const [loading, setLoading] = useState(false);
@@ -40,6 +41,24 @@ export const ViewPlanner: React.FC<{ onAutoFill: () => void, addNotification: (t
         if (result) {
             setCalendarData(result);
             addNotification('success', 'Jadwal berhasil dibuat!');
+            
+            // Save to Supabase
+            if (supabase) {
+                const { data: sessionData } = await supabase.auth.getSession();
+                if (sessionData?.session?.user) {
+                    const { error } = await supabase.from('campaigns').insert([{
+                        user_id: sessionData.session.user.id,
+                        name: form.name,
+                        industry: form.industry,
+                        market: form.market,
+                        idea: form.idea,
+                        calendar_data: result
+                    }]);
+                    if (error) {
+                        console.error("Error saving to Supabase:", error);
+                    }
+                }
+            }
         } else {
             addNotification('error', 'Gagal membuat jadwal, coba lagi.');
         }

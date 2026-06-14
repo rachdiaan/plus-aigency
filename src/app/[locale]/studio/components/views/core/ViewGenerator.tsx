@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Wand2, Loader2, Sparkles, Download, Maximize2, Image as ImageIcon } from "lucide-react";
 import { callGeminiImage, downloadImage } from "@/lib/ai";
+import { supabase } from "@/lib/supabase";
 
 export const ViewGenerator: React.FC<{ addNotification: (t: 'success' | 'error', m: string) => void }> = ({ addNotification }) => {
     const [prompt, setPrompt] = useState('');
@@ -18,6 +19,23 @@ export const ViewGenerator: React.FC<{ addNotification: (t: 'success' | 'error',
         if (imgData) {
             setGeneratedImage(imgData);
             addNotification('success', 'Gambar berhasil dibuat!');
+            
+            // Save to Supabase
+            if (supabase) {
+                const { data: sessionData } = await supabase.auth.getSession();
+                if (sessionData?.session?.user) {
+                    const { error } = await supabase.from('generated_assets').insert([{
+                        user_id: sessionData.session.user.id,
+                        prompt: prompt,
+                        style: style,
+                        ratio: ratio,
+                        image_url: imgData
+                    }]);
+                    if (error) {
+                        console.error("Error saving to Supabase:", error);
+                    }
+                }
+            }
         } else {
             addNotification('error', 'Gagal membuat gambar. Coba prompt lain.');
         }

@@ -10,6 +10,7 @@ import { supabase } from "@/lib/supabase";
 // Theme is managed globally by src/components/ThemeProvider
 const StudioApp = () => {
     const [view, setView] = useState<'landing' | 'login' | 'app'>('landing');
+    const [user, setUser] = useState<any>(null);
 
     // Sync auth state on mount and listen to changes
     useEffect(() => {
@@ -18,6 +19,7 @@ const StudioApp = () => {
         // Check current session
         supabase.auth.getSession().then(({ data: { session } }) => {
             if (session) {
+                setUser(session.user);
                 setView('app');
             }
         });
@@ -25,8 +27,10 @@ const StudioApp = () => {
         // Listen to auth changes
         const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
             if (session) {
+                setUser(session.user);
                 setView('app');
             } else {
+                setUser(null);
                 setView('landing');
             }
         });
@@ -40,6 +44,7 @@ const StudioApp = () => {
         if (supabase) {
             await supabase.auth.signOut();
         }
+        setUser(null);
         setView('landing');
     };
 
@@ -48,7 +53,7 @@ const StudioApp = () => {
             {/* Main Content Area */}
             {view === 'landing' && <StudioLanding onStart={() => setView('login')} onLoginClick={() => setView('login')} />}
             {view === 'login' && <StudioLogin onLoginSuccess={() => setView('app')} onBack={() => setView('landing')} />}
-            {view === 'app' && <StudioDashboard onLogout={handleLogout} />}
+            {view === 'app' && <StudioDashboard onLogout={handleLogout} user={user} />}
         </>
     );
 };
