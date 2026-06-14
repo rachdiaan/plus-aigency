@@ -5,5 +5,10 @@
 [build.environment]
   # Skip secrets scanning for intentionally public (client-side) env vars.
   # NEXT_PUBLIC_* values are embedded in the browser bundle by design.
-  # The Next.js runtime is auto-installed by Netlify when it detects Next.js.
   SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_GEMINI_API_KEY,GEMINI_API_KEY"
+
+# Required for Next.js SSR on Netlify: API routes, the locale proxy/
+# middleware, dynamic OG images, and server-rendered pages. Without this
+# plugin Netlify only serves static output and the dynamic features break.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
