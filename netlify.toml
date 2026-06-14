@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Skip secrets scanning for intentionally public (client-side) env vars.
+  # NEXT_PUBLIC_* values are embedded in the browser bundle by design.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_GEMINI_API_KEY"
+
+# Next.js on Netlify is handled by the official runtime, which Netlify
+# auto-installs when it detects a Next.js project (App Router, API routes,
+# image optimization, and the proxy/middleware all work out of the box).
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
