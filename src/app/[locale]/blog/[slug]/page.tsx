@@ -160,8 +160,8 @@ export default async function ArticlePage({
                             src={article.image}
                             alt={article.title}
                             fill
+                            sizes="(max-width: 768px) 100vw, 768px"
                             className="object-cover"
-                            unoptimized
                             priority
                         />
                     </div>
@@ -218,8 +218,8 @@ export default async function ArticlePage({
                                                 src={a.image}
                                                 alt={a.title}
                                                 fill
+                                                sizes="(max-width: 640px) 100vw, 33vw"
                                                 className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                                unoptimized
                                             />
                                         </div>
                                         <div className="p-4">

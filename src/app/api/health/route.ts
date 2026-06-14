@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
-import { createServerSupabaseClient } from '@/lib/supabase';
+import { getSupabaseAdmin } from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
 
 // GET /api/health — check Supabase connection
 export async function GET() {
-  const supabase = createServerSupabaseClient();
+  const supabase = getSupabaseAdmin();
 
   if (!supabase) {
     return NextResponse.json({
@@ -15,25 +15,25 @@ export async function GET() {
   }
 
   try {
-    // Simple query to test connection
-    const { data, error } = await supabase
-      .from('kol_database')
-      .select('id, name')
-      .limit(1);
+    const { error } = await supabase.rpc('version');
 
     if (error) {
-      return NextResponse.json({
-        status: 'error',
-        message: 'Supabase connected but query failed',
-        error: error.message,
-        code: error.code,
-      }, { status: 500 });
+      // Fallback: try a simple table query
+      const { error: fallbackError } = await supabase
+        .from('subscribers')
+        .select('id')
+        .limit(1);
+
+      if (fallbackError) {
+        return NextResponse.json({
+          status: 'error',
+          message: 'Supabase connected but query failed',
+          error: fallbackError.message,
+        }, { status: 500 });
+      }
     }
 
-    return NextResponse.json({
-      status: 'ok',
-      message: 'Supabase connected successfully!',
-    });
+    return NextResponse.json({ status: 'ok', message: 'Supabase connected successfully!' });
   } catch (err) {
     return NextResponse.json({
       status: 'error',

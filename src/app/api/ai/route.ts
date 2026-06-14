@@ -1,39 +1,7 @@
 import { NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
+import { rateLimit } from "@/lib/rateLimit";
 
-// --- Rate Limiting ---
-const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
-const RATE_LIMIT_MAX_REQUESTS = 10; // max 10 requests per window per IP
-
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-
-function isRateLimited(ip: string): boolean {
-    const now = Date.now();
-    const entry = rateLimitMap.get(ip);
-
-    if (!entry || now > entry.resetTime) {
-        rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
-        return false;
-    }
-
-    entry.count++;
-    if (entry.count > RATE_LIMIT_MAX_REQUESTS) {
-        return true;
-    }
-    return false;
-}
-
-// Clean up stale entries every 5 minutes to prevent memory leak
-setInterval(() => {
-    const now = Date.now();
-    for (const [ip, entry] of rateLimitMap.entries()) {
-        if (now > entry.resetTime) {
-            rateLimitMap.delete(ip);
-        }
-    }
-}, 5 * 60 * 1000);
-
-// Ensure the API key is read from server environment variables
 const getGenAI = () => {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -44,12 +12,11 @@ const getGenAI = () => {
 
 export async function POST(request: Request) {
     try {
-        // Rate limiting
         const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
             || request.headers.get("x-real-ip")
             || "unknown";
 
-        if (isRateLimited(ip)) {
+        if (rateLimit(`ai:${ip}`, 10, 60_000)) {
             return NextResponse.json(
                 { error: "Too many requests. Please try again later." },
                 { status: 429 }
@@ -69,34 +36,43 @@ export async function POST(request: Request) {
                 return NextResponse.json({ error: "Schema is required for structured action" }, { status: 400 });
             }
             const response = await ai.models.generateContent({
-                model: 'gemini-2.0-flash',
+                model: "gemini-2.0-flash",
                 contents: prompt,
                 config: {
-                    responseMimeType: 'application/json',
+                    responseMimeType: "application/json",
                     responseSchema: schema,
                     temperature: 0.7,
-                }
+                },
             });
             const text = response.text;
             if (!text) {
                 return NextResponse.json({ error: "No text returned from Gemini" }, { status: 500 });
             }
-            return NextResponse.json({ result: JSON.parse(text) });
+            try {
+                return NextResponse.json({ result: JSON.parse(text) });
+            } catch {
+                return NextResponse.json({ error: "Gemini returned malformed JSON" }, { status: 500 });
+            }
         } else if (action === "text") {
             const response = await ai.models.generateContent({
-                model: 'gemini-2.0-flash',
+                model: "gemini-2.0-flash",
                 contents: prompt,
             });
             return NextResponse.json({ result: response.text || "" });
         } else if (action === "image") {
             const response = await ai.models.generateContent({
-                model: 'gemini-2.0-flash',
+                model: "gemini-2.0-flash-preview-image-generation",
                 contents: prompt,
+                config: {
+                    responseModalities: ["TEXT", "IMAGE"],
+                },
             });
 
             for (const part of response.candidates?.[0]?.content?.parts || []) {
                 if (part.inlineData && part.inlineData.data) {
-                    return NextResponse.json({ result: `data:${part.inlineData.mimeType};base64,${part.inlineData.data}` });
+                    return NextResponse.json({
+                        result: `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`,
+                    });
                 }
             }
             return NextResponse.json({ error: "No image generated from Gemini" }, { status: 500 });

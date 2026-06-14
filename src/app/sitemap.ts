@@ -20,6 +20,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { path: "/chat-bot", changeFrequency: "monthly", priority: 0.8 },
         { path: "/digital-agency", changeFrequency: "monthly", priority: 0.8 },
         { path: "/mobile-game", changeFrequency: "monthly", priority: 0.7 },
+        { path: "/mobile-app", changeFrequency: "monthly", priority: 0.7 },
+        { path: "/crm", changeFrequency: "monthly", priority: 0.7 },
+        { path: "/customer-support", changeFrequency: "monthly", priority: 0.7 },
+        { path: "/contact-us", changeFrequency: "monthly", priority: 0.6 },
+        { path: "/ai-image-generator", changeFrequency: "monthly", priority: 0.6 },
+        { path: "/ai-text-generator", changeFrequency: "monthly", priority: 0.6 },
+        { path: "/ai-video-generator", changeFrequency: "monthly", priority: 0.6 },
+        { path: "/ai-music-generator", changeFrequency: "monthly", priority: 0.6 },
     ];
 
     const entries: MetadataRoute.Sitemap = [];

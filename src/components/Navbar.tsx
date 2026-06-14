@@ -427,7 +427,6 @@ export default function Navbar() {
                             />
                         ))}
                     </button>
-                    <LanguageToggle />
                 </div>
             </div>
 

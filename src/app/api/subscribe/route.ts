@@ -1,9 +1,18 @@
 import { NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase";
+import { rateLimit } from "@/lib/rateLimit";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
+        || request.headers.get("x-real-ip")
+        || "unknown";
+
+    if (rateLimit(`subscribe:${ip}`, 5, 60_000)) {
+        return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    }
+
     let body: { email?: string; locale?: string };
     try {
         body = await request.json();

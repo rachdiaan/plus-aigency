@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerSupabaseClient } from '@/lib/supabase';
+import { getSupabaseAdmin } from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
 
@@ -8,18 +8,12 @@ export async function GET(request: NextRequest) {
   const sessionId = request.nextUrl.searchParams.get('session_id');
 
   if (!sessionId) {
-    return NextResponse.json(
-      { error: 'session_id is required' },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: 'session_id is required' }, { status: 400 });
   }
 
-  const supabase = createServerSupabaseClient();
+  const supabase = getSupabaseAdmin();
   if (!supabase) {
-    return NextResponse.json(
-      { error: 'Database not configured' },
-      { status: 503 }
-    );
+    return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
   }
 
   try {
@@ -34,21 +28,15 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ messages: data });
   } catch (error) {
     console.error('Chat GET error:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch messages' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch messages' }, { status: 500 });
   }
 }
 
 // POST /api/chat — save a chat message
 export async function POST(request: NextRequest) {
-  const supabase = createServerSupabaseClient();
+  const supabase = getSupabaseAdmin();
   if (!supabase) {
-    return NextResponse.json(
-      { error: 'Database not configured' },
-      { status: 503 }
-    );
+    return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
   }
 
   try {
@@ -80,9 +68,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: data }, { status: 201 });
   } catch (error) {
     console.error('Chat POST error:', error);
-    return NextResponse.json(
-      { error: 'Failed to save message' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to save message' }, { status: 500 });
   }
 }

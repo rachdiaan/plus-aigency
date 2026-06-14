@@ -1,22 +1,28 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BlogFilters from "./BlogFilters";
 import { articles } from "@/data/articles";
-import { useT, useLocale } from "@/i18n/I18nProvider";
+import { getDictionary } from "@/i18n/getDictionary";
+import { isLocale, defaultLocale } from "@/i18n/config";
 
 const ALL = "__all__";
 
-export default function BlogPage() {
-    const [activeCategory, setActiveCategory] = useState(ALL);
-    const t = useT();
-    const locale = useLocale();
+export default async function BlogPage({
+    params,
+    searchParams,
+}: {
+    params: Promise<{ locale: string }>;
+    searchParams: Promise<{ category?: string }>;
+}) {
+    const { locale: rawLocale } = await params;
+    const { category } = await searchParams;
+    const locale = isLocale(rawLocale) ? rawLocale : defaultLocale;
+    const t = getDictionary(locale);
     const dateLocale = locale === "id" ? "id-ID" : "en-US";
+    const activeCategory = category ?? ALL;
 
-    // Only show articles written in the current language
     const localeArticles = articles.filter((a) => (a.locale ?? "id") === locale);
 
     const filtered =
@@ -28,9 +34,11 @@ export default function BlogPage() {
         (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 
-    // Derive categories from the available articles for this locale
     const uniqueCategories = Array.from(new Set(localeArticles.map((a) => a.category)));
-    const categories = [{ value: ALL, label: t.blog.all }, ...uniqueCategories.map((c) => ({ value: c, label: c }))];
+    const categories = [
+        { value: ALL, label: t.blog.all },
+        ...uniqueCategories.map((c) => ({ value: c, label: c })),
+    ];
 
     return (
         <>
@@ -50,21 +58,12 @@ export default function BlogPage() {
                         </p>
                     </div>
 
-                    {/* Category filter */}
-                    <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
-                        {categories.map((cat) => (
-                            <button
-                                key={cat.value}
-                                onClick={() => setActiveCategory(cat.value)}
-                                className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-all ${activeCategory === cat.value
-                                    ? "bg-primary text-white shadow-md shadow-primary/25"
-                                    : "border border-slate-200 dark:border-[#1E293B] bg-white dark:bg-[#0B1120] text-[#475569] dark:text-[#94A3B8] hover:border-primary/30 hover:text-primary"
-                                    }`}
-                            >
-                                {cat.label}
-                            </button>
-                        ))}
-                    </div>
+                    {/* Category filter (client component) */}
+                    <BlogFilters
+                        categories={categories}
+                        activeCategory={activeCategory}
+                        allLabel={t.blog.all}
+                    />
 
                     {/* Article grid */}
                     <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -79,8 +78,8 @@ export default function BlogPage() {
                                         src={article.image}
                                         alt={article.title}
                                         fill
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                         className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                        unoptimized
                                     />
                                     <span className="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-[#0B1120]/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary backdrop-blur-sm">
                                         {article.category}

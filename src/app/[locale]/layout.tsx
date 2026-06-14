@@ -114,7 +114,7 @@ export default async function LocaleLayout({
     logo: `${SITE}/favicon.png`,
     description: dict.meta.homeDescription,
     email: "support@plusthe.site",
-    sameAs: ["https://www.instagram.com/", "https://www.linkedin.com/"],
+    sameAs: ["https://www.instagram.com/plusthe.site/", "https://www.linkedin.com/company/plusthesite/"],
   };
 
   const websiteSchema = {

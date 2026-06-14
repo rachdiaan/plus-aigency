@@ -135,7 +135,7 @@ export const StudioDashboard: React.FC<{ onLogout: () => void, user?: any }> = (
                 <div className="mt-auto pt-6 border-t border-border space-y-3">
                     <div className="bg-background p-3 rounded-xl border border-border flex items-center gap-3 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <div className="w-10 h-10 bg-surface-hover rounded-full overflow-hidden border-2 border-primary"><User className="w-full h-full p-1 text-muted group-hover:text-foreground" /></div>
-                        <div className="flex-1 min-w-0"><p className="text-sm font-bold text-foreground truncate">{user?.email || "Studio User"}</p><p className="text-[10px] text-tertiary font-medium">Pro Plan Active</p></div>
+                        <div className="flex-1 min-w-0"><p className="text-sm font-bold text-foreground truncate">{user?.email || "Studio User"}</p><p className="text-[10px] text-tertiary font-medium">Studio Member</p></div>
                         <button className="text-muted hover:text-foreground"><Settings size={18} /></button>
                     </div>
 
