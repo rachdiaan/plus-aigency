@@ -3,5 +3,7 @@
   publish = ".next"
 
 [build.environment]
-  # Skip secrets scanning for intentionally public env vars
-  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_SUPABASE_URL,GEMINI_API_KEY"
+  # Skip secrets scanning for intentionally public (client-side) env vars.
+  # NEXT_PUBLIC_* values are embedded in the browser bundle by design.
+  # The Next.js runtime is auto-installed by Netlify when it detects Next.js.
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_GEMINI_API_KEY,GEMINI_API_KEY"
