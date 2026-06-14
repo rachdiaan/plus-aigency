@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerSupabaseClient } from '@/lib/supabase';
+import { getSupabaseAdmin } from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
 
-// POST /api/contact — save contact form submission
+// POST /api/contact — save contact form submission.
+// Uses the service-role client so the server-side write bypasses RLS
+// (no public insert/select policies needed on the contacts table).
 export async function POST(request: NextRequest) {
-  const supabase = createServerSupabaseClient();
+  const supabase = getSupabaseAdmin();
   if (!supabase) {
     return NextResponse.json(
       { error: 'Database not configured' },
