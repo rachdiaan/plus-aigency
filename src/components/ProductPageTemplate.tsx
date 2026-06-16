@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useTranslation } from "@/components/LanguageProvider";
+import { translations } from "@/lib/translations";
 import { useLocale } from "@/i18n/I18nProvider";
 
 interface Testimonial {
@@ -78,9 +78,9 @@ export default function ProductPageTemplate({
     avatars,
     themeColors = {},
 }: ProductPageTemplateProps) {
-    const t = useTranslation();
     const locale = useLocale();
-    const p = t[pageKey] as unknown as ProductPageData;
+    // Product-page copy is plain data, read by the URL locale (one i18n system).
+    const p = translations[locale][pageKey] as unknown as ProductPageData;
 
     const heroRef = useScrollReveal();
     const featRef = useScrollReveal();
