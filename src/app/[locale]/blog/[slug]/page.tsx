@@ -7,12 +7,14 @@ import Footer from "@/components/Footer";
 import ReadingProgress from "@/components/ReadingProgress";
 import ArticleViews from "@/components/ArticleViews";
 import { articles } from "@/data/articles";
+import { getPublishedPostBySlug, getPublishedPosts } from "@/lib/posts";
 import { getDictionary } from "@/i18n/getDictionary";
 import { isLocale, defaultLocale } from "@/i18n/config";
 
 const SITE = "https://plusthe.site";
 
-export const dynamicParams = false;
+// Static articles are pre-rendered; CMS posts (DB) render on demand.
+export const dynamicParams = true;
 
 export function generateStaticParams() {
     return articles.map((article) => ({ locale: article.locale ?? "id", slug: article.slug }));
@@ -24,7 +26,7 @@ export async function generateMetadata({
     params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
     const { locale, slug } = await params;
-    const article = articles.find((a) => a.slug === slug);
+    const article = articles.find((a) => a.slug === slug) ?? (await getPublishedPostBySlug(slug));
 
     if (!article) {
         return { title: "404 — plus." };
@@ -68,14 +70,16 @@ export default async function ArticlePage({
     const { locale: rawLocale, slug } = await params;
     const locale = isLocale(rawLocale) ? rawLocale : defaultLocale;
     const t = getDictionary(locale);
-    const article = articles.find((a) => a.slug === slug);
+    const article = articles.find((a) => a.slug === slug) ?? (await getPublishedPostBySlug(slug));
 
     if (!article) {
         notFound();
     }
 
-    const related = articles
-        .filter((a) => (a.locale ?? "id") === locale && a.category === article.category && a.id !== article.id)
+    // Related from static + CMS posts of the same locale & category
+    const dbPosts = await getPublishedPosts(locale);
+    const related = [...articles.filter((a) => (a.locale ?? "id") === locale), ...dbPosts]
+        .filter((a) => a.category === article.category && a.slug !== article.slug)
         .slice(0, 3);
 
     const articleUrl = `${SITE}/${locale}/blog/${article.slug}`;

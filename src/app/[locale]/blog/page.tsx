@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogFilters from "./BlogFilters";
 import { articles } from "@/data/articles";
+import { getPublishedPosts } from "@/lib/posts";
 import { getDictionary } from "@/i18n/getDictionary";
 import { isLocale, defaultLocale } from "@/i18n/config";
 
@@ -23,7 +24,10 @@ export default async function BlogPage({
     const dateLocale = locale === "id" ? "id-ID" : "en-US";
     const activeCategory = category ?? ALL;
 
-    const localeArticles = articles.filter((a) => (a.locale ?? "id") === locale);
+    // Static articles + live CMS posts (from Supabase), merged
+    const staticArticles = articles.filter((a) => (a.locale ?? "id") === locale);
+    const dbPosts = await getPublishedPosts(locale);
+    const localeArticles = [...staticArticles, ...dbPosts];
 
     const filtered =
         activeCategory === ALL
