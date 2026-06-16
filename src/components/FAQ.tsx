@@ -27,7 +27,6 @@ export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
     const ref = useScrollReveal();
     const t = useT();
-    const faqs = t.faqItems;
 
     const toggle = (i: number) => {
         setOpenIndex(openIndex === i ? null : i);

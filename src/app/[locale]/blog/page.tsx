@@ -62,7 +62,6 @@ export default async function BlogPage({
                     <BlogFilters
                         categories={categories}
                         activeCategory={activeCategory}
-                        allLabel={t.blog.all}
                     />
 
                     {/* Article grid */}

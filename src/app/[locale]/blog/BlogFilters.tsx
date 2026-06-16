@@ -5,10 +5,9 @@ import { useRouter, usePathname } from "next/navigation";
 interface Props {
     categories: { value: string; label: string }[];
     activeCategory: string;
-    allLabel: string;
 }
 
-export default function BlogFilters({ categories, activeCategory, allLabel }: Props) {
+export default function BlogFilters({ categories, activeCategory }: Props) {
     const router = useRouter();
     const pathname = usePathname();
 
