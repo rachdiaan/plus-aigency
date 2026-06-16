@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import { notFound } from "next/navigation";
 import ThemeProvider from "@/components/ThemeProvider";
 import ScrollToTop from "@/components/ScrollToTop";
+import LanguageProvider from "@/components/LanguageProvider";
 import { I18nProvider } from "@/i18n/I18nProvider";
 import { getDictionary } from "@/i18n/getDictionary";
 import { locales, isLocale } from "@/i18n/config";
@@ -154,7 +155,9 @@ export default async function LocaleLayout({
           <div className="glow-ambient glow-ambient-1" aria-hidden="true" />
           <div className="glow-ambient glow-ambient-2" aria-hidden="true" />
           <I18nProvider locale={locale} dict={dict}>
-            {children}
+            <LanguageProvider initialLanguage={locale === "id" ? "id" : "en"}>
+              {children}
+            </LanguageProvider>
           </I18nProvider>
           <ScrollToTop />
         </ThemeProvider>
