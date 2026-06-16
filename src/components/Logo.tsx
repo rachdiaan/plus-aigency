@@ -2,12 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 /**
- * plus. brand logo — uses /public/logo.png
- * 
- * Animations:
- * - Entrance: subtle slide-in + fade on page load
- * - Hover: lift + glow pulse + slight rotation
- * - Shimmer: periodic shine sweep across the logo
+ * plus. brand logo.
+ * - variant "dark"  (light backgrounds): /logo.png      — blue "p" + navy "lus."
+ * - variant "light" (dark backgrounds):  /logo-dark.png — blue "p" + white "lus."
+ * Keeps the brand blue in both themes (no flat all-white filter).
  */
 export default function Logo({
     variant = "dark",
@@ -36,15 +34,12 @@ export default function Logo({
             className={`logo-wrapper group relative inline-block ${className}`}
         >
             <Image
-                src="/logo.png"
+                src={variant === "light" ? "/logo-dark.png" : "/logo.png"}
                 alt="plus."
                 width={width}
                 height={height}
                 priority
                 className="logo-image relative z-10 object-contain transition-transform duration-300"
-                style={{
-                    filter: variant === "light" ? "brightness(0) invert(1)" : "none",
-                }}
             />
         </Link>
     );
